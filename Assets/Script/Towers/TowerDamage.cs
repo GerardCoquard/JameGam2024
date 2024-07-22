@@ -48,6 +48,7 @@ public class TowerDamage : Tower
             StartCoroutine(MoveBullet(distance, enemy, bullet.transform));
         }
         timer += Time.deltaTime;
+
     }
     
     public override void EndTower()
@@ -64,13 +65,14 @@ public class TowerDamage : Tower
         Vector3 startPos = bullet.position;
         float time = 0;
         float targetTime = distance / bulletSpeedMultiplier;
-        while (time < targetTime)
+        while (time < 1)
         {
             time += Time.deltaTime;
-            float percentageDuration = time / targetTime;
+            float percentageDuration = time / 1;
             bullet.position = Vector3.Lerp(startPos, enemy.position, bulletSpeedCurve.Evaluate(percentageDuration));
             yield return new WaitForEndOfFrame();
         }
+        enemy.GetComponent<Enemy>().DamageEnemy(damage);
         particleSystem.Stop(true, ParticleSystemStopBehavior.StopEmitting);
         yield return new WaitForSeconds(5);
         Destroy(bullet.gameObject);

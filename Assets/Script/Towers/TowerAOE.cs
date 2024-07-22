@@ -37,12 +37,24 @@ public class TowerAOE : Tower
         if (distance <= range && timer >= fireRate)
         {
             GameObject bullet = GameObject.Instantiate(bulletPrefab, enemy.position, Quaternion.identity);
+            bullet.GetComponent<ActivateAreaDamage>().damage = damage;
             timer = 0;
-            Destroy(bullet, 4);
+            StartCoroutine(FollowEnemy(bullet.transform, enemy.transform));
+            Destroy(bullet, 3);
         }
         timer += Time.deltaTime;
     }
-    
+    IEnumerator FollowEnemy(Transform bullet,Transform enemy)
+    {
+        float time = 0;
+        MoveEnemie enemyMove = enemy.GetComponent<MoveEnemie>();
+        while (time < 3)
+        {
+            time += Time.deltaTime;
+            bullet.position = enemyMove.publicPos;
+            yield return new WaitForEndOfFrame();
+        }
+    }
     public override void EndTower()
     {
         base.EndTower();
