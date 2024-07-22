@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4821471289876582208}
   - component: {fileID: 4821471289876582211}
   - component: {fileID: 4821471289876582210}
-  - component: {fileID: 1638532085510194137}
   m_Layer: 0
   m_Name: NormalBullet
   m_TagString: Untagged
@@ -4831,42 +4830,3 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &1638532085510194137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4821471289876582213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe44bdddf0f16bb40b2d0e8800312ce9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
-  bulletSpeedCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0.31062478
-      outSlope: 0.31062478
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.037963748
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  bulletSpeedMultiplier: 8
-  bulletData: {fileID: 11400000, guid: 8e298beab3a584e4ea5946b6ee494ce4, type: 2}

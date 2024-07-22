@@ -7,6 +7,7 @@ public class TowerData : ScriptableObject
 {
     public float fireRate;
     public float range;
+    public int damage;
     public GameObject startEffect;
     public GameObject bullet;
     public GameObject endEffect;

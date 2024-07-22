@@ -13,8 +13,11 @@ public class TowerDamage : Tower
     GameObject endEffect;
     [SerializeField] Transform enemy;
     float timer;
-
+    [SerializeField] AnimationCurve bulletSpeedCurve;
+    [SerializeField] float bulletSpeedMultiplier;
     Transform bulletInstantiatePoint;
+
+    private ParticleSystem particleSystem;
 
     private void Awake()
     {      
@@ -23,7 +26,7 @@ public class TowerDamage : Tower
         startEffect = data.startEffect;
         bulletPrefab = data.bullet;
         endEffect = data.endEffect;
-
+        damage = data.damage;
         health = maxHealth;
 
         timer = 0;
@@ -40,8 +43,9 @@ public class TowerDamage : Tower
         if (distance <= range && timer >= fireRate)
         {
             GameObject bullet = GameObject.Instantiate(bulletPrefab, bulletInstantiatePoint.position, Quaternion.identity);
-            bullet.GetComponent<Bullet>().enemy = enemy;
-            timer = 0;           
+            particleSystem = bullet.GetComponent<ParticleSystem>();
+            timer = 0;
+            StartCoroutine(MoveBullet(distance, enemy, bullet.transform));
         }
         timer += Time.deltaTime;
     }
@@ -55,6 +59,23 @@ public class TowerDamage : Tower
     {
         StartTower();
     }
+    IEnumerator MoveBullet(float distance,Transform enemy, Transform bullet)
+    {
+        Vector3 startPos = bullet.position;
+        float time = 0;
+        float targetTime = distance / bulletSpeedMultiplier;
+        while (time < targetTime)
+        {
+            time += Time.deltaTime;
+            float percentageDuration = time / targetTime;
+            bullet.position = Vector3.Lerp(startPos, enemy.position, bulletSpeedCurve.Evaluate(percentageDuration));
+            yield return new WaitForEndOfFrame();
+        }
+        particleSystem.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        yield return new WaitForSeconds(5);
+        Destroy(bullet.gameObject);
+    }
+    
 
     // Update is called once per frame
     void Update()
