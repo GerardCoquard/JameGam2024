@@ -33,14 +33,17 @@ public class TowerAOE : Tower
     public override void Action()
     {
         base.Action();
-        float distance = Vector3.Distance(enemy.position, transform.position);
-        if (distance <= range && timer >= fireRate)
+        if(enemy != null)
         {
-            GameObject bullet = GameObject.Instantiate(bulletPrefab, enemy.position, Quaternion.identity);
-            bullet.GetComponent<ActivateAreaDamage>().damage = damage;
-            timer = 0;
-            StartCoroutine(FollowEnemy(bullet.transform, enemy.transform));
-            Destroy(bullet, 3);
+            float distance = Vector3.Distance(enemy.position, transform.position);
+            if (distance <= range && timer >= fireRate)
+            {
+                GameObject bullet = GameObject.Instantiate(bulletPrefab, enemy.position, Quaternion.identity);
+                bullet.GetComponent<ActivateAreaDamage>().damage = damage;
+                timer = 0;
+                StartCoroutine(FollowEnemy(bullet.transform, enemy.transform));
+                Destroy(bullet, 3);
+            }
         }
         timer += Time.deltaTime;
     }

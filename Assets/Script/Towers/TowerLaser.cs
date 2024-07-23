@@ -38,29 +38,24 @@ public class TowerLaser : Tower
     public override void Action()
     {
         base.Action();
-        if (!freezeRotation)
+        if(enemy != null)
         {
             Vector3 targetDirection = enemy.position - transform.position;
             targetDirection.y = 0;
             targetDirection.Normalize();
             Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-
-            // Extract only the Y axis rotation
             targetRotation = Quaternion.Euler(0, targetRotation.eulerAngles.y, 0);
-
-            // Apply the rotation to the object
             transform.rotation = targetRotation;
-            //Quaternion targetRotation = Quaternion.LookRotation(enemy.position - transform.position).normalized;
-            //transform.rotation = targetRotation;
-        }     
-        float distance = Vector3.Distance(enemy.position, bulletInstantiatePoint.position);
-        if (distance <= range && timer >= fireRate)
-        {
-            GameObject bullet = GameObject.Instantiate(bulletPrefab, bulletInstantiatePoint.position, Quaternion.identity);
-            bullet.transform.parent = bulletInstantiatePoint;
-            timer = 0;
-            StartCoroutine(MoveBullet(distance, enemy, bullet.transform));
+            float distance = Vector3.Distance(enemy.position, bulletInstantiatePoint.position);
+            if (distance <= range && timer >= fireRate)
+            {
+                GameObject bullet = GameObject.Instantiate(bulletPrefab, bulletInstantiatePoint.position, Quaternion.identity);
+                bullet.transform.parent = bulletInstantiatePoint;
+                timer = 0;
+                StartCoroutine(MoveBullet(distance, enemy, bullet.transform));
+            }
         }
+        
         timer += Time.deltaTime;
 
     }

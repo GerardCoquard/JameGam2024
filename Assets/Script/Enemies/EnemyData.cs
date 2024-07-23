@@ -8,4 +8,6 @@ public class EnemyData : ScriptableObject
 {
     public float health;
     public int damage;
+    public float armor;
+    public float magicArmor;
 }

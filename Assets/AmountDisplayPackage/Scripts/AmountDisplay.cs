@@ -12,6 +12,8 @@ public class AmountDisplay : MonoBehaviour
 {
     [SerializeField] float _spacing;
     [SerializeField] Color fillColor;
+    [SerializeField] Color armorColor;
+    [SerializeField] Color magicArmorColor;
     [SerializeField] Color backgroundColor;
     [SerializeField] bool singlePrefab;
     [SerializeField] GameObject segmentPrefab;
@@ -36,17 +38,7 @@ public class AmountDisplay : MonoBehaviour
     //Fills(filled part of the segment)
     //Follow(follow effect of fills)
     //Segments(the visual part that represents the quantity of segmentValue of the Amount)
-    
-    private void OnEnable() {
-        //CHANGE THE EVENTS TO THE MANAGER SYSTEM THAT YOU WANT!
-        HealthSystemExample.OnSetHealth += InitializeAll;
-        HealthSystemExample.OnHealthChanged += SetFillsFollow;
-    }
-    private void OnDisable() {
-        //CHANGE THE EVENTS TO THE MANAGER SYSTEM THAT YOU WANT!
-        HealthSystemExample.OnSetHealth -= InitializeAll;
-        HealthSystemExample.OnHealthChanged -= SetFillsFollow;
-    }
+   
     private void Awake() {
         layoutGroup = GetComponent<HorizontalLayoutGroup>();
         layoutGroup.spacing = _spacing;
@@ -56,12 +48,13 @@ public class AmountDisplay : MonoBehaviour
         fillsFollow = new List<Image>();
         background = new List<Image>();
     }
-    void InitializeAll(float _amount,float _maxAmount, float _segmentValue)
+    public void InitializeAll(float _amount,float armorAmount, float magicArmorAmount, float _maxAmount, float _segmentValue)
     {
         StopAllCoroutines();
         segmentValue = _segmentValue;
         SetSegments(_maxAmount);
-        SetFills(fills,_amount);
+        SetSegmentsColor(_amount, armorAmount, magicArmorAmount, _maxAmount, _segmentValue);
+        SetFills(fills,_amount + armorAmount + magicArmorAmount);  
         SetFills(fillsFollow,0);
     }
 
@@ -80,6 +73,30 @@ public class AmountDisplay : MonoBehaviour
         {
             RemoveSegments(Mathf.Abs(neededSegments));
         }
+    }
+    void SetSegmentsColor(float _amount, float armorAmount, float magicArmorAmount, float _maxAmount, float _segmentValue)
+    {
+        if (transform.childCount != 0)
+        {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                AmountPrefab amountPrefab = transform.GetChild(i).GetComponent<AmountPrefab>();
+                if(_segmentValue * (i+1) <= _amount)
+                {
+                    SetFillColor(amountPrefab.GetFill(), fillColor);
+                }
+                else if(_segmentValue * (i + 1) <= armorAmount + _amount)
+                {
+                    SetFillColor(amountPrefab.GetFill(), armorColor);
+                }
+                else
+                {
+                    SetFillColor(amountPrefab.GetFill(), magicArmorColor);
+                }
+                
+                SetFillColor(amountPrefab.GetBackground(), backgroundColor);
+            }
+        }     
     }
     void AddSegments(int segmentsToAdd)
     {
@@ -118,8 +135,6 @@ public class AmountDisplay : MonoBehaviour
         GameObject segment = Instantiate(prefab,transform.position,Quaternion.identity,transform);
         AmountPrefab amountPrefab = segment.GetComponent<AmountPrefab>();
         AddFills(amountPrefab);
-        SetFillColor(amountPrefab.GetFill(),fillColor);
-        SetFillColor(amountPrefab.GetBackground(),backgroundColor);
     }
     void DeleteSegment()
     {
@@ -140,7 +155,7 @@ public class AmountDisplay : MonoBehaviour
             fillList[i].fillAmount = Mathf.Clamp(((_amount - i * segmentValue)/segmentValue),0,1);
         }
     }
-    void SetFillsFollow(float actualAmount, float previousAmount)
+    public void SetFillsFollow(float actualAmount, float previousAmount)
     {
         //If bool follow is false, then just sets the fill to its value.
         //If not, sets the follow colors, and in case of gaining Amount it sets the current fill to the previous Amount,
@@ -226,6 +241,14 @@ public class AmountDisplay : MonoBehaviour
 
             EditorGUILayout.BeginHorizontal();
             amountDisplay.fillColor = (Color)EditorGUILayout.ColorField("Fill Color",amountDisplay.fillColor);
+            EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.BeginHorizontal();
+            amountDisplay.armorColor = (Color)EditorGUILayout.ColorField("Armor Color", amountDisplay.armorColor);
+            EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.BeginHorizontal();
+            amountDisplay.magicArmorColor = (Color)EditorGUILayout.ColorField("Magic Armor Color", amountDisplay.magicArmorColor);
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.BeginHorizontal();

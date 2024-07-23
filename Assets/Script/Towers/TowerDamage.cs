@@ -39,16 +39,18 @@ public class TowerDamage : Tower
     public override void Action()
     {
         base.Action();
-        float distance = Vector3.Distance(enemy.position, bulletInstantiatePoint.position);
-        if (distance <= range && timer >= fireRate)
+        if(enemy != null)
         {
-            GameObject bullet = GameObject.Instantiate(bulletPrefab, bulletInstantiatePoint.position, Quaternion.identity);
-            particleSystem = bullet.GetComponent<ParticleSystem>();
-            timer = 0;
-            StartCoroutine(MoveBullet(distance, enemy, bullet.transform));
-        }
+            float distance = Vector3.Distance(enemy.position, bulletInstantiatePoint.position);
+            if (distance <= range && timer >= fireRate)
+            {
+                GameObject bullet = GameObject.Instantiate(bulletPrefab, bulletInstantiatePoint.position, Quaternion.identity);
+                particleSystem = bullet.GetComponent<ParticleSystem>();
+                timer = 0;
+                StartCoroutine(MoveBullet(distance, enemy, bullet.transform));
+            }
+        }      
         timer += Time.deltaTime;
-
     }
     
     public override void EndTower()

@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac1c0a2efca19f54a8e94ed4a62a02ce, type: 3}
-  m_Name: Enemy
+  m_Script: {fileID: 11500000, guid: cde1b6e4008151948a3a33770197d841, type: 3}
+  m_Name: CloseRange
   m_EditorClassIdentifier: 
-  health: 100
-  damage: 10
-  armor: 30
-  magicArmor: 20
+  fireRate: 3
+  range: 20
+  damage: 60
+  startEffect: {fileID: 0}
+  bullet: {fileID: 55967031479838134, guid: 5c764133df6af7c42bfff2ab7366817e, type: 3}
+  endEffect: {fileID: 0}

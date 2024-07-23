@@ -40,8 +40,7 @@ public class ActivateAreaDamage : MonoBehaviour
         }
     }
     private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("miau");
+    {      
         other.transform.parent.GetComponent<Enemy>().DamageEnemy(damage);
     }
 }
