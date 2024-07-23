@@ -13,8 +13,9 @@ public class TowerLaser : Tower
     GameObject endEffect;
     [SerializeField] Transform enemy;
     float timer;
-    Transform bulletInstantiatePoint;
+    [SerializeField]Transform bulletInstantiatePoint;
     [SerializeField] AnimationCurve laserCurve;
+    bool freezeRotation = false;
 
     private ParticleSystem particleSystem;
 
@@ -29,7 +30,6 @@ public class TowerLaser : Tower
         health = maxHealth;
 
         timer = 0;
-        bulletInstantiatePoint = transform.GetChild(0);
     }
     public override void StartTower()
     {
@@ -38,11 +38,26 @@ public class TowerLaser : Tower
     public override void Action()
     {
         base.Action();
-        transform.forward = (enemy.position - transform.position).normalized;
+        if (!freezeRotation)
+        {
+            Vector3 targetDirection = enemy.position - transform.position;
+            targetDirection.y = 0;
+            targetDirection.Normalize();
+            Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+
+            // Extract only the Y axis rotation
+            targetRotation = Quaternion.Euler(0, targetRotation.eulerAngles.y, 0);
+
+            // Apply the rotation to the object
+            transform.rotation = targetRotation;
+            //Quaternion targetRotation = Quaternion.LookRotation(enemy.position - transform.position).normalized;
+            //transform.rotation = targetRotation;
+        }     
         float distance = Vector3.Distance(enemy.position, bulletInstantiatePoint.position);
         if (distance <= range && timer >= fireRate)
         {
             GameObject bullet = GameObject.Instantiate(bulletPrefab, bulletInstantiatePoint.position, Quaternion.identity);
+            bullet.transform.parent = bulletInstantiatePoint;
             timer = 0;
             StartCoroutine(MoveBullet(distance, enemy, bullet.transform));
         }
@@ -61,20 +76,21 @@ public class TowerLaser : Tower
     }
     IEnumerator MoveBullet(float distance,Transform enemy, Transform bullet)
     {
-        bullet.rotation = Quaternion.LookRotation((enemy.position - bullet.position).normalized);
-        Vector3 startRot = new Vector3(80, bullet.localEulerAngles.y, bullet.localEulerAngles.z);
-        Vector3 endRot = new Vector3(-20, bullet.localEulerAngles.y, bullet.localEulerAngles.z);
+
+        bullet.GetChild(0).GetChild(0).GetComponent<ActivateAreaDamage>().damage = damage;
+        Vector3 startRot = new Vector3(-80,180,0);
+        Vector3 endRot = new Vector3(20,180,0);
         float time = 0;
-        while (time < 3)
+        while (time < 1.5f)
         {
             time += Time.deltaTime;
-            float percentageDuration = time / 3;
-            bullet.rotation = Quaternion.Lerp(Quaternion.Euler(startRot), Quaternion.Euler(endRot), laserCurve.Evaluate(percentageDuration));
+            float percentageDuration = time / 1.5f;
+            bullet.localEulerAngles = Vector3.Lerp(startRot, endRot, laserCurve.Evaluate(percentageDuration));
             yield return new WaitForEndOfFrame();
         }
-        //enemy.GetComponent<Enemy>().DamageEnemy(damage);
-        //particleSystem.Stop(true, ParticleSystemStopBehavior.StopEmitting);
-        yield return new WaitForSeconds(5);
+        freezeRotation = false;
+        bullet.GetComponent<Animator>().SetTrigger("despawn");
+        yield return new WaitForSeconds(1);
         Destroy(bullet.gameObject);
     }
     
