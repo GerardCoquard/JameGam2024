@@ -119,6 +119,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8518351128303870438}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 35fd30cade9960d4c8020ef5acd6e70a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4299036907221182467}
   m_SourcePrefab: {fileID: 100100000, guid: 35fd30cade9960d4c8020ef5acd6e70a, type: 3}
 --- !u!1 &2693339193657645033 stripped
 GameObject:
@@ -172,7 +176,6 @@ MonoBehaviour:
   armorPenetration: 0
   magicArmorPenetration: 0
   data: {fileID: 11400000, guid: f88d31f1e2c663a41b5b0cd4296e38d6, type: 2}
-  enemy: {fileID: 0}
   instantiatePoint: {fileID: 2786775974990421593}
   spawnCurve:
     serializedVersion: 2
@@ -207,6 +210,29 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!136 &4299036907221182467
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2693339193657645033}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 6.2
+  m_Height: 100
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.6247732, z: 0}
 --- !u!4 &3326885887608458579 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 35fd30cade9960d4c8020ef5acd6e70a,

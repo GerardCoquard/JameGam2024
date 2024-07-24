@@ -13,7 +13,8 @@ public class Enemy : MonoBehaviour
     bool isAlive;
     float currentHealth;
     int currency;
-    float speed;
+    [HideInInspector]
+    public float speed;
     //Events
     public delegate void SetHealth(float health, float maxHealth, float _segmentValue);
     public delegate void HealthChanged(float actualHealth, float previousHealth);
@@ -30,6 +31,8 @@ public class Enemy : MonoBehaviour
         magicArmor = enemyData.magicArmor;
         maxHealth = health + armor + magicArmor;
         currentHealth = maxHealth;
+        currency = enemyData.currency;
+        GetComponent<MoveEnemie>().speed = enemyData.speed;
         isAlive = true;
 
         uiDisplay.InitializeAll(health,armor,magicArmor, maxHealth, 10f);

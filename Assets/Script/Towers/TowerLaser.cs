@@ -53,8 +53,8 @@ public class TowerLaser : Tower
     {
 
         //bullet.GetChild(0).GetChild(0).GetComponent<ActivateAreaDamage>().damage = baseDamage;
-        Vector3 startRot = new Vector3(-80,-110,0);
-        Vector3 endRot = new Vector3(20,-110,0);
+        Vector3 startRot = new Vector3(-80,180, 0);
+        Vector3 endRot = new Vector3(20,180,0);
         float time = 0;
         while (time < 1.5f)
         {

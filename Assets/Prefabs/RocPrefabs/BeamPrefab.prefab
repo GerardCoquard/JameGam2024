@@ -97,7 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a28aa8e85d16248a199cae68ead774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
   invokeColliderTime: 0
   adaptLaser: 1
   layerMask:
@@ -251,7 +250,7 @@ Animator:
   m_GameObject: {fileID: 8576772554056303866}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 91cdef46eea28024784cc76f219d309f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 66ac7a562954e194e98f66332767a94b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

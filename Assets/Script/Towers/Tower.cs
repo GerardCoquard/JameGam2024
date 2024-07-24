@@ -36,7 +36,8 @@ public class Tower : MonoBehaviour
     public TowerData data;
     public Action OnStatChanged;
 
-    public Transform enemy;
+    protected List<Transform> enemyList;
+    protected Transform enemy;
     Transform mage;
 
     [HideInInspector]
@@ -58,7 +59,9 @@ public class Tower : MonoBehaviour
         normalPenetration = baseNormal + GameManager.gameData.normalMultiplier * normalLevel;
         armorPenetration = baseArmor + GameManager.gameData.armorMultiplier * armorLevel;
         magicArmorPenetration = baseMagicArmor + GameManager.gameData.magicArmorMultiplier * magicArmorLevel;
+        enemyList = new List<Transform>();
 
+        GetComponent<CapsuleCollider>().radius = range;
         mage = transform.GetChild(0);
     }
     private void Update()
@@ -67,8 +70,17 @@ public class Tower : MonoBehaviour
     }
     public virtual void Action()
     {
-        if (enemy != null)
+        for (int i = 0; i < enemyList.Count; i++)
         {
+            if (enemyList[i] == null)
+            {
+                enemyList.RemoveAt(i);
+                i--;
+            }
+        }
+        if (enemyList.Count != 0)
+        {
+            enemy = enemyList[0];
             Vector3 targetDirection = enemy.position - mage.position;
             targetDirection.y = 0;
             targetDirection.Normalize();
@@ -92,6 +104,7 @@ public class Tower : MonoBehaviour
         rangeLevel++;
         anteriorRange = range;
         range = baseRange + GameManager.gameData.rangeMultiplier * rangeLevel;
+        GetComponent<CapsuleCollider>().radius = range;
         OnStatChanged?.Invoke();
         hasChangedRange = true;
     }
@@ -134,5 +147,14 @@ public class Tower : MonoBehaviour
     public float MagicArmorToBase(float dmg)
     {
         return dmg / magicArmorPenetration;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        enemyList.Add(other.transform.parent);
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        enemyList.Remove(other.transform.parent);
     }
 }
