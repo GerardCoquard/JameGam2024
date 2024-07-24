@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
     float magicArmor;
     bool isAlive;
     float currentHealth;
+    int currency;
+    float speed;
     //Events
     public delegate void SetHealth(float health, float maxHealth, float _segmentValue);
     public delegate void HealthChanged(float actualHealth, float previousHealth);
@@ -87,6 +89,8 @@ public class Enemy : MonoBehaviour
         isAlive = currentHealth > 0;
         if (!isAlive)
         {
+            GameManager.AddCurrency(currency);
+            UISpawner.instance.SpawnTextWithColor(transform.position,"+" + currency + "<sprite=0>",Color.white);
             Destroy(gameObject);
         }
     }
