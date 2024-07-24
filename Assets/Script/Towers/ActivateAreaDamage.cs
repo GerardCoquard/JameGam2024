@@ -14,19 +14,15 @@ public class ActivateAreaDamage : MonoBehaviour
     {
         initialScale = new Vector3(1,1,70);
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        Invoke("ActivateCollider", invokeColliderTime);
-    }
-    void ActivateCollider()
-    {
-        GetComponent<BoxCollider>().enabled = true;
-    }
+
     public void SetVariables(float _baseDamage, Tower _tower)
     {
         baseDamage = _baseDamage;
         tower = _tower;
+        if(GetComponent<BoxCollider>() != null)
+        {
+            GetComponent<BoxCollider>().enabled = true;
+        }       
     }
     // Update is called once per frame
     void Update()

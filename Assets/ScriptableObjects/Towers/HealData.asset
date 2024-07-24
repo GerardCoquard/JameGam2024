@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cde1b6e4008151948a3a33770197d841, type: 3}
   m_Name: HealData
   m_EditorClassIdentifier: 
-  prefab: {fileID: 919132149155446097, guid: 35fd30cade9960d4c8020ef5acd6e70a, type: 3}
+  prefab: {fileID: 3624797954587901821, guid: 26a6259410e613947bf4041de6506460, type: 3}
   towerName: Purify Wand
   icon: {fileID: 1544579719, guid: e54acb319d908824294a0209f87d04b6, type: 3}
   startEffect: {fileID: 0}
