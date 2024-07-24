@@ -27,7 +27,7 @@ public class PlaceHolder : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 1000, _layerMask))
         {
-            if(hit.collider.gameObject.layer != LayerMask.NameToLayer("PurifiedGround"))
+            if(hit.collider.gameObject.layer == LayerMask.NameToLayer("Wizards") || hit.collider.gameObject.layer == LayerMask.NameToLayer("Path"))
                 _cube.SetActive(false);
             else
             {
