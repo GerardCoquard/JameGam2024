@@ -12,15 +12,15 @@ public class Tower : MonoBehaviour
     protected GameObject startEffect;
     protected GameObject bulletPrefab;
     protected GameObject endEffect;
-    public float rangeLevel = 0;
-    public float fireRateLevel = 0;
+    public int rangeLevel = 0;
+    public int fireRateLevel = 0;
     public float baseDamage;
     protected float baseNormal;
     protected float baseArmor;
     protected float baseMagicArmor;
-    public float normalLevel = 0;
-    public float armorLevel = 0;
-    public float magicArmorLevel = 0;
+    public int normalLevel = 0;
+    public int armorLevel = 0;
+    public int magicArmorLevel = 0;
     protected float actionRate;
 
     public bool hasChangedRange = false;
