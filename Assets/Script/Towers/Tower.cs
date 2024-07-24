@@ -14,7 +14,7 @@ public class Tower : MonoBehaviour
     protected GameObject endEffect;
     public float rangeLevel = 0;
     public float fireRateLevel = 0;
-    protected float baseDamage;
+    public float baseDamage;
     protected float baseNormal;
     protected float baseArmor;
     protected float baseMagicArmor;
@@ -93,25 +93,25 @@ public class Tower : MonoBehaviour
         magicArmorPenetration = baseMagicArmor + GameManager.gameData.magicArmorMultiplier * magicArmorLevel;
         OnStatChanged?.Invoke();
     }
-    protected float CalculateDamageNormal(float dmg)
+    public float CalculateDamageNormal(float dmg)
     {
         return dmg * normalPenetration;
     }
-    protected float CalculateDamageArmor(float dmg)
+    public float CalculateDamageArmor(float dmg)
     {
         return dmg * armorPenetration;
     }
-    protected float CalculateDamageMagicArmor(float dmg)
+    public float CalculateDamageMagicArmor(float dmg)
     {
         return dmg * magicArmorPenetration;
     }
 
 
-    protected float ArmorToBase(float dmg)
+    public float ArmorToBase(float dmg)
     {
         return dmg / armorPenetration;
     }
-    protected float MagicArmorToBase(float dmg)
+    public float MagicArmorToBase(float dmg)
     {
         return dmg / magicArmorPenetration;
     }

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ActivateAreaDamage : MonoBehaviour
 {
-    public int damage;
+    float baseDamage;
+    Tower tower;
     [SerializeField] float invokeColliderTime;
     [SerializeField] bool adaptLaser;
     [SerializeField] LayerMask layerMask;
@@ -21,6 +22,11 @@ public class ActivateAreaDamage : MonoBehaviour
     void ActivateCollider()
     {
         GetComponent<BoxCollider>().enabled = true;
+    }
+    public void SetVariables(float _baseDamage, Tower _tower)
+    {
+        baseDamage = _baseDamage;
+        tower = _tower;
     }
     // Update is called once per frame
     void Update()
@@ -41,6 +47,6 @@ public class ActivateAreaDamage : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {      
-        //other.transform.parent.GetComponent<Enemy>().DamageEnemy(damage);
+        other.transform.parent.GetComponent<Enemy>().DamageEnemy(tower,baseDamage);
     }
 }

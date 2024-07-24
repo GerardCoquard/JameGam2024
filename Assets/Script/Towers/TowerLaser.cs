@@ -35,6 +35,7 @@ public class TowerLaser : Tower
             if (distance <= baseRange && timer >= baseFireRate)
             {
                 GameObject bullet = GameObject.Instantiate(bulletPrefab, bulletInstantiatePoint.position, Quaternion.identity);
+                bullet.transform.GetChild(0).GetChild(0).GetComponent<ActivateAreaDamage>().SetVariables(baseDamage, this);
                 bullet.transform.parent = bulletInstantiatePoint;
                 timer = 0;
                 StartCoroutine(MoveBullet(distance, enemy, bullet.transform));

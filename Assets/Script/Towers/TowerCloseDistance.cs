@@ -26,26 +26,9 @@ public class TowerCloseDistance : Tower
             if (distance <= range && timer >= fireRate)
             {
                 GameObject bullet = GameObject.Instantiate(bulletPrefab, instantiatePoint.position, Quaternion.Euler(-90,0,0));
-                float dañoRestante = baseDamage;
-                for (int i = 0; i < 3; i++)
-                {
-                    int armorDmg = Mathf.RoundToInt(CalculateDamageArmor(dañoRestante));
-                    int magicArmorDmg = Mathf.RoundToInt(CalculateDamageMagicArmor(dañoRestante));
-                    int normalDmg = Mathf.RoundToInt(CalculateDamageNormal(dañoRestante));
-                    enemy.GetComponent<Enemy>().DamageEnemy(normalDmg, out dañoRestante, armorDmg, magicArmorDmg);
-                    if (dañoRestante <= 0)
-                    {
-                        break;
-                    }
-                    if(i == 0)
-                    {
-                        dañoRestante = Mathf.RoundToInt(MagicArmorToBase(dañoRestante));
-                    }
-                    else if(i == 1)
-                    {
-                        dañoRestante = Mathf.RoundToInt(ArmorToBase(dañoRestante));
-                    }
-                }
+
+                enemy.GetComponent<Enemy>().DamageEnemy(this,baseDamage);
+
                 bullet.GetComponent<CapsuleCollider>().radius = range;
                 var shape = bullet.GetComponent<ParticleSystem>().shape;
                 shape.radius = range;

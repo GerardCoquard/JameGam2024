@@ -462,6 +462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rangeLevel: 0
   fireRateLevel: 0
+  baseDamage: 0
   normalLevel: 0
   armorLevel: 0
   magicArmorLevel: 0
@@ -486,6 +487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rangeLevel: 0
   fireRateLevel: 0
+  baseDamage: 0
   normalLevel: 0
   armorLevel: 0
   magicArmorLevel: 0
@@ -511,6 +513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rangeLevel: 0
   fireRateLevel: 0
+  baseDamage: 0
   normalLevel: 0
   armorLevel: 0
   magicArmorLevel: 0
@@ -557,7 +560,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a7794057b6d8d81459837ea58e145bde,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.36
+      value: -7.46
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a7794057b6d8d81459837ea58e145bde,
         type: 3}
@@ -567,7 +570,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a7794057b6d8d81459837ea58e145bde,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.08
+      value: 8.06
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a7794057b6d8d81459837ea58e145bde,
         type: 3}
@@ -884,6 +887,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rangeLevel: 0
   fireRateLevel: 0
+  baseDamage: 0
   normalLevel: 0
   armorLevel: 0
   magicArmorLevel: 0
@@ -932,13 +936,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1080518160}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2ba4c611364d694eb9a136e1d885545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rangeLevel: 0
   fireRateLevel: 0
+  baseDamage: 0
   normalLevel: 0
   armorLevel: 0
   magicArmorLevel: 0
@@ -963,6 +968,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rangeLevel: 100
   fireRateLevel: 5
+  baseDamage: 0
   normalLevel: 0
   armorLevel: 3
   magicArmorLevel: 10
@@ -1014,13 +1020,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1080518160}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b87d5658be1c7a4c892c847765698d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rangeLevel: 0
   fireRateLevel: 0
+  baseDamage: 0
   normalLevel: 0
   armorLevel: 0
   magicArmorLevel: 0
@@ -1070,6 +1077,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rangeLevel: 0
   fireRateLevel: 0
+  baseDamage: 0
   normalLevel: 0
   armorLevel: 0
   magicArmorLevel: 0
