@@ -8,15 +8,15 @@ public class TowerData : ScriptableObject
 {
     public GameObject prefab;
     public string towerName;
-    public float fireRate;
-    public float range;
-    public int price;
-    public int baseDamage;
-    public float normalBase;
-    public float armorBase;
-    public float magicArmorBase;
     public Sprite icon;
     public GameObject startEffect;
     public GameObject bullet;
     public GameObject endEffect;
+    public int price;
+    public float range;
+    public float fireRate;
+    public int baseDamage;
+    public float normalBase;
+    public float armorBase;
+    public float magicArmorBase;
 }

@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: 
   towers:
+  - {fileID: 11400000, guid: f88d31f1e2c663a41b5b0cd4296e38d6, type: 2}
+  - {fileID: 11400000, guid: 7a68f6d1874029440ac955b4a00f96ef, type: 2}
+  - {fileID: 11400000, guid: 50864dafb87846d4e835e96d2ee8ed17, type: 2}
   - {fileID: 11400000, guid: 0d175d73ad0c7f74eb25552ed90e1cf1, type: 2}
   - {fileID: 11400000, guid: aebe3c01fa48ce54bbfdee1d46cb1c6c, type: 2}
-  - {fileID: 11400000, guid: 50864dafb87846d4e835e96d2ee8ed17, type: 2}
   attackSpeedMultiplier: 0.1
   rangeMultiplier: 0.1
   priceMultiplier: 0.1

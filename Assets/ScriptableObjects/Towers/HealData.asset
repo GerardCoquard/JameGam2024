@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cde1b6e4008151948a3a33770197d841, type: 3}
   m_Name: HealData
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  towerName: 
-  fireRate: 3
+  prefab: {fileID: 919132149155446097, guid: 35fd30cade9960d4c8020ef5acd6e70a, type: 3}
+  towerName: Purify Wand
+  icon: {fileID: 1544579719, guid: e54acb319d908824294a0209f87d04b6, type: 3}
+  startEffect: {fileID: 0}
+  bullet: {fileID: 0}
+  endEffect: {fileID: 0}
+  price: 10
   range: 12
-  price: 0
+  fireRate: 3
   baseDamage: 0
   normalBase: 0
   armorBase: 0
   magicArmorBase: 0.1
-  icon: {fileID: 0}
-  startEffect: {fileID: 0}
-  bullet: {fileID: 0}
-  endEffect: {fileID: 0}

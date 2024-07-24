@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cde1b6e4008151948a3a33770197d841, type: 3}
-  m_Name: AOEData
+  m_Name: MortarData
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  towerName: AOE Wizard
-  fireRate: 4
-  range: 100
-  price: 80
-  baseDamage: 50
-  normalBase: 1
-  armorBase: 0.5
-  magicArmorBase: 0.1
+  prefab: {fileID: 5896961504954512035, guid: dcbe1c343176bc146b9b5705fd563762, type: 3}
+  towerName: Sniper Wand
   icon: {fileID: 1704454093, guid: e54acb319d908824294a0209f87d04b6, type: 3}
   startEffect: {fileID: 0}
   bullet: {fileID: 3730366943269315480, guid: cec01941e316f9542b27cd0feefaee7f, type: 3}
   endEffect: {fileID: 0}
+  price: 120
+  range: 100
+  fireRate: 4
+  baseDamage: 50
+  normalBase: 1
+  armorBase: 0.5
+  magicArmorBase: 0.1

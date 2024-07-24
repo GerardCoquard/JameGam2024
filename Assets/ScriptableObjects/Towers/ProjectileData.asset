@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cde1b6e4008151948a3a33770197d841, type: 3}
   m_Name: ProjectileData
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  towerName: Mine Wizard
-  fireRate: 1
-  range: 30
+  prefab: {fileID: 1549295371099454538, guid: e4c5f88369ae08140acec35c31dfc40d, type: 3}
+  towerName: Wand
+  icon: {fileID: -1966141772, guid: e54acb319d908824294a0209f87d04b6, type: 3}
+  startEffect: {fileID: 0}
+  bullet: {fileID: 4821471289876582213, guid: 442ae4a363e5bea4c8849efcd0428f3c, type: 3}
+  endEffect: {fileID: 0}
   price: 150
+  range: 30
+  fireRate: 1
   baseDamage: 10
   normalBase: 1
   armorBase: 0.5
   magicArmorBase: 0.2
-  icon: {fileID: -1551226842, guid: e54acb319d908824294a0209f87d04b6, type: 3}
-  startEffect: {fileID: 0}
-  bullet: {fileID: 4821471289876582213, guid: 442ae4a363e5bea4c8849efcd0428f3c, type: 3}
-  endEffect: {fileID: 0}

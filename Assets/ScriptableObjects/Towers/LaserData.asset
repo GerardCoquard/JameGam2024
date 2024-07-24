@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cde1b6e4008151948a3a33770197d841, type: 3}
   m_Name: LaserData
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  towerName: Wizard
-  fireRate: 3
+  prefab: {fileID: 2117019168515414256, guid: 52272db1a71cfd040b7d52f26e31513c, type: 3}
+  towerName: Laser Wand
+  icon: {fileID: -1551226842, guid: e54acb319d908824294a0209f87d04b6, type: 3}
+  startEffect: {fileID: 0}
+  bullet: {fileID: 8576772554056303866, guid: 85b2b77b927fa6148b86bb28c005dfdf, type: 3}
+  endEffect: {fileID: 0}
+  price: 80
   range: 100
-  price: 30
+  fireRate: 3
   baseDamage: 50
   normalBase: 1
   armorBase: 0.5
   magicArmorBase: 0.1
-  icon: {fileID: 1544579719, guid: e54acb319d908824294a0209f87d04b6, type: 3}
-  startEffect: {fileID: 0}
-  bullet: {fileID: 8576772554056303866, guid: 85b2b77b927fa6148b86bb28c005dfdf, type: 3}
-  endEffect: {fileID: 0}

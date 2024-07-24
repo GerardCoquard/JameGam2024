@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cde1b6e4008151948a3a33770197d841, type: 3}
-  m_Name: CloseRange
+  m_Name: CloseDistanceData
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  towerName: 
-  fireRate: 3
+  prefab: {fileID: 2693339193657645033, guid: e1860a8363b4597449c1bc803d315256, type: 3}
+  towerName: Staff Wand
+  icon: {fileID: 1466169446, guid: e54acb319d908824294a0209f87d04b6, type: 3}
+  startEffect: {fileID: 0}
+  bullet: {fileID: 55967031479838134, guid: 5c764133df6af7c42bfff2ab7366817e, type: 3}
+  endEffect: {fileID: 0}
+  price: 30
   range: 10
-  price: 0
+  fireRate: 3
   baseDamage: 30
   normalBase: 1
   armorBase: 0.5
   magicArmorBase: 0.1
-  icon: {fileID: 0}
-  startEffect: {fileID: 0}
-  bullet: {fileID: 55967031479838134, guid: 5c764133df6af7c42bfff2ab7366817e, type: 3}
-  endEffect: {fileID: 0}
