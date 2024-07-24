@@ -159,7 +159,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1858116806550384419}
-  - component: {fileID: 6999956400246775582}
+  - component: {fileID: 5642402626585076818}
   - component: {fileID: 7219042587027881005}
   - component: {fileID: 6732853880372872434}
   - component: {fileID: 362873856893987969}
@@ -193,7 +193,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 308.187, y: 363.2606}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6999956400246775582
+--- !u!114 &5642402626585076818
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -202,13 +202,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1472403561988688112}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88c4c836f4f06db42a2674a6910d7830, type: 3}
+  m_Script: {fileID: 11500000, guid: 2015b240132df204492a8c88fcb19237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardData: {fileID: 0}
-  _price: {fileID: 6276963922156129938}
-  _towerName: {fileID: 0}
-  _icon: {fileID: 0}
 --- !u!114 &7219042587027881005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,7 +249,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6999956400246775582}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CardShop, Assembly-CSharp
         m_MethodName: TryUse
         m_Mode: 1
