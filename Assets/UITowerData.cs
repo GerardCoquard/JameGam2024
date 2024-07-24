@@ -41,7 +41,7 @@ public class UITowerData : MonoBehaviour
         //Not working?
         Ray ray = Camera.main.ScreenPointToRay(Camera.main.WorldToScreenPoint(pos));
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layer))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layer,QueryTriggerInteraction.Ignore))
         {
             return hit.collider.GetComponentInChildren<Tower>();
         }

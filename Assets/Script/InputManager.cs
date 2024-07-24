@@ -42,7 +42,7 @@ public class InputManager : MonoBehaviour
         Ray ray = HandleUtility.GUIPointToWorldRay(mousePos);
         RaycastHit hit;
         
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, _clickLayerMask))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, _clickLayerMask, QueryTriggerInteraction.Ignore))
         {
             layer = LayerMask.LayerToName(hit.collider.gameObject.layer);
             pos = hit.point;
@@ -60,7 +60,7 @@ public class InputManager : MonoBehaviour
         mousePos.z = _sceneCamera.nearClipPlane;
         Ray ray = _sceneCamera.ScreenPointToRay(mousePos);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, _clickLayerMask))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, _clickLayerMask, QueryTriggerInteraction.Ignore))
         {
             layer = LayerMask.LayerToName(hit.collider.gameObject.layer);
             pos = hit.point;
