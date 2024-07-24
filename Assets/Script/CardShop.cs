@@ -54,12 +54,25 @@ public class CardShop : MonoBehaviour
     private void CheckPlacement(Vector3 pos, string layer)
     {
         EndTowerPlacement();
-        if (layer != "PurifiedGround")
+        if (_cardData.towerName == "Purifier")
         {
-            UISpawner.instance.SpawnTextWithColor(GridManager.instance.WorldPosToGridPos(pos),"Can't place here!", Color.white);
-            return;
+            if (layer == "Ground" || layer == "PurifiedGround")
+            {
+                UISpawner.instance.SpawnTextWithColor(GridManager.instance.WorldPosToGridPos(pos),"Can't place here!", Color.white);
+                return;
+            }
+            GameManager.RemoveCurrency(_cardData.price);
+            GridManager.instance.Add(pos,_cardData.prefab,Tile.Wizard);
         }
-        GameManager.RemoveCurrency(_cardData.price);
-        GridManager.instance.Add(pos,_cardData.prefab,Tile.Wizard);
+        else
+        {
+            if (layer != "PurifiedGround")
+            {
+                UISpawner.instance.SpawnTextWithColor(GridManager.instance.WorldPosToGridPos(pos),"Can't place here!", Color.white);
+                return;
+            }
+            GameManager.RemoveCurrency(_cardData.price);
+            GridManager.instance.Add(pos,_cardData.prefab,Tile.Wizard);
+        }
     }
 }
