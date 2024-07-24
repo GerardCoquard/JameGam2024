@@ -23,6 +23,9 @@ public class Tower : MonoBehaviour
     public float magicArmorLevel = 0;
     protected float actionRate;
 
+    public bool hasChangedRange = false;
+    protected float anteriorRange;
+
     //variables definitivas
     public float fireRate;
     public float range;
@@ -72,8 +75,10 @@ public class Tower : MonoBehaviour
     public void AddLevelRange()
     {
         rangeLevel++;
+        anteriorRange = range;
         range = baseRange + GameManager.gameData.rangeMultiplier * rangeLevel;
         OnStatChanged?.Invoke();
+        hasChangedRange = true;
     }
     public void AddLevelNormal()
     {

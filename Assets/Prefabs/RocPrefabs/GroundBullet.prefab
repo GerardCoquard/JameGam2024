@@ -48957,6 +48957,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a28aa8e85d16248a199cae68ead774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invokeColliderTime: 1.2
+  adaptLaser: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &3730366943290527980
 GameObject:
   m_ObjectHideFlags: 0

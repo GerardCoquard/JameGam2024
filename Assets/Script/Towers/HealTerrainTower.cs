@@ -5,22 +5,51 @@ using UnityEngine;
 public class HealTerrainTower : Tower
 {
     [SerializeField] GameObject sphereHealPrefab;
-    [SerializeField] GameObject planeHealPrefab;
-    Transform groundPoint;
-
+    [SerializeField] AnimationCurve animationCurve;
+    GameObject sphere;
     private void Awake()
     {            
     }
     public override void StartTower()
     {
         base.StartTower();
-        groundPoint = transform.GetChild(1);
-        StartCoroutine(CreateHealTerrain());
+        StartCoroutine(SpawnSphere());
     }
-
+    IEnumerator SpawnSphere()
+    {
+        yield return new WaitForSeconds(2f);
+        sphere = GameObject.Instantiate(sphereHealPrefab, transform.position, Quaternion.identity);
+        Vector3 endScale = new Vector3(range, range, range);
+        float time = 0;
+        while (time < 1.5f)
+        {
+            time += Time.deltaTime;
+            float percentageDuration = time / 1.5f;
+            sphere.transform.localScale = Vector3.Lerp(Vector3.zero, endScale, animationCurve.Evaluate(percentageDuration));
+            yield return new WaitForEndOfFrame();
+        }
+    }
+    IEnumerator MakeSphereBigger()
+    {
+        Vector3 startScale = new Vector3(anteriorRange, anteriorRange, anteriorRange);
+        Vector3 endScale = new Vector3(range, range, range);
+        float time = 0;
+        while (time < 1.5f)
+        {
+            time += Time.deltaTime;
+            float percentageDuration = time / 1.5f;
+            sphere.transform.localScale = Vector3.Lerp(startScale, endScale, animationCurve.Evaluate(percentageDuration));
+            yield return new WaitForEndOfFrame();
+        }
+    }
     public override void Action()
     {
-        base.Action();       
+        if (hasChangedRange)
+        {
+            hasChangedRange = false;
+            StopAllCoroutines();
+            StartCoroutine(MakeSphereBigger());
+        } 
     }
     
     public override void EndTower()
@@ -31,15 +60,6 @@ public class HealTerrainTower : Tower
     void Start()
     {
         StartTower();
-    }
-    IEnumerator CreateHealTerrain()
-    {
-        yield return new WaitForSeconds(3);
-        GameObject sphere = GameObject.Instantiate(sphereHealPrefab, groundPoint.position, Quaternion.identity);
-        GameObject plane = GameObject.Instantiate(planeHealPrefab, groundPoint.position, Quaternion.identity);
-        yield return new WaitForSeconds(5);
-        Destroy(sphere.gameObject);
-        Destroy(plane.gameObject);
     }
     
 

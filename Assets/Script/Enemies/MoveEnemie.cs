@@ -6,7 +6,7 @@ public class MoveEnemie : MonoBehaviour
 {
     [SerializeField] PathInfo pathInfo;
     float moveDistance = 0;
-    [SerializeField] float speed;
+    public float speed;
     [SerializeField] AnimationCurve jumpCurve;
     [SerializeField] float durationJump;
     [SerializeField] AnimationCurve tiltCurve;

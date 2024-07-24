@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-5598374962363446728
+--- !u!114 &-8477448753837651336
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HealTerrainMat
+  m_Name: HealTerrainShader
   m_Shader: {fileID: -6465566751694194690, guid: 4439f38d1105139469ce33f9412b72f3,
     type: 3}
   m_Parent: {fileID: 0}
@@ -37,7 +37,6 @@ Material:
     RenderType: Transparent
   disabledShaderPasses:
   - DepthOnly
-  - SHADOWCASTER
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -59,22 +58,19 @@ Material:
     - _AlphaClip: 1
     - _AlphaToMask: 0
     - _Blend: 0
-    - _BlendModePreserveSpecular: 1
-    - _CastShadows: 0
-    - _Cull: 0
+    - _CastShadows: 1
+    - _Cull: 2
     - _DstBlend: 10
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _ReceiveShadows: 1
     - _SrcBlend: 5
     - _Surface: 1
-    - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
-    - _borderWidth: 100
-    - _intersectDepth: 1.05
+    - _borderWidth: 1.58
+    - _intersectDepth: 1.59
     m_Colors:
-    - _Color: {r: 0.5333334, g: 1, b: 0.6404032, a: 0}
-    - _ColorIntersect: {r: 0.5333333, g: 1, b: 0.6392157, a: 1}
+    - _Color: {r: 0.53333336, g: 1, b: 0.6392157, a: 1}
+    - _ColorIntersect: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
