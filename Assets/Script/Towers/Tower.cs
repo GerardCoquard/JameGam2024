@@ -34,9 +34,10 @@ public class Tower : MonoBehaviour
     public float magicArmorPenetration;
 
     public TowerData data;
-
     public Action OnStatChanged;
 
+    public Transform enemy;
+    Transform mage;
 
     [HideInInspector]
     bool isAlive = true;
@@ -57,10 +58,24 @@ public class Tower : MonoBehaviour
         normalPenetration = baseNormal + GameManager.gameData.normalMultiplier * normalLevel;
         armorPenetration = baseArmor + GameManager.gameData.armorMultiplier * armorLevel;
         magicArmorPenetration = baseMagicArmor + GameManager.gameData.magicArmorMultiplier * magicArmorLevel;
+
+        mage = transform.GetChild(0);
+    }
+    private void Update()
+    {
+
     }
     public virtual void Action()
     {
-
+        if (enemy != null)
+        {
+            Vector3 targetDirection = enemy.position - mage.position;
+            targetDirection.y = 0;
+            targetDirection.Normalize();
+            Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+            targetRotation = Quaternion.Euler(0, targetRotation.eulerAngles.y, 0);
+            mage.rotation = targetRotation;
+        }
     }
     public virtual void EndTower()
     {

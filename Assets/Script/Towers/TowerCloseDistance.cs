@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TowerCloseDistance : Tower
 {
-    [SerializeField] Transform enemy;
     [SerializeField] Transform instantiatePoint;
     [SerializeField] AnimationCurve spawnCurve;
     float timer;

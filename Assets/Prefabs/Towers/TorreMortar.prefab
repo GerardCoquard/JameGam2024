@@ -85,17 +85,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 35fd30cade9960d4c8020ef5acd6e70a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5
+      value: 6.53
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 35fd30cade9960d4c8020ef5acd6e70a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.25
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 35fd30cade9960d4c8020ef5acd6e70a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 35fd30cade9960d4c8020ef5acd6e70a,
         type: 3}
@@ -154,6 +154,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6133728259327670489}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 35fd30cade9960d4c8020ef5acd6e70a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5860780284629888013}
   m_SourcePrefab: {fileID: 100100000, guid: 35fd30cade9960d4c8020ef5acd6e70a, type: 3}
 --- !u!1 &5896961504954512035 stripped
 GameObject:
@@ -182,6 +186,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 3.7458267, z: 1}
   m_Center: {x: 0, y: 1.8729134, z: 0}
+--- !u!114 &5860780284629888013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5896961504954512035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ba4c611364d694eb9a136e1d885545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rangeLevel: 0
+  fireRateLevel: 0
+  baseDamage: 0
+  normalLevel: 0
+  armorLevel: 0
+  magicArmorLevel: 0
+  hasChangedRange: 0
+  fireRate: 0
+  range: 0
+  normalPenetration: 0
+  armorPenetration: 0
+  magicArmorPenetration: 0
+  data: {fileID: 11400000, guid: 0d175d73ad0c7f74eb25552ed90e1cf1, type: 2}
+  enemy: {fileID: 0}
 --- !u!4 &6529629650455832601 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 35fd30cade9960d4c8020ef5acd6e70a,

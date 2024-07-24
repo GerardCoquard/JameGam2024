@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TowerLaser : Tower
 {
-    [SerializeField] Transform enemy;
     float timer;
     [SerializeField]Transform bulletInstantiatePoint;
     [SerializeField] AnimationCurve laserCurve;
@@ -24,19 +23,14 @@ public class TowerLaser : Tower
     {
         base.Action();
         if(enemy != null)
-        {
-            Vector3 targetDirection = enemy.position - transform.position;
-            targetDirection.y = 0;
-            targetDirection.Normalize();
-            Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-            targetRotation = Quaternion.Euler(0, targetRotation.eulerAngles.y, 0);
-            transform.rotation = targetRotation;
+        {           
             float distance = Vector3.Distance(enemy.position, bulletInstantiatePoint.position);
             if (distance <= baseRange && timer >= baseFireRate)
             {
                 GameObject bullet = GameObject.Instantiate(bulletPrefab, bulletInstantiatePoint.position, Quaternion.identity);
                 bullet.transform.GetChild(0).GetChild(0).GetComponent<ActivateAreaDamage>().SetVariables(baseDamage, this);
                 bullet.transform.parent = bulletInstantiatePoint;
+                bullet.transform.localScale = new Vector3(1, 1, 1);
                 timer = 0;
                 StartCoroutine(MoveBullet(distance, enemy, bullet.transform));
             }
@@ -59,8 +53,8 @@ public class TowerLaser : Tower
     {
 
         //bullet.GetChild(0).GetChild(0).GetComponent<ActivateAreaDamage>().damage = baseDamage;
-        Vector3 startRot = new Vector3(-80,180,0);
-        Vector3 endRot = new Vector3(20,180,0);
+        Vector3 startRot = new Vector3(-80,-110,0);
+        Vector3 endRot = new Vector3(20,-110,0);
         float time = 0;
         while (time < 1.5f)
         {

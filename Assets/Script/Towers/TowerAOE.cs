@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TowerAOE : Tower
 {
-    [SerializeField] Transform enemy;
     float timer;
 
     private void Awake()

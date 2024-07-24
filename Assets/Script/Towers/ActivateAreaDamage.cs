@@ -12,7 +12,7 @@ public class ActivateAreaDamage : MonoBehaviour
     Vector3 initialScale;
     private void Awake()
     {
-        initialScale = new Vector3(1,1,30);
+        initialScale = new Vector3(1,1,70);
     }
     // Start is called before the first frame update
     void Start()

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TowerDamage : Tower
 {    
-    [SerializeField] Transform enemy;
     float timer;
     [SerializeField] AnimationCurve bulletSpeedCurve;
     [SerializeField] float bulletSpeedMultiplier;
