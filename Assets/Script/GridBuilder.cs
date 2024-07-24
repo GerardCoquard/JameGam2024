@@ -114,7 +114,7 @@ public class GridBuilder : EditorWindow
 
     private void Draw(Vector3 pos, string layer)
     {
-        if (layer != "Ground") return;
+        if (layer == "Path") return;
         if(_selection == BuilderSelection.Ground || _selection == BuilderSelection.Path)
             GridManager.instance.Add(pos,_selectedPrefab,Tile.Ground);
         else

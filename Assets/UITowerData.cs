@@ -6,6 +6,7 @@ using UnityEngine;
 public class UITowerData : MonoBehaviour
 {
     private Tower _tower;
+    [SerializeField] private LayerMask _layer;
 
     private void Start()
     {
@@ -37,9 +38,10 @@ public class UITowerData : MonoBehaviour
 
     private Tower GetTowerOnCursor(Vector3 pos)
     {
+        //Not working?
         Ray ray = Camera.main.ScreenPointToRay(Camera.main.WorldToScreenPoint(pos));
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 1000, LayerMask.NameToLayer("Wizards")))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layer))
         {
             return hit.collider.GetComponentInChildren<Tower>();
         }
@@ -49,7 +51,8 @@ public class UITowerData : MonoBehaviour
     private void DeselectTower()
     {
         gameObject.SetActive(false);
-        _tower.OnStatChanged -= SetVisuals;
+        if(_tower!=null)
+            _tower.OnStatChanged -= SetVisuals;
         RangeManager.instance.Hide();
     }
 }
