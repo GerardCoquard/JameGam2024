@@ -15,8 +15,6 @@ public class InputManager : MonoBehaviour
     [SerializeField] private LayerMask _clickLayerMask;
     public static event Action<Vector3,string> OnGridClick;
     public static event Action OnExit;
-    public static event Action<Vector3> OnStartDrag;
-    public static event Action<Vector3> OnEndDrag;
     private void Awake()
     {
         instance = this;

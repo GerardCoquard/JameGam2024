@@ -38,12 +38,15 @@ public class CardShop : MonoBehaviour
     private void StartTowerPlacement()
     {
         InputManager.OnGridClick += CheckPlacement;
+        InputManager.OnExit += EndTowerPlacement;
         placing = true;
+        PlaceHolder.instance.Show();
     }
     
     private void EndTowerPlacement()
     {
         if(!placing) return;
+        InputManager.OnExit -= EndTowerPlacement;
         InputManager.OnGridClick -= CheckPlacement;
         placing = false;
     }
@@ -51,7 +54,7 @@ public class CardShop : MonoBehaviour
     private void CheckPlacement(Vector3 pos, string layer)
     {
         EndTowerPlacement();
-        if (layer != "Ground")
+        if (layer != "PurifiedGround")
         {
             UISpawner.instance.SpawnTextWithColor(GridManager.instance.WorldPosToGridPos(pos),"Can't place here!", Color.white);
             return;

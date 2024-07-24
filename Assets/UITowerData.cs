@@ -16,16 +16,23 @@ public class UITowerData : MonoBehaviour
     private void CheckIfTowerSelected(Vector3 pos, string layer)
     {
         if (layer != "Wizards")
-            gameObject.SetActive(false);
+            DeselectTower();
         else
             SetSelectedTower(GetTowerOnCursor(pos));
-            
+
     }
     
     private void SetSelectedTower(Tower tower)
     {
         _tower = tower;
-        //Set all UI
+        gameObject.SetActive(true);
+        SetVisuals();
+        _tower.OnStatChanged += SetVisuals;
+    }
+
+    private void SetVisuals()
+    {
+        RangeManager.instance.Show(_tower.transform.position,_tower.range);
     }
 
     private Tower GetTowerOnCursor(Vector3 pos)
@@ -37,5 +44,12 @@ public class UITowerData : MonoBehaviour
             return hit.collider.GetComponentInChildren<Tower>();
         }
         return null;
+    }
+
+    private void DeselectTower()
+    {
+        gameObject.SetActive(false);
+        _tower.OnStatChanged -= SetVisuals;
+        RangeManager.instance.Hide();
     }
 }
