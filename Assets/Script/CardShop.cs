@@ -56,7 +56,7 @@ public class CardShop : MonoBehaviour
         EndTowerPlacement();
         if (_cardData.towerName == "Purifier")
         {
-            if (layer == "Ground" || layer == "PurifiedGround")
+            if (layer != "Ground" && layer != "PurifiedGround")
             {
                 UISpawner.instance.SpawnTextWithColor(GridManager.instance.WorldPosToGridPos(pos),"Can't place here!", Color.white);
                 return;
