@@ -12,4 +12,5 @@ public class EnemyData : ScriptableObject
     public float magicArmor;
     public float speed;
     public int currency;
+    public GameObject EnemyPrefab;
 }

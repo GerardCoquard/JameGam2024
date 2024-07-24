@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac1c0a2efca19f54a8e94ed4a62a02ce, type: 3}
-  m_Name: Enemy
+  m_Name: Enemy3
   m_EditorClassIdentifier: 
   damage: 10
   health: 50
   armor: 30
   magicArmor: 20
-  speed: 5
+  speed: 1
   currency: 0
+  EnemyPrefab: {fileID: 0}
