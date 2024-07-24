@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GrassMaterial
+  m_Name: PutrefactMat
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -126,8 +126,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.5009895, g: 0.9150943, b: 0.43596473, a: 1}
-    - _Color: {r: 0.5009895, g: 0.9150943, b: 0.4359647, a: 1}
+    - _BaseColor: {r: 1, g: 0.20131081, b: 0, a: 1}
+    - _Color: {r: 1, g: 0.20131078, b: 0, a: 1}
     - _EmissionColor: {r: 961.60724, g: 1024, b: 951.5472, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

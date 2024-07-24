@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slowMultiplier: 3
+  purifiedMat: {fileID: 2100000, guid: 901fe3d1e7c5b364e9911c2cd5214deb, type: 2}
 --- !u!1 &740680085880999553
 GameObject:
   m_ObjectHideFlags: 0
