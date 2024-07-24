@@ -20,7 +20,7 @@ public class UpgradesManager : MonoBehaviour
 
     public void SetData(Tower tower)
     {
-        _healthUpgrade.SetData(CalculatePrice(_gameData.upgradeBasePriceNormal));
+        //_healthUpgrade.SetData(CalculatePrice(_gameData.upgradeBasePriceNormal,tower.normalLevel,_gameData.priceMultiplier));
     }
 
     private int CalculatePrice(int basePrice, int levels, float percentageIncrement)
