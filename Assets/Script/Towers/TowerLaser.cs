@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class TowerLaser : Tower
 {
-    [SerializeField] TowerData data;
-    float fireRate;
-    int damage;
-    float range;
-    GameObject startEffect;
-    GameObject bulletPrefab;
-    GameObject endEffect;
     [SerializeField] Transform enemy;
     float timer;
     [SerializeField]Transform bulletInstantiatePoint;
@@ -21,14 +14,6 @@ public class TowerLaser : Tower
 
     private void Awake()
     {      
-        fireRate = data.fireRate;
-        range = data.range;
-        startEffect = data.startEffect;
-        bulletPrefab = data.bullet;
-        endEffect = data.endEffect;
-        damage = data.damage;
-        health = maxHealth;
-
         timer = 0;
     }
     public override void StartTower()
@@ -47,7 +32,7 @@ public class TowerLaser : Tower
             targetRotation = Quaternion.Euler(0, targetRotation.eulerAngles.y, 0);
             transform.rotation = targetRotation;
             float distance = Vector3.Distance(enemy.position, bulletInstantiatePoint.position);
-            if (distance <= range && timer >= fireRate)
+            if (distance <= baseRange && timer >= baseFireRate)
             {
                 GameObject bullet = GameObject.Instantiate(bulletPrefab, bulletInstantiatePoint.position, Quaternion.identity);
                 bullet.transform.parent = bulletInstantiatePoint;
@@ -72,7 +57,7 @@ public class TowerLaser : Tower
     IEnumerator MoveBullet(float distance,Transform enemy, Transform bullet)
     {
 
-        bullet.GetChild(0).GetChild(0).GetComponent<ActivateAreaDamage>().damage = damage;
+        //bullet.GetChild(0).GetChild(0).GetComponent<ActivateAreaDamage>().damage = baseDamage;
         Vector3 startRot = new Vector3(-80,180,0);
         Vector3 endRot = new Vector3(20,180,0);
         float time = 0;
@@ -94,9 +79,5 @@ public class TowerLaser : Tower
     void Update()
     {
         Action();
-        if(health<= 0)
-        {
-            EndTower();
-        }
     }
 }

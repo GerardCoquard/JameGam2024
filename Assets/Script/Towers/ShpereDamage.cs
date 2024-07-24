@@ -7,7 +7,7 @@ public class ShpereDamage : MonoBehaviour
     public int damage;
     private void OnTriggerEnter(Collider other)
     {
-        other.transform.parent.GetComponent<Enemy>().DamageEnemy(damage);
+        //other.transform.parent.GetComponent<Enemy>().DamageEnemy(damage);
     }
     // Start is called before the first frame update
     void Start()

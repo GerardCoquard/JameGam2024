@@ -6,10 +6,10 @@ using UnityEngine;
 public class GameData : ScriptableObject
 {
     public List<TowerData> towers;
-    public float damageMultiplier;
     public float attackSpeedMultiplier;
     public float rangeMultiplier;
     public float priceMultiplier;
-    public float armorPenetrationMultiplier;
-    public float magicArmorPenetrationMultiplier;
+    public float normalMultiplier;
+    public float armorMultiplier;
+    public float magicArmorMultiplier;
 }

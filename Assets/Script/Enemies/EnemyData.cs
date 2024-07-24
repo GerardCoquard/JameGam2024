@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class EnemyData : ScriptableObject
 {
-    public float health;
-    public int damage;
+    public int health;
+    public float damage;
     public float armor;
     public float magicArmor;
 }

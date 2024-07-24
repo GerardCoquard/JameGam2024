@@ -41,6 +41,6 @@ public class ActivateAreaDamage : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {      
-        other.transform.parent.GetComponent<Enemy>().DamageEnemy(damage);
+        //other.transform.parent.GetComponent<Enemy>().DamageEnemy(damage);
     }
 }

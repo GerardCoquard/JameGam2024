@@ -3,14 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerDamage : Tower
-{
-    [SerializeField] TowerData data;
-    float fireRate;
-    int damage;
-    float range;
-    GameObject startEffect;
-    GameObject bulletPrefab;
-    GameObject endEffect;
+{    
     [SerializeField] Transform enemy;
     float timer;
     [SerializeField] AnimationCurve bulletSpeedCurve;
@@ -21,14 +14,6 @@ public class TowerDamage : Tower
 
     private void Awake()
     {      
-        fireRate = data.fireRate;
-        range = data.range;
-        startEffect = data.startEffect;
-        bulletPrefab = data.bullet;
-        endEffect = data.endEffect;
-        damage = data.damage;
-        health = maxHealth;
-
         timer = 0;
         bulletInstantiatePoint = transform.GetChild(0);
     }
@@ -42,7 +27,7 @@ public class TowerDamage : Tower
         if(enemy != null)
         {
             float distance = Vector3.Distance(enemy.position, bulletInstantiatePoint.position);
-            if (distance <= range && timer >= fireRate)
+            if (distance <= baseRange && timer >= baseFireRate)
             {
                 GameObject bullet = GameObject.Instantiate(bulletPrefab, bulletInstantiatePoint.position, Quaternion.identity);
                 particleSystem = bullet.GetComponent<ParticleSystem>();
@@ -74,7 +59,19 @@ public class TowerDamage : Tower
             bullet.position = Vector3.Lerp(startPos, enemy.position, bulletSpeedCurve.Evaluate(percentageDuration));
             yield return new WaitForEndOfFrame();
         }
-        enemy.GetComponent<Enemy>().DamageEnemy(damage);
+        float dañoRestante = baseDamage;
+        for (int i = 0; i < 3; i++)
+        {
+            float armorDmg = CalculateDamageArmor(dañoRestante);
+            float magicArmorDmg = CalculateDamageMagicArmor(dañoRestante);
+            float normalDmg = CalculateDamageMagicArmor(dañoRestante);
+            enemy.GetComponent<Enemy>().DamageEnemy(normalDmg, out dañoRestante, armorDmg, magicArmorDmg);
+            if(dañoRestante <= 0)
+            {
+                break;
+            }
+        }
+        
         particleSystem.Stop(true, ParticleSystemStopBehavior.StopEmitting);
         yield return new WaitForSeconds(5);
         Destroy(bullet.gameObject);
@@ -85,9 +82,5 @@ public class TowerDamage : Tower
     void Update()
     {
         Action();
-        if(health<= 0)
-        {
-            EndTower();
-        }
     }
 }

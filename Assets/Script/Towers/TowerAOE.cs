@@ -4,26 +4,11 @@ using UnityEngine;
 
 public class TowerAOE : Tower
 {
-    [SerializeField] TowerData data;
-    float fireRate;
-    int damage;
-    float range;
-    GameObject startEffect;
-    GameObject bulletPrefab;
-    GameObject endEffect;
     [SerializeField] Transform enemy;
     float timer;
 
     private void Awake()
     {      
-        fireRate = data.fireRate;
-        range = data.range;
-        startEffect = data.startEffect;
-        bulletPrefab = data.bullet;
-        endEffect = data.endEffect;
-        damage = data.damage;
-        health = maxHealth;
-
         timer = 0;
     }
     public override void StartTower()
@@ -36,10 +21,10 @@ public class TowerAOE : Tower
         if(enemy != null)
         {
             float distance = Vector3.Distance(enemy.position, transform.position);
-            if (distance <= range && timer >= fireRate)
+            if (distance <= baseRange && timer >= baseFireRate)
             {
                 GameObject bullet = GameObject.Instantiate(bulletPrefab, enemy.position, Quaternion.identity);
-                bullet.GetComponent<ActivateAreaDamage>().damage = damage;
+                //bullet.GetComponent<ActivateAreaDamage>().damage = damage;
                 timer = 0;
                 StartCoroutine(FollowEnemy(bullet.transform, enemy.transform));
                 Destroy(bullet, 3);
@@ -74,9 +59,5 @@ public class TowerAOE : Tower
     void Update()
     {
         Action();
-        if(health<= 0)
-        {
-            EndTower();
-        }
     }
 }

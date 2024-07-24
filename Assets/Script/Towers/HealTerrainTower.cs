@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class HealTerrainTower : Tower
 {
-    [SerializeField] TowerData data;
     [SerializeField] GameObject sphereHealPrefab;
     [SerializeField] GameObject planeHealPrefab;
     Transform groundPoint;
 
     private void Awake()
     {            
-        health = maxHealth;
-
-
     }
     public override void StartTower()
     {
@@ -51,9 +47,5 @@ public class HealTerrainTower : Tower
     void Update()
     {
         Action();
-        if(health<= 0)
-        {
-            EndTower();
-        }
     }
 }

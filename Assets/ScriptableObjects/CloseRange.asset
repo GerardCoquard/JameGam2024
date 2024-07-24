@@ -12,9 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cde1b6e4008151948a3a33770197d841, type: 3}
   m_Name: CloseRange
   m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
+  towerName: 
   fireRate: 3
   range: 20
-  damage: 60
+  price: 0
+  baseDamage: 30
+  normalBase: 20
+  armorBase: 10
+  magicArmorBase: 5
+  icon: {fileID: 0}
   startEffect: {fileID: 0}
   bullet: {fileID: 55967031479838134, guid: 5c764133df6af7c42bfff2ab7366817e, type: 3}
   endEffect: {fileID: 0}

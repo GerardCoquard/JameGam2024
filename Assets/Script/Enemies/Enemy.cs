@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     public EnemyData enemyData;
     float maxHealth;
     float health;
-    int damage;
+    float damage;
     float armor;
     float magicArmor;
     bool isAlive;
@@ -32,12 +32,47 @@ public class Enemy : MonoBehaviour
 
         uiDisplay.InitializeAll(health,armor,magicArmor, maxHealth, 10f);
     }
-    public void DamageEnemy(float damage)
+    public void DamageEnemy(float damage, out float damageRestante, float damageArmor, float damageMagicArmor)
     {
+        damageRestante = 0;
         if (!isAlive) return;
 
         float previousHealth = currentHealth;
-        currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
+        if (magicArmor != 0)
+        {
+            currentHealth = Mathf.Clamp(currentHealth - damageMagicArmor, 0, maxHealth);
+            if(health + armor > currentHealth)
+            {
+                damageRestante = (health + armor) - currentHealth;
+                currentHealth = health + armor;
+                UIUpdateIComprovar(previousHealth);
+                return;
+            }
+            UIUpdateIComprovar(previousHealth);
+            return;
+        }
+        else if(armor != 0)
+        {
+            currentHealth = Mathf.Clamp(currentHealth - damageArmor, 0, maxHealth);
+            if (health > currentHealth)
+            {
+                damageRestante = (health) - currentHealth;
+                currentHealth = health;
+                UIUpdateIComprovar(previousHealth);
+                return;
+            }
+            UIUpdateIComprovar(previousHealth);
+            return;
+        }
+        else
+        {
+            currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
+            UIUpdateIComprovar(previousHealth);
+        }
+        
+    }
+    void UIUpdateIComprovar(float previousHealth)
+    {
         //Update UI
         uiDisplay.SetFillsFollow(currentHealth, previousHealth);
         //Comprobación de posible final de partida

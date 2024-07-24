@@ -22,11 +22,5 @@ public static class TowersManager
     {
         return _towerGlobalUpgrades;
     }
-
-    public static int GetPrice(string towerName)
-    {
-        int basePrice = GameManager.towerData[towerName].price;
-        return basePrice + (int)(basePrice * _towerGlobalUpgrades[towerName].price * GameManager.gameData.priceMultiplier);
-    }
 }
 

@@ -32,6 +32,6 @@ public class CardShop : MonoBehaviour
 
     public void UpdatePrice()
     {
-        _price.text = TowersManager.GetPrice(_cardData.towerName) + "<sprite=0>";
+        //_price.text = TowersManager.GetPrice(_cardData.towerName) + "<sprite=0>";
     }
 }
