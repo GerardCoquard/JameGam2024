@@ -1,11 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public static class GameManager
 {
     public static GameData gameData;
     public static Dictionary<string, TowerData> towerData;
+    public static int currency;
+    public static Action<int> OnCurrencyChanged;
     static GameManager()
     {
         gameData = Resources.Load("GameData") as GameData;
@@ -14,5 +18,35 @@ public static class GameManager
         {
             towerData.Add(tower.name,tower);
         }
+
+        SceneManager.sceneLoaded += (Scene x, LoadSceneMode mode) => SetCurrency(0);
+    }
+
+    private static void SetCurrency(int amount)
+    {
+        currency = amount;
+        OnCurrencyChanged?.Invoke(currency);
+    }
+
+    public static void AddCurrency(int amount)
+    {
+        currency += amount;
+        OnCurrencyChanged?.Invoke(currency);
+    }
+    
+    public static void RemoveCurrency(int amount)
+    {
+        currency -= amount;
+        OnCurrencyChanged?.Invoke(currency);
+    }
+
+    public static bool HaveCurrency(int amount)
+    {
+        return currency >= amount;
+    }
+
+    public static int GetCurrency()
+    {
+        return currency;
     }
 }

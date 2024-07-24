@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class CardShop : MonoBehaviour
 {
@@ -11,27 +12,51 @@ public class CardShop : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _price;
     [SerializeField] private TextMeshProUGUI _towerName;
     [SerializeField] private Image _icon;
-
-    private void Awake()
-    {
-        TowersManager.OnPriceChange += UpdatePrice;
-    }
-
-    private void OnDestroy()
-    {
-        TowersManager.OnPriceChange -= UpdatePrice;
-    }
+    private bool placing;
 
     public void SetData(TowerData data)
     {
         _cardData = data;
-        _price.text = _cardData.price.ToString() + "<sprite=0>";
+        _price.text = _cardData.price + "<sprite=0>";
         _towerName.text = _cardData.towerName;
         _icon.sprite = _cardData.icon;
     }
 
-    public void UpdatePrice()
+    public void TryUse()
     {
-        //_price.text = TowersManager.GetPrice(_cardData.towerName) + "<sprite=0>";
+        GameManager.AddCurrency(4000);//DELETE
+        if(GameManager.HaveCurrency(_cardData.price))
+            StartTowerPlacement();
+        else
+        {
+            UISpawner.instance.SpawnTextWithColorFromUIPos(transform.position,"Not enough currency!", Color.red);
+            EventSystem.current.SetSelectedGameObject(null);
+        }
+            
+    }
+
+    private void StartTowerPlacement()
+    {
+        InputManager.OnGridClick += CheckPlacement;
+        placing = true;
+    }
+    
+    private void EndTowerPlacement()
+    {
+        if(!placing) return;
+        InputManager.OnGridClick -= CheckPlacement;
+        placing = false;
+    }
+
+    private void CheckPlacement(Vector3 pos, string layer)
+    {
+        EndTowerPlacement();
+        if (layer != "Ground")
+        {
+            UISpawner.instance.SpawnTextWithColor(GridManager.instance.WorldPosToGridPos(pos),"Can't place here!", Color.white);
+            return;
+        }
+        GameManager.RemoveCurrency(_cardData.price);
+        GridManager.instance.Add(pos,_cardData.prefab,Tile.Wizard);
     }
 }

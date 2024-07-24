@@ -10,8 +10,8 @@ public class TowerData : ScriptableObject
     public string towerName;
     public float fireRate;
     public float range;
-    public float price;
-    public float baseDamage;
+    public int price;
+    public int baseDamage;
     public float normalBase;
     public float armorBase;
     public float magicArmorBase;

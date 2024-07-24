@@ -57,6 +57,11 @@ public class GridManager : MonoBehaviour
         Instantiate(prefab, _grid.GetCellCenterWorld(cellPos), Quaternion.identity, _holdersDictionary[tile]);
     }
 
+    public Vector3 WorldPosToGridPos(Vector3 pos)
+    {
+        return _grid.GetCellCenterWorld(_grid.WorldToCell(pos));
+    }
+
     private void CreateHolder(Tile tile)
     {
         GameObject holder = new GameObject(tile.ToString());

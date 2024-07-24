@@ -38,8 +38,8 @@ public class ShopManager : MonoBehaviour
     {
         _shopAnimator.SetBool("Open", _shopOpen);
         _buttonText.text = _shopOpen ? "Close" : "Open";
-        _arrow1.localRotation = Quaternion.Euler(_shopOpen ? 90 : -90,0,0);
-        _arrow2.localRotation = Quaternion.Euler(_shopOpen ? 90 : -90,0,0);
+        _arrow1.localRotation = Quaternion.Euler(0,0,_shopOpen ? -90 : 90);
+        _arrow2.localRotation = Quaternion.Euler(0,0,_shopOpen ? -90 : 90);
 
     }
 }
