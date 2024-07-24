@@ -129,6 +129,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 795674032}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &49485323 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6197856662949943735, guid: 0ad417d5b91d9b840b79b021a8cbc34c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1353322402}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &123671138
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -459,6 +465,11 @@ MonoBehaviour:
   normalLevel: 0
   armorLevel: 0
   magicArmorLevel: 0
+  fireRate: 0
+  range: 0
+  normalPenetration: 0
+  armorPenetration: 0
+  magicArmorPenetration: 0
   data: {fileID: 11400000, guid: 0d175d73ad0c7f74eb25552ed90e1cf1, type: 2}
   enemy: {fileID: 888575734}
 --- !u!114 &662635400
@@ -478,6 +489,11 @@ MonoBehaviour:
   normalLevel: 0
   armorLevel: 0
   magicArmorLevel: 0
+  fireRate: 0
+  range: 0
+  normalPenetration: 0
+  armorPenetration: 0
+  magicArmorPenetration: 0
   data: {fileID: 0}
   sphereHealPrefab: {fileID: 2077205453}
   planeHealPrefab: {fileID: 1775200980}
@@ -498,6 +514,11 @@ MonoBehaviour:
   normalLevel: 0
   armorLevel: 0
   magicArmorLevel: 0
+  fireRate: 0
+  range: 0
+  normalPenetration: 0
+  armorPenetration: 0
+  magicArmorPenetration: 0
   data: {fileID: 11400000, guid: 50864dafb87846d4e835e96d2ee8ed17, type: 2}
   enemy: {fileID: 888575734}
   bulletInstantiatePoint: {fileID: 0}
@@ -866,6 +887,11 @@ MonoBehaviour:
   normalLevel: 0
   armorLevel: 0
   magicArmorLevel: 0
+  fireRate: 0
+  range: 0
+  normalPenetration: 0
+  armorPenetration: 0
+  magicArmorPenetration: 0
   data: {fileID: 11400000, guid: 50864dafb87846d4e835e96d2ee8ed17, type: 2}
   enemy: {fileID: 888575734}
   bulletInstantiatePoint: {fileID: 1692762260}
@@ -916,6 +942,11 @@ MonoBehaviour:
   normalLevel: 0
   armorLevel: 0
   magicArmorLevel: 0
+  fireRate: 0
+  range: 0
+  normalPenetration: 0
+  armorPenetration: 0
+  magicArmorPenetration: 0
   data: {fileID: 11400000, guid: 0d175d73ad0c7f74eb25552ed90e1cf1, type: 2}
   enemy: {fileID: 888575734}
 --- !u!114 &1080518164
@@ -925,16 +956,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1080518160}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9b6f70974ee97a4bbcf83f2933701d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangeLevel: 0
-  fireRateLevel: 0
+  rangeLevel: 100
+  fireRateLevel: 5
   normalLevel: 0
-  armorLevel: 0
-  magicArmorLevel: 0
+  armorLevel: 3
+  magicArmorLevel: 10
+  fireRate: 0
+  range: 0
+  normalPenetration: 0
+  armorPenetration: 0
+  magicArmorPenetration: 0
   data: {fileID: 11400000, guid: f88d31f1e2c663a41b5b0cd4296e38d6, type: 2}
   enemy: {fileID: 888575734}
   instantiatePoint: {fileID: 1692762260}
@@ -978,7 +1014,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1080518160}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b87d5658be1c7a4c892c847765698d5, type: 3}
   m_Name: 
@@ -988,6 +1024,11 @@ MonoBehaviour:
   normalLevel: 0
   armorLevel: 0
   magicArmorLevel: 0
+  fireRate: 0
+  range: 0
+  normalPenetration: 0
+  armorPenetration: 0
+  magicArmorPenetration: 0
   data: {fileID: 11400000, guid: aebe3c01fa48ce54bbfdee1d46cb1c6c, type: 2}
   enemy: {fileID: 888575734}
   bulletSpeedCurve:
@@ -1032,6 +1073,11 @@ MonoBehaviour:
   normalLevel: 0
   armorLevel: 0
   magicArmorLevel: 0
+  fireRate: 0
+  range: 0
+  normalPenetration: 0
+  armorPenetration: 0
+  magicArmorPenetration: 0
   data: {fileID: 0}
   sphereHealPrefab: {fileID: 0}
   planeHealPrefab: {fileID: 0}
@@ -1289,7 +1335,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6197856662949943735, guid: 0ad417d5b91d9b840b79b021a8cbc34c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1849634295}
   m_SourcePrefab: {fileID: 100100000, guid: 0ad417d5b91d9b840b79b021a8cbc34c, type: 3}
 --- !u!1 &1391961754
 GameObject:
@@ -1733,10 +1783,22 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1353322402}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 49485323}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29dac41ada95fdd4eb8f6d303371eb85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1849634295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49485323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d219509e9f70faf4a816f9b122afef19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2077205453

@@ -23,23 +23,32 @@ public class TowerCloseDistance : Tower
         if(enemy != null)
         {
             float distance = Vector3.Distance(enemy.position, transform.position);
-            if (distance <= baseRange && timer >= baseFireRate)
+            if (distance <= range && timer >= fireRate)
             {
                 GameObject bullet = GameObject.Instantiate(bulletPrefab, instantiatePoint.position, Quaternion.Euler(-90,0,0));
                 float dañoRestante = baseDamage;
                 for (int i = 0; i < 3; i++)
                 {
-                    float armorDmg = CalculateDamageArmor(dañoRestante);
-                    float magicArmorDmg = CalculateDamageMagicArmor(dañoRestante);
-                    float normalDmg = CalculateDamageMagicArmor(dañoRestante);
+                    int armorDmg = Mathf.RoundToInt(CalculateDamageArmor(dañoRestante));
+                    int magicArmorDmg = Mathf.RoundToInt(CalculateDamageMagicArmor(dañoRestante));
+                    int normalDmg = Mathf.RoundToInt(CalculateDamageNormal(dañoRestante));
                     enemy.GetComponent<Enemy>().DamageEnemy(normalDmg, out dañoRestante, armorDmg, magicArmorDmg);
                     if (dañoRestante <= 0)
                     {
                         break;
                     }
+                    if(i == 0)
+                    {
+                        dañoRestante = Mathf.RoundToInt(MagicArmorToBase(dañoRestante));
+                    }
+                    else if(i == 1)
+                    {
+                        dañoRestante = Mathf.RoundToInt(ArmorToBase(dañoRestante));
+                    }
                 }
-                bullet.GetComponent<CapsuleCollider>().radius = baseRange;
+                bullet.GetComponent<CapsuleCollider>().radius = range;
                 var shape = bullet.GetComponent<ParticleSystem>().shape;
+                shape.radius = range;
                 timer = 0;
                 bullet.transform.parent = instantiatePoint;
                 bullet.transform.localPosition = Vector3.zero;
@@ -56,9 +65,7 @@ public class TowerCloseDistance : Tower
     void Start()
     {
         StartTower();
-    }
-    
-    
+    }    
 
     // Update is called once per frame
     void Update()

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class LookAtCamera : MonoBehaviour
 {
+    Transform camera;
+    private void Awake()
+    {
+        camera = FindObjectOfType<Camera>().transform;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +18,7 @@ public class LookAtCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.LookAt(camera);
+        transform.forward = -transform.forward;
     }
 }

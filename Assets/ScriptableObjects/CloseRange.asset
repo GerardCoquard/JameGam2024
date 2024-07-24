@@ -15,12 +15,12 @@ MonoBehaviour:
   prefab: {fileID: 0}
   towerName: 
   fireRate: 3
-  range: 20
+  range: 10
   price: 0
   baseDamage: 30
-  normalBase: 20
-  armorBase: 10
-  magicArmorBase: 5
+  normalBase: 1
+  armorBase: 0.5
+  magicArmorBase: 0.1
   icon: {fileID: 0}
   startEffect: {fileID: 0}
   bullet: {fileID: 55967031479838134, guid: 5c764133df6af7c42bfff2ab7366817e, type: 3}

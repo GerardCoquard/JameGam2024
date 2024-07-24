@@ -41,9 +41,10 @@ public class Enemy : MonoBehaviour
         if (magicArmor != 0)
         {
             currentHealth = Mathf.Clamp(currentHealth - damageMagicArmor, 0, maxHealth);
-            if(health + armor > currentHealth)
+            if(health + armor >= currentHealth)
             {
                 damageRestante = (health + armor) - currentHealth;
+                magicArmor = 0;
                 currentHealth = health + armor;
                 UIUpdateIComprovar(previousHealth);
                 return;
@@ -54,9 +55,10 @@ public class Enemy : MonoBehaviour
         else if(armor != 0)
         {
             currentHealth = Mathf.Clamp(currentHealth - damageArmor, 0, maxHealth);
-            if (health > currentHealth)
+            if (health >= currentHealth)
             {
                 damageRestante = (health) - currentHealth;
+                armor = 0;
                 currentHealth = health;
                 UIUpdateIComprovar(previousHealth);
                 return;

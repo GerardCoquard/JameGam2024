@@ -27,7 +27,7 @@ public class TowerDamage : Tower
         if(enemy != null)
         {
             float distance = Vector3.Distance(enemy.position, bulletInstantiatePoint.position);
-            if (distance <= baseRange && timer >= baseFireRate)
+            if (distance <= range && timer >= fireRate)
             {
                 GameObject bullet = GameObject.Instantiate(bulletPrefab, bulletInstantiatePoint.position, Quaternion.identity);
                 particleSystem = bullet.GetComponent<ParticleSystem>();
@@ -54,24 +54,38 @@ public class TowerDamage : Tower
         float targetTime = distance / bulletSpeedMultiplier;
         while (time < 1)
         {
+            if(enemy == null)
+            {
+                yield return null;
+            }
             time += Time.deltaTime;
             float percentageDuration = time / 1;
             bullet.position = Vector3.Lerp(startPos, enemy.position, bulletSpeedCurve.Evaluate(percentageDuration));
             yield return new WaitForEndOfFrame();
         }
+
+
         float dañoRestante = baseDamage;
         for (int i = 0; i < 3; i++)
         {
-            float armorDmg = CalculateDamageArmor(dañoRestante);
-            float magicArmorDmg = CalculateDamageMagicArmor(dañoRestante);
-            float normalDmg = CalculateDamageMagicArmor(dañoRestante);
+            int armorDmg = Mathf.RoundToInt(CalculateDamageArmor(dañoRestante));
+            int magicArmorDmg = Mathf.RoundToInt(CalculateDamageMagicArmor(dañoRestante));
+            int normalDmg = Mathf.RoundToInt(CalculateDamageNormal(dañoRestante));
             enemy.GetComponent<Enemy>().DamageEnemy(normalDmg, out dañoRestante, armorDmg, magicArmorDmg);
-            if(dañoRestante <= 0)
+            if (dañoRestante <= 0)
             {
                 break;
             }
+            if (i == 0)
+            {
+                dañoRestante = Mathf.RoundToInt(MagicArmorToBase(dañoRestante));
+            }
+            else if (i == 1)
+            {
+                dañoRestante = Mathf.RoundToInt(ArmorToBase(dañoRestante));
+            }
         }
-        
+
         particleSystem.Stop(true, ParticleSystemStopBehavior.StopEmitting);
         yield return new WaitForSeconds(5);
         Destroy(bullet.gameObject);

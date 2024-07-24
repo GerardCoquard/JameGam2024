@@ -10,14 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cde1b6e4008151948a3a33770197d841, type: 3}
-  m_Name: ProjectileData 1
+  m_Name: LaserData
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   towerName: Wizard
-  fireRate: 5
+  fireRate: 3
   range: 100
-  damage: 100
   price: 30
+  baseDamage: 10
+  normalBase: 1
+  armorBase: 0.5
+  magicArmorBase: 0.1
   icon: {fileID: 1544579719, guid: e54acb319d908824294a0209f87d04b6, type: 3}
   startEffect: {fileID: 0}
   bullet: {fileID: 8576772554056303866, guid: 85b2b77b927fa6148b86bb28c005dfdf, type: 3}
