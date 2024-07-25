@@ -12,8 +12,8 @@ public class Upgrade : MonoBehaviour
 
     public void SetData(int lvl, string amount, int cost)
     {
-        _upgradeLevel.text = lvl.ToString();
-        _upgradeCost.text = cost.ToString();
+        _upgradeLevel.text = "LVL " + lvl;
+        _upgradeCost.text = cost + "<sprite=0>";
         _upgradeAmount.text = amount;
     }
 }

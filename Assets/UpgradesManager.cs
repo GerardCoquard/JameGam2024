@@ -20,11 +20,15 @@ public class UpgradesManager : MonoBehaviour
 
     public void SetData(Tower tower)
     {
-        //_healthUpgrade.SetData(CalculatePrice(_gameData.upgradeBasePriceNormal,tower.normalLevel,_gameData.priceMultiplier));
+        _healthUpgrade.SetData(tower.normalLevel,"+" + _gameData.normalMultiplier.ToString("F1"),CalculatePrice(_gameData.upgradeBasePriceNormal,tower.normalLevel));
+        _armorUpgrade.SetData(tower.armorLevel,"+" + _gameData.armorMultiplier.ToString("F1"),CalculatePrice(_gameData.upgradeBasePriceArmor,tower.armorLevel));
+        _magicUpgrade.SetData(tower.magicArmorLevel,"+" + _gameData.magicArmorMultiplier.ToString("F1"),CalculatePrice(_gameData.upgradeBasePriceMagicArmor,tower.magicArmorLevel));
+        _fireRateUpgrade.SetData(tower.fireRateLevel,"+" + (int)(_gameData.fireRateMultiplier*100)+"%",CalculatePrice(_gameData.upgradeBasePriceFireRate,tower.fireRateLevel));
+        _rangeUpgrade.SetData(tower.rangeLevel,"+" + (int)(_gameData.rangeMultiplier*100)+"%",CalculatePrice(_gameData.upgradeBasePriceFireRate,tower.fireRateLevel));
     }
 
-    private int CalculatePrice(int basePrice, int levels, float percentageIncrement)
+    private int CalculatePrice(int basePrice, int levels)
     {
-        return (int)(basePrice + (basePrice * levels * percentageIncrement));
+        return (int)(basePrice + (basePrice * levels * _gameData.priceMultiplier));
     }
 }

@@ -54,7 +54,7 @@ public class Tower : MonoBehaviour
         baseArmor = data.armorBase;
         baseMagicArmor = data.magicArmorBase;
 
-        fireRate = baseFireRate - GameManager.gameData.attackSpeedMultiplier * fireRateLevel;
+        fireRate = baseFireRate - GameManager.gameData.fireRateMultiplier * fireRateLevel;
         range = baseRange + GameManager.gameData.rangeMultiplier * rangeLevel;
         normalPenetration = baseNormal + GameManager.gameData.normalMultiplier * normalLevel;
         armorPenetration = baseArmor + GameManager.gameData.armorMultiplier * armorLevel;
@@ -96,7 +96,7 @@ public class Tower : MonoBehaviour
     public void AddLevelFireRate()
     {
         fireRateLevel++;
-        fireRate = baseFireRate - GameManager.gameData.attackSpeedMultiplier * fireRateLevel;
+        fireRate = baseFireRate - GameManager.gameData.fireRateMultiplier * fireRateLevel;
         OnStatChanged?.Invoke();
     }
     public void AddLevelRange()
