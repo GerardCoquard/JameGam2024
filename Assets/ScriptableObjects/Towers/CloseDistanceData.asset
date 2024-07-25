@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CloseDistanceData
   m_EditorClassIdentifier: 
   prefab: {fileID: 2693339193657645033, guid: e1860a8363b4597449c1bc803d315256, type: 3}
-  towerName: Rain Mage
+  towerName: Rain Wand
   icon: {fileID: 21300000, guid: 28f16f559e1d4494e916ab59e5e34744, type: 3}
   startEffect: {fileID: 0}
   bullet: {fileID: 55967031479838134, guid: 5c764133df6af7c42bfff2ab7366817e, type: 3}

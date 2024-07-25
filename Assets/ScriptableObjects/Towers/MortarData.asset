@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MortarData
   m_EditorClassIdentifier: 
   prefab: {fileID: 5896961504954512035, guid: dcbe1c343176bc146b9b5705fd563762, type: 3}
-  towerName: Sniper Mage
+  towerName: Sniper Wand
   icon: {fileID: 21300000, guid: 599151244003700498802669d69a680a, type: 3}
   startEffect: {fileID: 0}
   bullet: {fileID: 3730366943269315480, guid: cec01941e316f9542b27cd0feefaee7f, type: 3}
