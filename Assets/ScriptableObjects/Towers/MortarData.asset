@@ -19,9 +19,9 @@ MonoBehaviour:
   bullet: {fileID: 3730366943269315480, guid: cec01941e316f9542b27cd0feefaee7f, type: 3}
   endEffect: {fileID: 0}
   price: 500
-  range: 20
-  fireRate: 0.2
-  baseDamage: 60
+  range: 15
+  fireRate: 0.1
+  baseDamage: 50
   normalBase: 1
   armorBase: 0.2
   magicArmorBase: 0.2

@@ -31,5 +31,5 @@ MonoBehaviour:
   fireRateMultiplier: 0.1
   rangeMultiplier: 0.2
   spawnTimeBetweenEnemies: 1
-  enemyStatsMultiplier: 1.1
+  enemyStatsMultiplier: 1.3
   healthSegmentAmount: 10

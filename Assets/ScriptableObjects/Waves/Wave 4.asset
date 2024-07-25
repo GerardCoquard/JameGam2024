@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: Wave 4
   m_EditorClassIdentifier: 
   gate1Enemies: []
-  gate2Enemies:
-  - {fileID: 11400000, guid: ceeaff0113ce5e54a8566e85ce2deb4a, type: 2}
+  gate2Enemies: []
   gate3Enemies:
+  - {fileID: 11400000, guid: a8dcf3d9ffc599941b172c507465619e, type: 2}
+  - {fileID: 11400000, guid: a8dcf3d9ffc599941b172c507465619e, type: 2}
+  - {fileID: 11400000, guid: a8dcf3d9ffc599941b172c507465619e, type: 2}
+  - {fileID: 11400000, guid: a8dcf3d9ffc599941b172c507465619e, type: 2}
   - {fileID: 11400000, guid: a8dcf3d9ffc599941b172c507465619e, type: 2}
   - {fileID: 11400000, guid: a8dcf3d9ffc599941b172c507465619e, type: 2}
   - {fileID: 11400000, guid: a8dcf3d9ffc599941b172c507465619e, type: 2}

@@ -18,5 +18,5 @@ MonoBehaviour:
   speed: 3
   damage: 2
   currency: 30
-  EnemyPrefab: {fileID: 7072026298886534976, guid: a01caa6e83b0099488de57ea8b36549b,
+  EnemyPrefab: {fileID: 2313376042682091804, guid: a2eb1ba04e19e9249adb36c01e1d772e,
     type: 3}

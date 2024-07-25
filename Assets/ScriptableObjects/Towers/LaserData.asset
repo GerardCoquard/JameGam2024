@@ -19,7 +19,7 @@ MonoBehaviour:
   bullet: {fileID: 8576772554056303866, guid: 85b2b77b927fa6148b86bb28c005dfdf, type: 3}
   endEffect: {fileID: 0}
   price: 150
-  range: 10
+  range: 6
   fireRate: 0.3
   baseDamage: 30
   normalBase: 1

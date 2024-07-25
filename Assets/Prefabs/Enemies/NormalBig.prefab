@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathInfo: {fileID: 0}
   speed: 3
+  slowed: 0
   jumpCurve:
     serializedVersion: 2
     m_Curve:
