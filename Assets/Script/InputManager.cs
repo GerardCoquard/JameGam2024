@@ -37,6 +37,7 @@ public class InputManager : MonoBehaviour
     {
         layer = "";
         pos = Vector3.zero;
+#if UNITY_EDITOR
         
         mousePos.z = cam.nearClipPlane;
         Ray ray = HandleUtility.GUIPointToWorldRay(mousePos);
@@ -48,6 +49,7 @@ public class InputManager : MonoBehaviour
             pos = hit.point;
             return true;
         }
+#endif
         return false;
     }
 
@@ -93,7 +95,10 @@ public class InputManager : MonoBehaviour
 
     IEnumerator DeselectOnFrameEnd()
     {
+        #if UNITY_EDITOR
         yield return new WaitUntil(() => Selection.objects.Length > 0);
         Selection.objects = Array.Empty<Object>();
+#endif
+        yield return null;
     }
 }

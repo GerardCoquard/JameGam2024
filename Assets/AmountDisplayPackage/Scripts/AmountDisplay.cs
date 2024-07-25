@@ -1,11 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEditor.SceneManagement;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 using UnityEngine.UI;
 
 public class AmountDisplay : MonoBehaviour
@@ -223,101 +218,4 @@ public class AmountDisplay : MonoBehaviour
     {
         _list.Remove(_image != null? _image : emptyImage);
     }
-
-    ///////////////////////EDITOR///////////////////////
-
-    #region Editor
-#if UNITY_EDITOR
-    [CustomEditor(typeof(AmountDisplay)), CanEditMultipleObjects]
-    public class HealthDisplayEditor : Editor
-    {
-        public override void OnInspectorGUI()
-        {
-            AmountDisplay amountDisplay = (AmountDisplay)target;
-
-            EditorGUILayout.BeginHorizontal();
-            amountDisplay._spacing = (float)EditorGUILayout.FloatField("Segment Spacing",amountDisplay._spacing);
-            EditorGUILayout.EndHorizontal();
-
-            EditorGUILayout.BeginHorizontal();
-            amountDisplay.fillColor = (Color)EditorGUILayout.ColorField("Fill Color",amountDisplay.fillColor);
-            EditorGUILayout.EndHorizontal();
-
-            EditorGUILayout.BeginHorizontal();
-            amountDisplay.armorColor = (Color)EditorGUILayout.ColorField("Armor Color", amountDisplay.armorColor);
-            EditorGUILayout.EndHorizontal();
-
-            EditorGUILayout.BeginHorizontal();
-            amountDisplay.magicArmorColor = (Color)EditorGUILayout.ColorField("Magic Armor Color", amountDisplay.magicArmorColor);
-            EditorGUILayout.EndHorizontal();
-
-            EditorGUILayout.BeginHorizontal();
-            amountDisplay.backgroundColor = (Color)EditorGUILayout.ColorField("Background Color",amountDisplay.backgroundColor);
-            EditorGUILayout.EndHorizontal();
-
-            EditorGUILayout.BeginHorizontal();
-            amountDisplay.singlePrefab = (bool)EditorGUILayout.Toggle("Single Segment",amountDisplay.singlePrefab);
-            EditorGUILayout.EndHorizontal();
-
-            if(amountDisplay.singlePrefab)
-            {
-                EditorGUILayout.BeginHorizontal();
-                amountDisplay.segmentPrefab = (GameObject)EditorGUILayout.ObjectField("Segment Prefab",amountDisplay.segmentPrefab,typeof(GameObject),false);
-                EditorGUILayout.EndHorizontal();
-            }
-            else
-            {
-                EditorGUILayout.BeginHorizontal();
-                amountDisplay.firstSegmentPrefab = (GameObject)EditorGUILayout.ObjectField("First Segment Prefab",amountDisplay.firstSegmentPrefab,typeof(GameObject),false);
-                EditorGUILayout.EndHorizontal();
-
-                EditorGUILayout.BeginHorizontal();
-                amountDisplay.middleSegmentPrefab = (GameObject)EditorGUILayout.ObjectField("Middle Segment Prefab",amountDisplay.middleSegmentPrefab,typeof(GameObject),false);
-                EditorGUILayout.EndHorizontal();
-
-                EditorGUILayout.BeginHorizontal();
-                amountDisplay.lastSegmentPrefab = (GameObject)EditorGUILayout.ObjectField("Last Segment Prefab",amountDisplay.lastSegmentPrefab,typeof(GameObject),false);
-                EditorGUILayout.EndHorizontal();
-            }
-
-            EditorGUILayout.BeginHorizontal();
-            amountDisplay.follow = (bool)EditorGUILayout.Toggle("Follow",amountDisplay.follow);
-            EditorGUILayout.EndHorizontal();
-
-            if(amountDisplay.follow)
-            {
-                EditorGUILayout.BeginHorizontal();
-                amountDisplay.followTime = (float)EditorGUILayout.FloatField("Follow Time",amountDisplay.followTime);
-                EditorGUILayout.EndHorizontal();
-
-                EditorGUILayout.BeginHorizontal();
-                amountDisplay.followGainColor = (Color)EditorGUILayout.ColorField("Follow Gain Color",amountDisplay.followGainColor);
-                EditorGUILayout.EndHorizontal();
-
-                EditorGUILayout.BeginHorizontal();
-                amountDisplay.followLoseColor = (Color)EditorGUILayout.ColorField("Follow Lose Color",amountDisplay.followLoseColor);
-                EditorGUILayout.EndHorizontal();
-
-                EditorGUILayout.BeginHorizontal();
-                amountDisplay.unscaledTime = (bool)EditorGUILayout.Toggle("Unscaled Time",amountDisplay.unscaledTime);
-                EditorGUILayout.EndHorizontal();
-            }
-
-            if(GUI.changed)
-            {
-                //it all works withouth this, but prefer to keep it just in case
-
-                Undo.RecordObject(this,"");
-                Undo.RecordObject(target,"");
-                Undo.RecordObject(amountDisplay,"");
-                
-                EditorUtility.SetDirty(this);
-                EditorUtility.SetDirty(target);
-                EditorUtility.SetDirty(amountDisplay);
-                EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
-            }
-        }
-    }
-#endif
-    #endregion
 }
