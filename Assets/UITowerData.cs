@@ -68,26 +68,61 @@ public class UITowerData : MonoBehaviour
     
     public void UpgradeHealth()
     {
-        _tower.AddLevelNormal();
+        int price = _upgradesManager.CalculatePrice(GameManager.gameData.upgradeBasePriceNormal, _tower.normalLevel);
+        if (GameManager.HaveCurrency(price))
+        {
+            _tower.AddLevelNormal();
+            GameManager.RemoveCurrency(price);
+        }
+        else
+            UISpawner.instance.SpawnTextWithColorFromUIPos(_upgradesManager._healthUpgrade.transform.position, "Not enough currency", Color.red);
     }
     
     public void UpgradeArmor()
     {
-        _tower.AddLevelArmor();
+        int price = _upgradesManager.CalculatePrice(GameManager.gameData.upgradeBasePriceArmor, _tower.armorLevel);
+        if (GameManager.HaveCurrency(price))
+        {
+            _tower.AddLevelArmor();
+            GameManager.RemoveCurrency(price);
+        }
+        else
+            UISpawner.instance.SpawnTextWithColorFromUIPos(_upgradesManager._armorUpgrade.transform.position, "Not enough currency", Color.red);
     }
     
     public void UpgradeMagic()
     {
-        _tower.AddLevelmagicArmor();
+        int price = _upgradesManager.CalculatePrice(GameManager.gameData.upgradeBasePriceMagicArmor, _tower.magicArmorLevel);
+        if (GameManager.HaveCurrency(price))
+        {
+            _tower.AddLevelmagicArmor();
+            GameManager.RemoveCurrency(price);
+        }
+        else
+            UISpawner.instance.SpawnTextWithColorFromUIPos(_upgradesManager._magicUpgrade.transform.position, "Not enough currency", Color.red);
     }
     
     public void UpgradeFireRate()
     {
-        _tower.AddLevelFireRate();
+        int price = _upgradesManager.CalculatePrice(GameManager.gameData.upgradeBasePriceFireRate, _tower.fireRateLevel);
+        if (GameManager.HaveCurrency(price))
+        {
+            _tower.AddLevelFireRate();
+            GameManager.RemoveCurrency(price);
+        }
+        else
+            UISpawner.instance.SpawnTextWithColorFromUIPos(_upgradesManager._fireRateUpgrade.transform.position, "Not enough currency", Color.red);
     }
     
     public void UpgradeRange()
     {
-        _tower.AddLevelRange();
+        int price = _upgradesManager.CalculatePrice(GameManager.gameData.upgradeBasePriceRange, _tower.rangeLevel);
+        if (GameManager.HaveCurrency(price))
+        {
+            _tower.AddLevelRange();
+            GameManager.RemoveCurrency(price);
+        }
+        else
+            UISpawner.instance.SpawnTextWithColorFromUIPos(_upgradesManager._rangeUpgrade.transform.position, "Not enough currency", Color.red);
     }
 }

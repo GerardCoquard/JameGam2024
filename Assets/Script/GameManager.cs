@@ -19,7 +19,7 @@ public static class GameManager
             towerData.Add(tower.name,tower);
         }
 
-        SceneManager.sceneLoaded += (Scene x, LoadSceneMode mode) => SetCurrency(0);
+        SceneManager.sceneLoaded += (Scene x, LoadSceneMode mode) => SetCurrency(gameData.startingCurrency);
     }
 
     private static void SetCurrency(int amount)

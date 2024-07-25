@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class UpgradesManager : MonoBehaviour
 {
-    [SerializeField] private Upgrade _healthUpgrade;
-    [SerializeField] private Upgrade _armorUpgrade;
-    [SerializeField] private Upgrade _magicUpgrade;
-    [SerializeField] private Upgrade _fireRateUpgrade;
-    [SerializeField] private Upgrade _rangeUpgrade;
+    [SerializeField] public Upgrade _healthUpgrade;
+    [SerializeField] public Upgrade _armorUpgrade;
+    [SerializeField] public Upgrade _magicUpgrade;
+    [SerializeField] public Upgrade _fireRateUpgrade;
+    [SerializeField] public Upgrade _rangeUpgrade;
 
     private GameData _gameData;
 
@@ -24,7 +24,7 @@ public class UpgradesManager : MonoBehaviour
         _armorUpgrade.SetData(tower.armorLevel,"+" + _gameData.armorMultiplier.ToString("F1"),CalculatePrice(_gameData.upgradeBasePriceArmor,tower.armorLevel));
         _magicUpgrade.SetData(tower.magicArmorLevel,"+" + _gameData.magicArmorMultiplier.ToString("F1"),CalculatePrice(_gameData.upgradeBasePriceMagicArmor,tower.magicArmorLevel));
         _fireRateUpgrade.SetData(tower.fireRateLevel,"+" + (int)(_gameData.fireRateMultiplier*100)+"%",CalculatePrice(_gameData.upgradeBasePriceFireRate,tower.fireRateLevel));
-        _rangeUpgrade.SetData(tower.rangeLevel,"+" + (int)(_gameData.rangeMultiplier*100)+"%",CalculatePrice(_gameData.upgradeBasePriceFireRate,tower.fireRateLevel));
+        _rangeUpgrade.SetData(tower.rangeLevel,"+" + (int)(_gameData.rangeMultiplier*100)+"%",CalculatePrice(_gameData.upgradeBasePriceRange,tower.rangeLevel));
 
         if (tower.data.towerName == "Purifier")
         {
@@ -42,7 +42,7 @@ public class UpgradesManager : MonoBehaviour
         }
     }
 
-    private int CalculatePrice(int basePrice, int levels)
+    public int CalculatePrice(int basePrice, int levels)
     {
         return (int)Mathf.Pow(_gameData.priceMultiplier, levels+1) * basePrice;
         //return (int)(basePrice + (basePrice * levels * _gameData.priceMultiplier));

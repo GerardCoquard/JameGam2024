@@ -18,4 +18,5 @@ public class GameData : ScriptableObject
     public float armorMultiplier;
     public float magicArmorMultiplier;
     public float spawnTimeBetweenEnemys;
+    public int startingCurrency;
 }

@@ -24,7 +24,6 @@ public class CardShop : MonoBehaviour
 
     public void TryUse()
     {
-        GameManager.AddCurrency(4000);//DELETE
         if(GameManager.HaveCurrency(_cardData.price))
             StartTowerPlacement();
         else
