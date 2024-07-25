@@ -32,7 +32,6 @@ public class ActivateAreaDamage : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(transform.parent.position, -transform.parent.forward, out hit, 1000f, layerMask))
             {
-                Debug.Log("a");
                 transform.parent.localScale = new Vector3(transform.parent.localScale.x, transform.parent.localScale.y, Vector3.Distance(transform.parent.position, hit.point));
             }
             else

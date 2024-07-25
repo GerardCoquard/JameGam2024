@@ -37,23 +37,23 @@ public class Enemy : MonoBehaviour
 
         uiDisplay.InitializeAll(health,armor,magicArmor, maxHealth, 10f);
     }
-    public void DamageEnemy(Tower tower,float dañoRestante)
+    public void DamageEnemy(Tower tower,float daÃ±oRestante)
     {            
         if (!isAlive) return;
 
         float previousHealth = currentHealth;
         if (magicArmor != 0)
         {
-            int magicArmorDmg = Mathf.RoundToInt(tower.CalculateDamageMagicArmor(dañoRestante));            
+            int magicArmorDmg = Mathf.RoundToInt(tower.CalculateDamageMagicArmor(daÃ±oRestante));            
             currentHealth = Mathf.Clamp(currentHealth - magicArmorDmg, 0, maxHealth);
             if(health + armor >= currentHealth)
             {
-                dañoRestante = (health + armor) - currentHealth;
+                daÃ±oRestante = (health + armor) - currentHealth;
                 magicArmor = 0;
                 currentHealth = health + armor;
                 UIUpdateIComprovar(previousHealth);
-                dañoRestante = Mathf.RoundToInt(tower.MagicArmorToBase(dañoRestante));
-                DamageEnemy(tower, dañoRestante);
+                daÃ±oRestante = Mathf.RoundToInt(tower.MagicArmorToBase(daÃ±oRestante));
+                DamageEnemy(tower, daÃ±oRestante);
                 return;
             }
             UIUpdateIComprovar(previousHealth);
@@ -61,16 +61,16 @@ public class Enemy : MonoBehaviour
         }
         else if(armor != 0)
         {
-            int armorDmg = Mathf.RoundToInt(tower.CalculateDamageArmor(dañoRestante));
+            int armorDmg = Mathf.RoundToInt(tower.CalculateDamageArmor(daÃ±oRestante));
             currentHealth = Mathf.Clamp(currentHealth - armorDmg, 0, maxHealth);
             if (health >= currentHealth)
             {
-                dañoRestante = (health) - currentHealth;
+                daÃ±oRestante = (health) - currentHealth;
                 armor = 0;
                 currentHealth = health;
                 UIUpdateIComprovar(previousHealth);
-                dañoRestante = Mathf.RoundToInt(tower.ArmorToBase(dañoRestante));
-                DamageEnemy(tower, dañoRestante);
+                daÃ±oRestante = Mathf.RoundToInt(tower.ArmorToBase(daÃ±oRestante));
+                DamageEnemy(tower, daÃ±oRestante);
                 return;
             }
             UIUpdateIComprovar(previousHealth);
@@ -78,7 +78,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            int normalDmg = Mathf.RoundToInt(tower.CalculateDamageNormal(dañoRestante));
+            int normalDmg = Mathf.RoundToInt(tower.CalculateDamageNormal(daÃ±oRestante));
             currentHealth = Mathf.Clamp(currentHealth - normalDmg, 0, maxHealth);
             UIUpdateIComprovar(previousHealth);
         }
@@ -88,20 +88,24 @@ public class Enemy : MonoBehaviour
     {
         //Update UI
         uiDisplay.SetFillsFollow(currentHealth, previousHealth);
-        //Comprobación de posible final de partida
+        //ComprobaciÃ³n de posible final de partida
         isAlive = currentHealth > 0;
         if (!isAlive)
         {
-            GameManager.AddCurrency(currency);
-            UISpawner.instance.SpawnTextWithColor(transform.position,"+" + currency + "<sprite=0>",Color.white);
-            Destroy(gameObject);
+            GetKill();
+            Die();
         }
     }
 
-
-    // Update is called once per frame
-    void Update()
+    private void GetKill()
     {
-        
+        GameManager.AddCurrency(currency);
+        UISpawner.instance.SpawnTextWithColor(transform.position,"+" + currency + "<sprite=0>",Color.white);
+    }
+
+    private void Die()
+    {
+        WaveManager.instance.CheckIfWaveEnded();
+        Destroy(gameObject);
     }
 }

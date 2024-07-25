@@ -14,9 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gate1Enemies:
   - {fileID: 11400000, guid: a8dcf3d9ffc599941b172c507465619e, type: 2}
+  - {fileID: 11400000, guid: a8dcf3d9ffc599941b172c507465619e, type: 2}
+  - {fileID: 11400000, guid: a8dcf3d9ffc599941b172c507465619e, type: 2}
   gate2Enemies:
   - {fileID: 11400000, guid: ceeaff0113ce5e54a8566e85ce2deb4a, type: 2}
+  - {fileID: 11400000, guid: ceeaff0113ce5e54a8566e85ce2deb4a, type: 2}
+  - {fileID: 11400000, guid: ceeaff0113ce5e54a8566e85ce2deb4a, type: 2}
   gate3Enemies:
-  - {fileID: 11400000, guid: ffb5ed02728ec4f4ebef4ad43a04ffd5, type: 2}
+  - {fileID: 11400000, guid: ceeaff0113ce5e54a8566e85ce2deb4a, type: 2}
+  - {fileID: 11400000, guid: ceeaff0113ce5e54a8566e85ce2deb4a, type: 2}
+  - {fileID: 11400000, guid: ceeaff0113ce5e54a8566e85ce2deb4a, type: 2}
   gate4Enemies: []
   gate5Enemies: []

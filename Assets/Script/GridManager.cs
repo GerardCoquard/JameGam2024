@@ -47,6 +47,8 @@ public class GridManager : MonoBehaviour
                 Instantiate(_groundPrefab, _grid.GetCellCenterWorld(cellPos), Quaternion.identity, _baseGroundHolder);
             }
         }
+        
+        _holders.transform.position = Vector3.zero;
     }
 
     public void Add(Vector3 pos, GameObject prefab, Tile tile)
