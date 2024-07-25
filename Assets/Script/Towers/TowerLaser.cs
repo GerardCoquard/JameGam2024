@@ -29,6 +29,7 @@ public class TowerLaser : Tower
             {
                 GameObject bullet = GameObject.Instantiate(bulletPrefab, bulletInstantiatePoint.position, Quaternion.identity);
                 bullet.transform.GetChild(0).GetChild(0).GetComponent<ActivateAreaDamage>().SetVariables(baseDamage, this);
+                animator.SetBool("laser", true);
                 bullet.transform.parent = bulletInstantiatePoint;
                 bullet.transform.localScale = new Vector3(1, 1, 1);
                 timer = 0;
@@ -64,6 +65,7 @@ public class TowerLaser : Tower
             yield return new WaitForEndOfFrame();
         }
         freezeRotation = false;
+        animator.SetBool("laser", false);
         bullet.GetComponent<Animator>().SetTrigger("despawn");
         yield return new WaitForSeconds(1);
         Destroy(bullet.gameObject);

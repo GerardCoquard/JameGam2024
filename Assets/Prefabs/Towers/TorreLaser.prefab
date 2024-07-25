@@ -302,6 +302,7 @@ MonoBehaviour:
   armorPenetration: 0
   magicArmorPenetration: 0
   data: {fileID: 11400000, guid: 50864dafb87846d4e835e96d2ee8ed17, type: 2}
+  animator: {fileID: 5029747998734288397}
   bulletInstantiatePoint: {fileID: 6771989546325399435}
   laserCurve:
     serializedVersion: 2

@@ -33,12 +33,22 @@ public class SlowEnemy : MonoBehaviour
             }
         }
     }
-    private void OnTriggerEnter(Collider other)
+
+    private void OnTriggerStay(Collider other)
     {
-        other.transform.parent.GetComponent<MoveEnemie>().speed /= slowMultiplier;
+        if (!other.transform.parent.GetComponent<MoveEnemie>().slowed)
+        {
+            Debug.Log("a");
+            other.transform.parent.GetComponent<MoveEnemie>().speed /= slowMultiplier;
+            other.transform.parent.GetComponent<MoveEnemie>().slowed = true;
+        }
     }
     private void OnTriggerExit(Collider other)
     {
-        other.transform.parent.GetComponent<MoveEnemie>().speed *= slowMultiplier;
+        if (other.transform.parent.GetComponent<MoveEnemie>().slowed)
+        {
+            other.transform.parent.GetComponent<MoveEnemie>().speed *= slowMultiplier;
+            other.transform.parent.GetComponent<MoveEnemie>().slowed = false;
+        }
     }
 }

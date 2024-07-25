@@ -23,20 +23,25 @@ public class TowerCloseDistance : Tower
         {
             float distance = Vector3.Distance(enemy.position, transform.position);
             if (distance <= range && timer >= 1 / fireRate)
-            {
-                GameObject bullet = GameObject.Instantiate(bulletPrefab, instantiatePoint.position, Quaternion.Euler(-90,0,0));
-                bullet.GetComponent<ShpereDamage>().SetVariables(baseDamage, this);
-
-                bullet.GetComponent<CapsuleCollider>().radius = range;
-                var shape = bullet.GetComponent<ParticleSystem>().shape;
-                shape.radius = range;
+            {            
+                animator.SetTrigger("close");
+                Invoke("InstantiateBullet", 0.6f);
                 timer = 0;
-                bullet.transform.parent = instantiatePoint;
-                bullet.transform.localPosition = Vector3.zero;
-                Destroy(bullet.gameObject, 2f);
             }
         }
         timer += Time.deltaTime;
+    }
+    void InstantiateBullet()
+    {
+        GameObject bullet = GameObject.Instantiate(bulletPrefab, instantiatePoint.position, Quaternion.Euler(-90, 0, 0));
+        bullet.GetComponent<ShpereDamage>().SetVariables(baseDamage, this);
+        bullet.GetComponent<CapsuleCollider>().radius = range;
+        var shape = bullet.GetComponent<ParticleSystem>().shape;
+        shape.radius = range;
+        
+        bullet.transform.parent = instantiatePoint;
+        bullet.transform.localPosition = Vector3.zero;
+        Destroy(bullet.gameObject, 2f);
     }
     public override void EndTower()
     {

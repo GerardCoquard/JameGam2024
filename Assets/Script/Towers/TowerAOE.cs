@@ -24,6 +24,7 @@ public class TowerAOE : Tower
             {
                 GameObject bullet = GameObject.Instantiate(bulletPrefab, enemy.position, Quaternion.identity);
                 timer = 0;
+                animator.SetTrigger("aoe");
                 StartCoroutine(FollowEnemy(bullet.transform, enemy.transform));
                 StartCoroutine(SetDmgToAbilitie(bullet));
                 Destroy(bullet, 3.1f);
@@ -42,7 +43,7 @@ public class TowerAOE : Tower
         MoveEnemie enemyMove = enemy.GetComponent<MoveEnemie>();
         while (time < 3)
         {
-            if(enemy == null)
+            if(enemy.gameObject == null)
             {
                 yield return null;
             }

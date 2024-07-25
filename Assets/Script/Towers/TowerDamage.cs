@@ -7,14 +7,13 @@ public class TowerDamage : Tower
     float timer;
     [SerializeField] AnimationCurve bulletSpeedCurve;
     [SerializeField] float bulletSpeedMultiplier;
-    Transform bulletInstantiatePoint;
+    [SerializeField] Transform bulletInstantiatePoint;
 
     private ParticleSystem particleSystem;
 
     private void Awake()
     {      
         timer = 0;
-        bulletInstantiatePoint = transform.GetChild(0);
     }
     public override void StartTower()
     {
@@ -27,11 +26,10 @@ public class TowerDamage : Tower
         {
             float distance = Vector3.Distance(enemy.position, bulletInstantiatePoint.position);
             if (distance <= range && timer >= 1 / fireRate)
-            {
-                GameObject bullet = GameObject.Instantiate(bulletPrefab, bulletInstantiatePoint.position, Quaternion.identity);
-                particleSystem = bullet.GetComponent<ParticleSystem>();
+            {               
                 timer = 0;
-                StartCoroutine(MoveBullet(distance, enemy, bullet.transform));
+                animator.SetTrigger("projectile");
+                StartCoroutine(MoveBullet(distance, enemy));
             }
         }      
         timer += Time.deltaTime;
@@ -46,21 +44,24 @@ public class TowerDamage : Tower
     {
         StartTower();
     }
-    IEnumerator MoveBullet(float distance,Transform enemy, Transform bullet)
+    IEnumerator MoveBullet(float distance,Transform enemy)
     {
-        Vector3 startPos = bullet.position;
+        yield return new WaitForSeconds(0.2f);
+        GameObject bullet = GameObject.Instantiate(bulletPrefab, bulletInstantiatePoint.position, Quaternion.identity);
+        particleSystem = bullet.GetComponent<ParticleSystem>();
+        Vector3 startPos = bullet.transform.position;
         float time = 0;
         float targetTime = distance / bulletSpeedMultiplier;
         while (time < 1)
         {
-            if(enemy == null)
+            if(enemy.gameObject == null)
             {
                 Destroy(bullet.gameObject);
                 yield return null;
             }
             time += Time.deltaTime;
             float percentageDuration = time / 1;
-            bullet.position = Vector3.Lerp(startPos, enemy.position, bulletSpeedCurve.Evaluate(percentageDuration));
+            bullet.transform.position = Vector3.Lerp(startPos, enemy.position, bulletSpeedCurve.Evaluate(percentageDuration));
             yield return new WaitForEndOfFrame();
         }
         enemy.GetComponent<Enemy>().DamageEnemy(this,baseDamage);      

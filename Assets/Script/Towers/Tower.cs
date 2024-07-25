@@ -39,6 +39,7 @@ public class Tower : MonoBehaviour
     protected List<Transform> enemyList;
     protected Transform enemy;
     Transform mage;
+    public Animator animator;
 
     [HideInInspector]
     bool isAlive = true;
