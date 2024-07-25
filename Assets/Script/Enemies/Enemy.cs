@@ -23,19 +23,24 @@ public class Enemy : MonoBehaviour
     [SerializeField] AmountDisplay uiDisplay;
 
     // Start is called before the first frame update
-    void Start()
+
+    public void InitializeEnemy(int health, int armor, int magic, int currency)
     {
-        health = enemyData.health;
+        this.health = health;
+        this.armor = armor;
+        this.magicArmor = magic;
+        this.currency = currency;
         damage = enemyData.damage;
-        armor = enemyData.armor;
-        magicArmor = enemyData.magicArmor;
         maxHealth = health + armor + magicArmor;
         currentHealth = maxHealth;
-        currency = enemyData.currency;
         GetComponent<MoveEnemie>().speed = enemyData.speed;
         isAlive = true;
 
-        uiDisplay.InitializeAll(health,armor,magicArmor, maxHealth, 10f);
+        uiDisplay.InitializeAll(health,armor,magicArmor, maxHealth, GameManager.gameData.healthSegmentAmount);
+    }
+    void Start()
+    {
+        
     }
     public void DamageEnemy(Tower tower,float dañoRestante)
     {            

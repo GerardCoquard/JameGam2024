@@ -8,8 +8,8 @@ public class EnemyData : ScriptableObject
 {
     public int damage;
     public int health;
-    public float armor;
-    public float magicArmor;
+    public int armor;
+    public int magicArmor;
     public float speed;
     public int currency;
     public GameObject EnemyPrefab;

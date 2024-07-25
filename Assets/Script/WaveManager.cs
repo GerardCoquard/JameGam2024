@@ -123,26 +123,31 @@ public class WaveManager : MonoBehaviour
             if (gate1Enemies.Count > currentRound)
             {
                 GameObject enemy = Instantiate(gate1Enemies[currentRound].EnemyPrefab, gate1.splineContainer.Spline.ToArray()[0].Position, Quaternion.identity);
+                InitializeEnemy(enemy.GetComponent<Enemy>(),gate1Enemies[currentRound]);
                 enemy.GetComponent<MoveEnemie>().pathInfo = gate1;
             }
             if (gate2Enemies.Count > currentRound)
             {
                 GameObject enemy = Instantiate(gate2Enemies[currentRound].EnemyPrefab, gate2.splineContainer.Spline.ToArray()[0].Position, Quaternion.identity);
+                InitializeEnemy(enemy.GetComponent<Enemy>(),gate2Enemies[currentRound]);
                 enemy.GetComponent<MoveEnemie>().pathInfo = gate2;
             }
             if (gate3Enemies.Count > currentRound)
             {
                 GameObject enemy = Instantiate(gate3Enemies[currentRound].EnemyPrefab, gate3.splineContainer.Spline.ToArray()[0].Position, Quaternion.identity);
+                InitializeEnemy(enemy.GetComponent<Enemy>(),gate3Enemies[currentRound]);
                 enemy.GetComponent<MoveEnemie>().pathInfo = gate3;
             }
             if (gate4Enemies.Count > currentRound)
             {
                 GameObject enemy = Instantiate(gate4Enemies[currentRound].EnemyPrefab, gate4.splineContainer.Spline.ToArray()[0].Position, Quaternion.identity);
+                InitializeEnemy(enemy.GetComponent<Enemy>(),gate4Enemies[currentRound]);
                 enemy.GetComponent<MoveEnemie>().pathInfo = gate4;
             }
             if (gate5Enemies.Count > currentRound)
             {
                 GameObject enemy = Instantiate(gate5Enemies[currentRound].EnemyPrefab, gate5.splineContainer.Spline.ToArray()[0].Position, Quaternion.identity);
+                InitializeEnemy(enemy.GetComponent<Enemy>(),gate5Enemies[currentRound]);
                 enemy.GetComponent<MoveEnemie>().pathInfo = gate5;
             }
             
@@ -162,5 +167,31 @@ public class WaveManager : MonoBehaviour
         if (gate5Enemies.Count > max) max = gate2Enemies.Count;
 
         return max;
+    }
+
+    private void InitializeEnemy(Enemy enemy, EnemyData enemyData)
+    {
+        int health = (int)Mathf.Pow(GameManager.gameData.enemyStatsMultiplier, GetTotalWaves()+1) * enemyData.health;
+        health /= GameManager.gameData.healthSegmentAmount;
+        health *= GameManager.gameData.healthSegmentAmount;
+        
+        int armor = (int)Mathf.Pow(GameManager.gameData.enemyStatsMultiplier, GetTotalWaves()+1) * enemyData.armor;
+        armor /= GameManager.gameData.healthSegmentAmount;
+        armor *= GameManager.gameData.healthSegmentAmount;
+        
+        int magic = (int)Mathf.Pow(GameManager.gameData.enemyStatsMultiplier, GetTotalWaves()+1) * enemyData.magicArmor;
+        magic /= GameManager.gameData.healthSegmentAmount;
+        magic *= GameManager.gameData.healthSegmentAmount;
+        
+        int currency = (int)Mathf.Pow(GameManager.gameData.enemyStatsMultiplier, GetTotalWaves()+1) * enemyData.currency;
+        currency /= GameManager.gameData.healthSegmentAmount;
+        currency *= GameManager.gameData.healthSegmentAmount;
+        
+        enemy.InitializeEnemy(health,armor,magic,currency);
+    }
+    
+    private int GetTotalWaves()
+    {
+        return currentwaveIndex + (loops * waves.Count);
     }
 }
