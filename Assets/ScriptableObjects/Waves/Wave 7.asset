@@ -13,18 +13,18 @@ MonoBehaviour:
   m_Name: Wave 7
   m_EditorClassIdentifier: 
   gate1Enemies:
+  - {fileID: 11400000, guid: 572a7408051012a489a7f774aa2c7db6, type: 2}
+  - {fileID: 11400000, guid: a8dcf3d9ffc599941b172c507465619e, type: 2}
+  - {fileID: 11400000, guid: a8dcf3d9ffc599941b172c507465619e, type: 2}
   - {fileID: 11400000, guid: a8dcf3d9ffc599941b172c507465619e, type: 2}
   - {fileID: 11400000, guid: a8dcf3d9ffc599941b172c507465619e, type: 2}
   - {fileID: 11400000, guid: a8dcf3d9ffc599941b172c507465619e, type: 2}
   - {fileID: 11400000, guid: a8dcf3d9ffc599941b172c507465619e, type: 2}
   gate2Enemies:
-  - {fileID: 11400000, guid: f90d89a0c5822d645899cbf372bfb37d, type: 2}
+  - {fileID: 11400000, guid: a8dcf3d9ffc599941b172c507465619e, type: 2}
   gate3Enemies:
-  - {fileID: 11400000, guid: a8dcf3d9ffc599941b172c507465619e, type: 2}
-  - {fileID: 11400000, guid: a8dcf3d9ffc599941b172c507465619e, type: 2}
-  - {fileID: 11400000, guid: a8dcf3d9ffc599941b172c507465619e, type: 2}
+  - {fileID: 11400000, guid: 6eadb87b451ccd44f88716a2d5486522, type: 2}
   gate4Enemies:
-  - {fileID: 11400000, guid: a8dcf3d9ffc599941b172c507465619e, type: 2}
   - {fileID: 11400000, guid: a8dcf3d9ffc599941b172c507465619e, type: 2}
   - {fileID: 11400000, guid: a8dcf3d9ffc599941b172c507465619e, type: 2}
   gate5Enemies: []
