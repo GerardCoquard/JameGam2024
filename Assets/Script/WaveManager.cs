@@ -186,8 +186,6 @@ public class WaveManager : MonoBehaviour
         magic *= GameManager.gameData.healthSegmentAmount;
         
         int currency = (int)Mathf.Pow(GameManager.gameData.enemyStatsMultiplier, GetTotalWaves()+1) * enemyData.currency;
-        currency /= GameManager.gameData.healthSegmentAmount;
-        currency *= GameManager.gameData.healthSegmentAmount;
         
         enemy.InitializeEnemy(health,armor,magic,currency,enemyData);
     }
