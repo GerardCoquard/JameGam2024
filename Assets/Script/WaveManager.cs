@@ -152,7 +152,7 @@ public class WaveManager : MonoBehaviour
             }
             
             currentRound++;
-            yield return new WaitForSeconds(GameManager.gameData.spawnTimeBetweenEnemys);
+            yield return new WaitForSeconds(GameManager.gameData.spawnTimeBetweenEnemies);
         }
 
         spawning = false;
@@ -187,7 +187,7 @@ public class WaveManager : MonoBehaviour
         currency /= GameManager.gameData.healthSegmentAmount;
         currency *= GameManager.gameData.healthSegmentAmount;
         
-        enemy.InitializeEnemy(health,armor,magic,currency);
+        enemy.InitializeEnemy(health,armor,magic,currency,enemyData);
     }
     
     private int GetTotalWaves()

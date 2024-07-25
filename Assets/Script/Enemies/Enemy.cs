@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public EnemyData enemyData;
     float maxHealth;
     float health;
     int damage;
@@ -24,7 +23,7 @@ public class Enemy : MonoBehaviour
 
     // Start is called before the first frame update
 
-    public void InitializeEnemy(int health, int armor, int magic, int currency)
+    public void InitializeEnemy(int health, int armor, int magic, int currency, EnemyData enemyData)
     {
         this.health = health;
         this.armor = armor;
