@@ -14,16 +14,11 @@ public class CenterTower : MonoBehaviour
     public static Action OnGameOver;
     public AudioSource audioSource;
 
-    public TextMeshProUGUI text1;
-    public TextMeshProUGUI text2;
-    public TextMeshProUGUI text3;
-
     private void Start()
     {
         audioSource.PlayOneShot(audioSource.clip);
         _amountDisplay.InitializeAll(_health,0,0, _health, (float)_health/_segments);
         currentHealth = _health;
-        text3.text = currentHealth + "   " + (float)_health / _segments;
     }
     private void OnDestroy()
     {
@@ -32,11 +27,9 @@ public class CenterTower : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        text2.text = "Trigger: " + Time.time;
         Enemy enemy = other.GetComponentInParent<Enemy>();
         if (enemy != null)
         {
-            text1.text = "Enemy Found";
             TakeDamage(enemy.GetDamage());
             enemy.Die();
         }
