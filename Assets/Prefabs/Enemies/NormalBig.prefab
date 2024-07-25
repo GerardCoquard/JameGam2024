@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6338757118689515016}
   - component: {fileID: 6585752220520685784}
   m_Layer: 8
-  m_Name: Enemy1
+  m_Name: NormalBig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.9, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8208061651477827766}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathInfo: {fileID: 0}
-  speed: 5
+  speed: 3
   jumpCurve:
     serializedVersion: 2
     m_Curve:
@@ -64,11 +64,11 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.3
       value: 0.5
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
+      inSlope: 0.007230074
+      outSlope: 0.007230074
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0.8208676
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.6
@@ -103,7 +103,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79517adc3a648e4793ac1bc592f7e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: a8dcf3d9ffc599941b172c507465619e, type: 2}
   speed: 0
   uiDisplay: {fileID: 3029704500132594592}
 --- !u!1001 &8530483895348164445

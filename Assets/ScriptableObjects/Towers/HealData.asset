@@ -19,9 +19,9 @@ MonoBehaviour:
   bullet: {fileID: 0}
   endEffect: {fileID: 0}
   price: 10
-  range: 10
-  fireRate: 3
+  range: 4
+  fireRate: 0
   baseDamage: 0
   normalBase: 0
   armorBase: 0
-  magicArmorBase: 0.1
+  magicArmorBase: 0
