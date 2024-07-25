@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class WaveManager : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class WaveManager : MonoBehaviour
 
     public List<WaveData> waves;
     public int loopFirstWaveIndex;
+    [FormerlySerializedAs("levelsToIncreaseDifficulty")] public int wavesToIncreaseDifficulty;
     [SerializeField] GameObject _buttonNextRound;
 
     private int currentwaveIndex = 0;
@@ -190,8 +192,9 @@ public class WaveManager : MonoBehaviour
         enemy.InitializeEnemy(health,armor,magic,currency,enemyData);
     }
     
-    private int GetTotalWaves()
+    private float GetTotalWaves()
     {
-        return currentwaveIndex + (loops * waves.Count);
+        Debug.Log((currentwaveIndex + (loops * waves.Count)) / (float)wavesToIncreaseDifficulty);
+        return (currentwaveIndex + (loops * waves.Count)) / (float)wavesToIncreaseDifficulty;
     }
 }

@@ -70,3 +70,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4048ceab80975e74cb84cb494c3e452b, type: 2}
   - {fileID: 11400000, guid: b5f3fb304a39c924298e400293633d46, type: 2}
   - {fileID: 11400000, guid: f2b38eb35b8431740bee26955018b8fe, type: 2}
+  loopFirstWaveIndex: 3
+  wavesToIncreaseDifficulty: 3
+  _buttonNextRound: {fileID: 0}
