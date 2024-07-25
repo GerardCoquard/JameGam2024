@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveEnemie : MonoBehaviour
 {
-    [SerializeField] PathInfo pathInfo;
+    public PathInfo pathInfo;
     float moveDistance = 0;
     public float speed;
     [SerializeField] AnimationCurve jumpCurve;

@@ -17,4 +17,5 @@ public class GameData : ScriptableObject
     public float normalMultiplier;
     public float armorMultiplier;
     public float magicArmorMultiplier;
+    public float spawnTimeBetweenEnemys;
 }

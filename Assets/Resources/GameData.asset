@@ -20,7 +20,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aebe3c01fa48ce54bbfdee1d46cb1c6c, type: 2}
   attackSpeedMultiplier: 0.1
   rangeMultiplier: 0.1
+  upgradeBasePriceNormal: 0
+  upgradeBasePriceArmor: 0
+  upgradeBasePriceMagicArmor: 0
+  upgradeBasePriceFireRate: 0
+  upgradeBasePriceRange: 0
   priceMultiplier: 0.1
   normalMultiplier: 0.1
   armorMultiplier: 0.1
   magicArmorMultiplier: 0.1
+  spawnTimeBetweenEnemys: 0.3

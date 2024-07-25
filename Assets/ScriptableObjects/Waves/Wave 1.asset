@@ -9,14 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac1c0a2efca19f54a8e94ed4a62a02ce, type: 3}
-  m_Name: Enemy2
+  m_Script: {fileID: 11500000, guid: c807f13131cd9c140921211d76a187b6, type: 3}
+  m_Name: Wave 1
   m_EditorClassIdentifier: 
-  damage: 10
-  health: 50
-  armor: 30
-  magicArmor: 20
-  speed: 3
-  currency: 0
-  EnemyPrefab: {fileID: 7072026298886534976, guid: 24306cc6c89661f448181e41515f5f6b,
-    type: 3}
+  gate1Enemies: []
+  gate2Enemies: []
+  gate3Enemies:
+  - {fileID: 11400000, guid: ffb5ed02728ec4f4ebef4ad43a04ffd5, type: 2}
+  gate4Enemies: []
+  gate5Enemies: []
