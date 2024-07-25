@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     public EnemyData enemyData;
     float maxHealth;
     float health;
-    float damage;
+    int damage;
     float armor;
     float magicArmor;
     bool isAlive;
@@ -97,13 +97,18 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public int GetDamage()
+    {
+        return damage;
+    }
+
     private void GetKill()
     {
         GameManager.AddCurrency(currency);
         UISpawner.instance.SpawnTextWithColor(transform.position,"+" + currency + "<sprite=0>",Color.white);
     }
 
-    private void Die()
+    public void Die()
     {
         WaveManager.instance.CheckIfWaveEnded();
         Destroy(gameObject);

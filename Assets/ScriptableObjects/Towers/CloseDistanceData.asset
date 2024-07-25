@@ -20,7 +20,7 @@ MonoBehaviour:
   endEffect: {fileID: 0}
   price: 30
   range: 2.5
-  fireRate: 3
+  fireRate: 0.3
   baseDamage: 30
   normalBase: 1
   armorBase: 0.5
