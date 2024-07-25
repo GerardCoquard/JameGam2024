@@ -15,8 +15,8 @@ MonoBehaviour:
   health: 0
   armor: 0
   magicArmor: 10
-  speed: 10
+  speed: 7
   damage: 2
-  currency: 0
+  currency: 50
   EnemyPrefab: {fileID: 7072026298886534976, guid: 24306cc6c89661f448181e41515f5f6b,
     type: 3}

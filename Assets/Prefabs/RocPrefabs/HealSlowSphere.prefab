@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12fdf78806875bb489a728f36ac79cec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slowMultiplier: 3
+  slowMultiplier: 4
   purifiedMat: {fileID: 2100000, guid: 901fe3d1e7c5b364e9911c2cd5214deb, type: 2}
 --- !u!1 &740680085880999553
 GameObject:

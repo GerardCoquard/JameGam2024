@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   armor: 0
-  magicArmor: 30
+  magicArmor: 10
   speed: 3
   damage: 2
-  currency: 0
+  currency: 30
   EnemyPrefab: {fileID: 7072026298886534976, guid: a01caa6e83b0099488de57ea8b36549b,
     type: 3}

@@ -18,7 +18,7 @@ MonoBehaviour:
   startEffect: {fileID: 0}
   bullet: {fileID: 0}
   endEffect: {fileID: 0}
-  price: 10
+  price: 20
   range: 4
   fireRate: 0
   baseDamage: 0

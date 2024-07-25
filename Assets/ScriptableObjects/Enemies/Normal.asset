@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac1c0a2efca19f54a8e94ed4a62a02ce, type: 3}
   m_Name: Normal
   m_EditorClassIdentifier: 
-  health: 15
+  health: 20
   armor: 0
   magicArmor: 0
   speed: 4
   damage: 1
-  currency: 0
+  currency: 10
   EnemyPrefab: {fileID: 2313376042682091804, guid: a2eb1ba04e19e9249adb36c01e1d772e,
     type: 3}

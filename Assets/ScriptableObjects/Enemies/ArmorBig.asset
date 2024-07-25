@@ -17,6 +17,6 @@ MonoBehaviour:
   magicArmor: 0
   speed: 1
   damage: 4
-  currency: 0
+  currency: 300
   EnemyPrefab: {fileID: 4603508513982724644, guid: 08ee304ce0d704d4b8c72541e3e03210,
     type: 3}
