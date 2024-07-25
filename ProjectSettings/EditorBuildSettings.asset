@@ -6,12 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Cocu_New.unity
-    guid: f5a41c172e18f884aa58345fbb37996a
-  - enabled: 1
-    path: Assets/Scenes/ProvaaFinal.unity
-    guid: da1354fed76d2824c9bc4f5fd2f61e53
-  - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: d8ea0eaeac357a34da0179a77eb92e22
   m_configObjects: {}
