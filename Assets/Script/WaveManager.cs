@@ -162,9 +162,9 @@ public class WaveManager : MonoBehaviour
     {
         int max = gate1Enemies.Count;
         if (gate2Enemies.Count > max) max = gate2Enemies.Count;
-        if (gate3Enemies.Count > max) max = gate2Enemies.Count;
-        if (gate4Enemies.Count > max) max = gate2Enemies.Count;
-        if (gate5Enemies.Count > max) max = gate2Enemies.Count;
+        if (gate3Enemies.Count > max) max = gate3Enemies.Count;
+        if (gate4Enemies.Count > max) max = gate4Enemies.Count;
+        if (gate5Enemies.Count > max) max = gate5Enemies.Count;
 
         return max;
     }
