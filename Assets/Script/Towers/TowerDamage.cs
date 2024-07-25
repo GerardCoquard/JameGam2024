@@ -54,20 +54,27 @@ public class TowerDamage : Tower
         float targetTime = distance / bulletSpeedMultiplier;
         while (time < 1)
         {
-            if(enemy.gameObject == null)
-            {
-                Destroy(bullet.gameObject);
-                yield return null;
-            }
+
             time += Time.deltaTime;
             float percentageDuration = time / 1;
-            bullet.transform.position = Vector3.Lerp(startPos, enemy.position, bulletSpeedCurve.Evaluate(percentageDuration));
+            if (enemy != null)
+            {
+                bullet.transform.position = Vector3.Lerp(startPos, enemy.position, bulletSpeedCurve.Evaluate(percentageDuration));
+            }
+            else
+            {
+                time = 1;
+            }
+            
             yield return new WaitForEndOfFrame();
         }
-        enemy.GetComponent<Enemy>().DamageEnemy(this,baseDamage);      
+        if(enemy != null)
+        {
+            enemy.GetComponent<Enemy>().DamageEnemy(this, baseDamage);
+            particleSystem.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+            yield return new WaitForSeconds(5);
+        }
 
-        particleSystem.Stop(true, ParticleSystemStopBehavior.StopEmitting);
-        yield return new WaitForSeconds(5);
         Destroy(bullet.gameObject);
     }
     

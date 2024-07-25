@@ -7,6 +7,7 @@ public class TutorialIntro : MonoBehaviour
 {
     public float timeUnskipable;
     public GameObject escToSkip;
+    public List<GameObject> objToActive;
 
     public void ActivateTutorial()
     {
@@ -26,5 +27,11 @@ public class TutorialIntro : MonoBehaviour
         if(!escToSkip.activeInHierarchy) return;
         gameObject.SetActive(false);
         Time.timeScale = 1;
+
+        for (int i = 0; i < objToActive.Count; i++)
+        {
+            objToActive[i].SetActive(true);
+        }
     }
+
 }
