@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathInfo: {fileID: 0}
   speed: 6
+  slowed: 0
   jumpCurve:
     serializedVersion: 2
     m_Curve:
@@ -481,23 +482,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6197856662949943739, guid: 0ad417d5b91d9b840b79b021a8cbc34c,
         type: 3}
+      propertyPath: fillColor.b
+      value: 0.28235295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197856662949943739, guid: 0ad417d5b91d9b840b79b021a8cbc34c,
+        type: 3}
+      propertyPath: fillColor.g
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197856662949943739, guid: 0ad417d5b91d9b840b79b021a8cbc34c,
+        type: 3}
+      propertyPath: fillColor.r
+      value: 0.25490198
+      objectReference: {fileID: 0}
+    - target: {fileID: 6197856662949943739, guid: 0ad417d5b91d9b840b79b021a8cbc34c,
+        type: 3}
       propertyPath: armorColor.a
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6197856662949943739, guid: 0ad417d5b91d9b840b79b021a8cbc34c,
         type: 3}
       propertyPath: armorColor.b
-      value: 0
+      value: 0.3529412
       objectReference: {fileID: 0}
     - target: {fileID: 6197856662949943739, guid: 0ad417d5b91d9b840b79b021a8cbc34c,
         type: 3}
       propertyPath: armorColor.g
-      value: 1
+      value: 0.9490196
       objectReference: {fileID: 0}
     - target: {fileID: 6197856662949943739, guid: 0ad417d5b91d9b840b79b021a8cbc34c,
         type: 3}
       propertyPath: armorColor.r
-      value: 0.96055627
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6197856662949943739, guid: 0ad417d5b91d9b840b79b021a8cbc34c,
         type: 3}
@@ -517,12 +533,12 @@ PrefabInstance:
     - target: {fileID: 6197856662949943739, guid: 0ad417d5b91d9b840b79b021a8cbc34c,
         type: 3}
       propertyPath: magicArmorColor.g
-      value: 0.7511432
+      value: 0.5137255
       objectReference: {fileID: 0}
     - target: {fileID: 6197856662949943739, guid: 0ad417d5b91d9b840b79b021a8cbc34c,
         type: 3}
       propertyPath: magicArmorColor.r
-      value: 0
+      value: 0.8392157
       objectReference: {fileID: 0}
     - target: {fileID: 7650972981914778811, guid: 0ad417d5b91d9b840b79b021a8cbc34c,
         type: 3}
