@@ -164,11 +164,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rangeLevel: 0
-  fireRateLevel: 5
+  fireRateLevel: 0
   baseDamage: 0
   normalLevel: 0
-  armorLevel: 3
-  magicArmorLevel: 10
+  armorLevel: 0
+  magicArmorLevel: 0
   hasChangedRange: 0
   fireRate: 0
   range: 0

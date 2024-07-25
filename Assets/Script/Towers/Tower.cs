@@ -55,7 +55,7 @@ public class Tower : MonoBehaviour
         baseMagicArmor = data.magicArmorBase;
 
         fireRate = baseFireRate - GameManager.gameData.fireRateMultiplier * fireRateLevel;
-        range = baseRange + GameManager.gameData.rangeMultiplier * rangeLevel;
+        range = baseRange + baseRange * GameManager.gameData.rangeMultiplier * rangeLevel;
         normalPenetration = baseNormal + GameManager.gameData.normalMultiplier * normalLevel;
         armorPenetration = baseArmor + GameManager.gameData.armorMultiplier * armorLevel;
         magicArmorPenetration = baseMagicArmor + GameManager.gameData.magicArmorMultiplier * magicArmorLevel;

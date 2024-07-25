@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b11463e491f76cc4fa4b955fe05da185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangeLevel: 100
+  rangeLevel: 0
   fireRateLevel: 0
   baseDamage: 0
   normalLevel: 0

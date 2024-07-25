@@ -19,7 +19,7 @@ public class HealTerrainTower : Tower
     {
         yield return new WaitForSeconds(2f);
         sphere = GameObject.Instantiate(sphereHealPrefab, transform.position, Quaternion.identity);
-        Vector3 endScale = new Vector3(range, range, range);
+        Vector3 endScale = new Vector3(range*2, range*2, range*2);
         float time = 0;
         while (time < 1.5f)
         {
@@ -31,8 +31,8 @@ public class HealTerrainTower : Tower
     }
     IEnumerator MakeSphereBigger()
     {
-        Vector3 startScale = new Vector3(anteriorRange, anteriorRange, anteriorRange);
-        Vector3 endScale = new Vector3(range, range, range);
+        Vector3 startScale = new Vector3(anteriorRange*2, anteriorRange*2, anteriorRange*2);
+        Vector3 endScale = new Vector3(range*2, range*2, range*2);
         float time = 0;
         while (time < 1.5f)
         {

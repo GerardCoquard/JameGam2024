@@ -16,7 +16,7 @@ public class RangeManager : MonoBehaviour
     public void Show(Vector3 pos, float range)
     {
         transform.position = new Vector3(pos.x, 5, pos.z);
-        transform.localScale = new Vector3(range, 15, range);
+        transform.localScale = new Vector3(range*2, 15, range*2);
         gameObject.SetActive(true);
     }
     
