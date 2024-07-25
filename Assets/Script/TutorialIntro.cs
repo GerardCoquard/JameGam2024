@@ -32,6 +32,8 @@ public class TutorialIntro : MonoBehaviour
         {
             objToActive[i].SetActive(true);
         }
+        
+        GameManager.AddCurrency(GameManager.gameData.startingCurrency);
     }
 
 }

@@ -18,14 +18,6 @@ public static class GameManager
         {
             towerData.Add(tower.name,tower);
         }
-
-        SceneManager.sceneLoaded += (Scene x, LoadSceneMode mode) => SetCurrency(gameData.startingCurrency);
-    }
-
-    private static void SetCurrency(int amount)
-    {
-        currency = amount;
-        OnCurrencyChanged?.Invoke(currency);
     }
 
     public static void AddCurrency(int amount)

@@ -174,8 +174,11 @@ public class WaveManager : MonoBehaviour
     private void InitializeEnemy(Enemy enemy, EnemyData enemyData)
     {
         int health = (int)Mathf.Pow(GameManager.gameData.enemyStatsMultiplier, GetTotalWaves()+1) * enemyData.health;
+        Debug.Log(health);
         health /= GameManager.gameData.healthSegmentAmount;
+        Debug.Log(health);
         health *= GameManager.gameData.healthSegmentAmount;
+        Debug.Log(health);
         
         int armor = (int)Mathf.Pow(GameManager.gameData.enemyStatsMultiplier, GetTotalWaves()+1) * enemyData.armor;
         armor /= GameManager.gameData.healthSegmentAmount;
