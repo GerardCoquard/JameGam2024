@@ -24,6 +24,8 @@ public class CardShop : MonoBehaviour
 
     public void TryUse()
     {
+        ShopManager.instance.UnselectAllCards();
+        
         if(GameManager.HaveCurrency(_cardData.price))
             StartTowerPlacement();
         else
@@ -42,11 +44,12 @@ public class CardShop : MonoBehaviour
         PlaceHolder.instance.Show();
     }
     
-    private void EndTowerPlacement()
+    public void EndTowerPlacement()
     {
         if(!placing) return;
         InputManager.OnExit -= EndTowerPlacement;
         InputManager.OnGridClick -= CheckPlacement;
+        PlaceHolder.instance.Hide();//
         placing = false;
     }
 

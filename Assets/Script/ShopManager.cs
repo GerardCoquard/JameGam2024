@@ -7,6 +7,9 @@ using TMPro;
 
 public class ShopManager : MonoBehaviour
 {
+    public static ShopManager instance;
+    private List<CardShop> _cardShops = new List<CardShop>();
+    
     [SerializeField] private GameObject _cardPrefab;
     [SerializeField] private Animator _shopAnimator;
     [SerializeField] private Transform _arrow1;
@@ -17,6 +20,7 @@ public class ShopManager : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
         _shopOpen = true;
         SetVisuals();
         
@@ -24,6 +28,7 @@ public class ShopManager : MonoBehaviour
         {
             CardShop card = Instantiate(_cardPrefab, transform).GetComponent<CardShop>();
             card.SetData(tower);
+            _cardShops.Add(card);
         }
     }
 
@@ -31,7 +36,7 @@ public class ShopManager : MonoBehaviour
     {
         _shopOpen = !_shopOpen;
         SetVisuals();
-        //Stop doing actions
+        UnselectAllCards();
     }
 
     private void SetVisuals()
@@ -40,6 +45,14 @@ public class ShopManager : MonoBehaviour
         _buttonText.text = _shopOpen ? "Close" : "Open";
         _arrow1.localRotation = Quaternion.Euler(0,0,_shopOpen ? -90 : 90);
         _arrow2.localRotation = Quaternion.Euler(0,0,_shopOpen ? -90 : 90);
+    }
 
+    public void UnselectAllCards()
+    {
+        //EventSystem.current.SetSelectedGameObject(null);
+        foreach (CardShop card in _cardShops)
+        {
+            card.EndTowerPlacement();
+        }
     }
 }
