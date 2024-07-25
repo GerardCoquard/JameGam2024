@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 2117019168515414256, guid: 52272db1a71cfd040b7d52f26e31513c, type: 3}
   towerName: Laser Wand
-  icon: {fileID: -1551226842, guid: e54acb319d908824294a0209f87d04b6, type: 3}
+  icon: {fileID: 21300000, guid: a55839dbe0012724fa674504118f6aab, type: 3}
   startEffect: {fileID: 0}
   bullet: {fileID: 8576772554056303866, guid: 85b2b77b927fa6148b86bb28c005dfdf, type: 3}
   endEffect: {fileID: 0}
