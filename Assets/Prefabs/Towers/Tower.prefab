@@ -119,7 +119,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.7
   m_Height: 7.28107
   m_Direction: 1
   m_Center: {x: 0, y: 2.076871, z: 0}
@@ -138,6 +138,7 @@ MonoBehaviour:
   _amountDisplay: {fileID: 3834420406809269141}
   _health: 10
   _segments: 10
+  audioSource: {fileID: 0}
 --- !u!1001 &7148809955301870126
 PrefabInstance:
   m_ObjectHideFlags: 0
