@@ -33,12 +33,13 @@ public class CenterTower : MonoBehaviour
         int previousAmount = currentHealth;
         currentHealth = Mathf.Clamp(currentHealth - amount, 0, _health);
         _amountDisplay.SetFillsFollow(currentHealth, previousAmount);
-        if(!gameOver)
+        if(!gameOver && currentHealth <= 0)
             GameOver();
     }
 
     private void GameOver()
     {
         OnGameOver?.Invoke();
+        global::GameOver.instance.Activate();
     }
 }
