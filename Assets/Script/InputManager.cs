@@ -13,7 +13,7 @@ public class InputManager : MonoBehaviour
     
     [SerializeField] private Camera _sceneCamera;
     [SerializeField] private LayerMask _clickLayerMask;
-    public static event Action<Vector3,string> OnGridClick;
+    public static event Action<Vector3,string, bool> OnGridClick;
     public static event Action OnExit;
     private void Awake()
     {
@@ -51,10 +51,11 @@ public class InputManager : MonoBehaviour
         return false;
     }
 
-    public bool ClickOnGrid(out string layer, out Vector3 pos)
+    public bool ClickOnGrid(out string layer, out Vector3 pos, out bool plane)
     {
         layer = "";
         pos = Vector3.zero;
+        plane = false;
         
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = _sceneCamera.nearClipPlane;
@@ -64,6 +65,7 @@ public class InputManager : MonoBehaviour
         {
             layer = LayerMask.LayerToName(hit.collider.gameObject.layer);
             pos = hit.point;
+            plane = Vector3.Dot(hit.normal, Vector3.up) > 0.8f;
             return true;
         }
         return false;
@@ -74,8 +76,9 @@ public class InputManager : MonoBehaviour
         if (IsPointerOverUI()) return;
         string layer;
         Vector3 pos;
-        if(ClickOnGrid(out layer, out pos))
-            OnGridClick?.Invoke(pos,layer);
+        bool plane;
+        if(ClickOnGrid(out layer, out pos, out plane))
+            OnGridClick?.Invoke(pos,layer,plane);
     }
 
     public void CancelAction()

@@ -19,15 +19,16 @@ public class TowerInfo : MonoBehaviour
     [SerializeField] TextMeshProUGUI _armorText;
     [SerializeField] TextMeshProUGUI _magicText;
 
+    [SerializeField] private Button _sellButton;
+
     public void SetData(Tower _tower)
     {
         _towerNameText.text = _tower.data.towerName;
         _towerIcon.sprite = _tower.data.icon;
-        _sellPriceText.text = _tower.data.price.ToString() + "<sprite=0>";
         
         _damageText.text = _tower.baseDamage.ToString();
-        _fireRateText.text = _tower.fireRate.ToString();
-        _rangeText.text = _tower.range.ToString();
+        _fireRateText.text = _tower.fireRate.ToString("F1");
+        _rangeText.text = _tower.range.ToString("F1");
         _healthText.text = "x" + _tower.normalPenetration;
         _armorText.text = "x" + _tower.armorPenetration;
         _magicText.text = "x" + _tower.magicArmorPenetration;
@@ -38,6 +39,18 @@ public class TowerInfo : MonoBehaviour
         LayoutRebuilder.ForceRebuildLayoutImmediate(_healthText.rectTransform);
         LayoutRebuilder.ForceRebuildLayoutImmediate(_armorText.rectTransform);
         LayoutRebuilder.ForceRebuildLayoutImmediate(_magicText.rectTransform);
+
+        if (_tower.data.towerName == "Purifier")
+        {
+            _sellPriceText.text = "Can't be sold";
+            _sellButton.interactable = false;
+        }
+        else
+        {
+            _sellPriceText.text = _tower.data.price + "<sprite=0>";
+            _sellButton.interactable = true;
+        }
+            
     }
     
     

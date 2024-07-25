@@ -93389,7 +93389,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -69.10003, y: 3.566059}
+  m_AnchoredPosition: {x: -95.9, y: 3.566059}
   m_SizeDelta: {x: 104.16901, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1745329129
@@ -114039,6 +114039,7 @@ MonoBehaviour:
   _healthText: {fileID: 1363793544}
   _armorText: {fileID: 905404884}
   _magicText: {fileID: 1826402986}
+  _sellButton: {fileID: 5679350359889973937}
 --- !u!114 &7411578046460131354
 MonoBehaviour:
   m_ObjectHideFlags: 0

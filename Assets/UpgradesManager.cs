@@ -25,6 +25,21 @@ public class UpgradesManager : MonoBehaviour
         _magicUpgrade.SetData(tower.magicArmorLevel,"+" + _gameData.magicArmorMultiplier.ToString("F1"),CalculatePrice(_gameData.upgradeBasePriceMagicArmor,tower.magicArmorLevel));
         _fireRateUpgrade.SetData(tower.fireRateLevel,"+" + (int)(_gameData.fireRateMultiplier*100)+"%",CalculatePrice(_gameData.upgradeBasePriceFireRate,tower.fireRateLevel));
         _rangeUpgrade.SetData(tower.rangeLevel,"+" + (int)(_gameData.rangeMultiplier*100)+"%",CalculatePrice(_gameData.upgradeBasePriceFireRate,tower.fireRateLevel));
+
+        if (tower.data.towerName == "Purifier")
+        {
+            _healthUpgrade.gameObject.SetActive(false);
+            _armorUpgrade.gameObject.SetActive(false);
+            _magicUpgrade.gameObject.SetActive(false);
+            _fireRateUpgrade.gameObject.SetActive(false);
+        }
+        else
+        {
+            _healthUpgrade.gameObject.SetActive(true);
+            _armorUpgrade.gameObject.SetActive(true);
+            _magicUpgrade.gameObject.SetActive(true);
+            _fireRateUpgrade.gameObject.SetActive(true);
+        }
     }
 
     private int CalculatePrice(int basePrice, int levels)

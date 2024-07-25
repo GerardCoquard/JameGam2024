@@ -51,12 +51,12 @@ public class CardShop : MonoBehaviour
         placing = false;
     }
 
-    private void CheckPlacement(Vector3 pos, string layer)
+    private void CheckPlacement(Vector3 pos, string layer, bool plane)
     {
         EndTowerPlacement();
         if (_cardData.towerName == "Purifier")
         {
-            if (layer != "Ground" && layer != "PurifiedGround")
+            if ((layer != "Ground" && layer != "PurifiedGround") || !plane)
             {
                 UISpawner.instance.SpawnTextWithColor(GridManager.instance.WorldPosToGridPos(pos),"Can't place here!", Color.white);
                 return;
@@ -66,7 +66,7 @@ public class CardShop : MonoBehaviour
         }
         else
         {
-            if (layer != "PurifiedGround")
+            if (layer != "PurifiedGround" || !plane)
             {
                 UISpawner.instance.SpawnTextWithColor(GridManager.instance.WorldPosToGridPos(pos),"Can't place here!", Color.white);
                 return;

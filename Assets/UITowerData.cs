@@ -16,7 +16,7 @@ public class UITowerData : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void CheckIfTowerSelected(Vector3 pos, string layer)
+    private void CheckIfTowerSelected(Vector3 pos, string layer, bool plane)
     {
         if (layer != "Wizards")
             DeselectTower();
