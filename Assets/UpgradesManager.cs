@@ -44,6 +44,7 @@ public class UpgradesManager : MonoBehaviour
 
     private int CalculatePrice(int basePrice, int levels)
     {
-        return (int)(basePrice + (basePrice * levels * _gameData.priceMultiplier));
+        return (int)Mathf.Pow(_gameData.priceMultiplier, levels+1) * basePrice;
+        //return (int)(basePrice + (basePrice * levels * _gameData.priceMultiplier));
     }
 }
