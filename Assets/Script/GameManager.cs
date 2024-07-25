@@ -19,6 +19,12 @@ public static class GameManager
             towerData.Add(tower.name,tower);
         }
     }
+    
+    public static void Reset()
+    {
+        currency = 0;
+        OnCurrencyChanged = null;
+    }
 
     public static void AddCurrency(int amount)
     {

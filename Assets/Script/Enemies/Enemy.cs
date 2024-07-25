@@ -41,6 +41,12 @@ public class Enemy : MonoBehaviour
     {
         
     }
+    
+    private void OnDestroy()
+    {
+        OnSetHealth = null;
+        OnHealthChanged = null;
+    }
     public void DamageEnemy(Tower tower,float dañoRestante)
     {            
         if (!isAlive) return;

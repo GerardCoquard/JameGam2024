@@ -38,7 +38,6 @@ public class SlowEnemy : MonoBehaviour
     {
         if (!other.transform.parent.GetComponent<MoveEnemie>().slowed)
         {
-            Debug.Log("a");
             other.transform.parent.GetComponent<MoveEnemie>().speed /= slowMultiplier;
             other.transform.parent.GetComponent<MoveEnemie>().slowed = true;
         }

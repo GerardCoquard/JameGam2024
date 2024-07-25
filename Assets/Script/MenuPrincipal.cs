@@ -13,7 +13,7 @@ public class MenuPrincipal : MonoBehaviour
     bool canrotate = true;
     void Start()
     {
-        
+        Time.timeScale = 1;
     }
     public void StartGame()
     {

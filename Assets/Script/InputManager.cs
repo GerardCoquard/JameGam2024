@@ -19,6 +19,11 @@ public class InputManager : MonoBehaviour
     {
         instance = this;
     }
+    private void OnDestroy()
+    {
+        OnGridClick = null;
+        OnExit = null;
+    }
 
     private void Update()
     {

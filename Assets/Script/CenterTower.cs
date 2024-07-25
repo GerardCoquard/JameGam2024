@@ -17,6 +17,10 @@ public class CenterTower : MonoBehaviour
         _amountDisplay.InitializeAll(_health,0,0, _health, (float)_health/_segments);
         currentHealth = _health;
     }
+    private void OnDestroy()
+    {
+        OnGameOver = null;
+    }
 
     private void OnTriggerEnter(Collider other)
     {

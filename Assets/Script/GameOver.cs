@@ -17,6 +17,14 @@ public class GameOver : MonoBehaviour
         instance = this;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Activate();///////////////
+        }
+    }
+
     public void Activate()
     {
         StartCoroutine(WaitFor());
@@ -29,6 +37,7 @@ public class GameOver : MonoBehaviour
 
     public void PlayAgain()
     {
+        GameManager.Reset();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

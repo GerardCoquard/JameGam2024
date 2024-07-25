@@ -23,7 +23,7 @@ public class WaveManager : MonoBehaviour
 
     public List<WaveData> waves;
     public int loopFirstWaveIndex;
-    [FormerlySerializedAs("levelsToIncreaseDifficulty")] public int wavesToIncreaseDifficulty;
+    public int wavesToIncreaseDifficulty;
     [SerializeField] GameObject _buttonNextRound;
 
     private int currentwaveIndex = 0;
@@ -33,6 +33,10 @@ public class WaveManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
+    private void OnDestroy()
+    {
+        OnWaveEnd = null;
     }
 
     public void CheckIfWaveEnded()
