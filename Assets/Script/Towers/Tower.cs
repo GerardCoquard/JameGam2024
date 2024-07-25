@@ -96,7 +96,7 @@ public class Tower : MonoBehaviour
     public void AddLevelFireRate()
     {
         fireRateLevel++;
-        fireRate = baseFireRate - GameManager.gameData.attackSpeedMultiplier * fireRateLevel;
+        fireRate = baseFireRate + GameManager.gameData.attackSpeedMultiplier * fireRateLevel;
         OnStatChanged?.Invoke();
     }
     public void AddLevelRange()

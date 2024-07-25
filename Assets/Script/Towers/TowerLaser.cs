@@ -25,7 +25,7 @@ public class TowerLaser : Tower
         if(enemy != null)
         {           
             float distance = Vector3.Distance(enemy.position, bulletInstantiatePoint.position);
-            if (distance <= baseRange && timer >= baseFireRate)
+            if (distance <= range && timer >= 1 / fireRate)
             {
                 GameObject bullet = GameObject.Instantiate(bulletPrefab, bulletInstantiatePoint.position, Quaternion.identity);
                 bullet.transform.GetChild(0).GetChild(0).GetComponent<ActivateAreaDamage>().SetVariables(baseDamage, this);

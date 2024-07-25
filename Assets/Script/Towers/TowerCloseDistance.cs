@@ -22,7 +22,7 @@ public class TowerCloseDistance : Tower
         if(enemy != null)
         {
             float distance = Vector3.Distance(enemy.position, transform.position);
-            if (distance <= range && timer >= fireRate)
+            if (distance <= range && timer >= 1 / fireRate)
             {
                 GameObject bullet = GameObject.Instantiate(bulletPrefab, instantiatePoint.position, Quaternion.Euler(-90,0,0));
 

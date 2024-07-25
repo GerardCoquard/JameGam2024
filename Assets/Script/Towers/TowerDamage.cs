@@ -26,7 +26,7 @@ public class TowerDamage : Tower
         if(enemy != null)
         {
             float distance = Vector3.Distance(enemy.position, bulletInstantiatePoint.position);
-            if (distance <= range && timer >= fireRate)
+            if (distance <= range && timer >= 1 / fireRate)
             {
                 GameObject bullet = GameObject.Instantiate(bulletPrefab, bulletInstantiatePoint.position, Quaternion.identity);
                 particleSystem = bullet.GetComponent<ParticleSystem>();

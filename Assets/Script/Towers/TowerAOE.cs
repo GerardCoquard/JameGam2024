@@ -20,7 +20,7 @@ public class TowerAOE : Tower
         if(enemy != null)
         {
             float distance = Vector3.Distance(enemy.position, transform.position);
-            if (distance <= baseRange && timer >= baseFireRate)
+            if (distance <= range && timer >= 1/fireRate)
             {
                 GameObject bullet = GameObject.Instantiate(bulletPrefab, enemy.position, Quaternion.identity);
                 timer = 0;
