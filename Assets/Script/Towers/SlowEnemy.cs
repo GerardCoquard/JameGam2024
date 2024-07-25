@@ -19,7 +19,10 @@ public class SlowEnemy : MonoBehaviour
         if(transform.localScale != anteriorScale)
         {
             anteriorScale = transform.localScale;
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, transform.localScale.x/2);
+            float scale = transform.localScale.x/ 2;
+
+
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, scale);
             foreach (var hitCollider in hitColliders)
             {
                 if(hitCollider.gameObject.layer == LayerMask.NameToLayer("Ground"))

@@ -71,6 +71,6 @@ Material:
     - _borderWidth: 1.58
     - _intersectDepth: 1.59
     m_Colors:
-    - _Color: {r: 0.53333336, g: 1, b: 0.6392157, a: 1}
+    - _Color: {r: 0.8632076, g: 0.9333281, b: 1, a: 0.7019608}
     - _ColorIntersect: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []

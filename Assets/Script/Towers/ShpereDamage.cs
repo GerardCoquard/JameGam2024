@@ -4,10 +4,21 @@ using UnityEngine;
 
 public class ShpereDamage : MonoBehaviour
 {
-    public int damage;
+    float baseDamage;
+    Tower tower;
     private void OnTriggerEnter(Collider other)
     {
-        //other.transform.parent.GetComponent<Enemy>().DamageEnemy(damage);
+        other.transform.parent.GetComponent<Enemy>().DamageEnemy(tower, baseDamage);
+    }
+    public void SetVariables(float _baseDamage, Tower _tower)
+    {
+        baseDamage = _baseDamage;
+        tower = _tower;
+        if (GetComponent<CapsuleCollider>() != null)
+        {
+            GetComponent<CapsuleCollider>().enabled = true;
+        }
+        GetComponent<CapsuleCollider>().radius = _tower.range;
     }
     // Start is called before the first frame update
     void Start()

@@ -1,5 +1,109 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3144601275381931022
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4108987259875124679}
+    m_Modifications:
+    - target: {fileID: 1745979753405441087, guid: 1b156f5f07184b443b756edb6298a0ac,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3748932
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745979753405441087, guid: 1b156f5f07184b443b756edb6298a0ac,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2496439
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745979753405441087, guid: 1b156f5f07184b443b756edb6298a0ac,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3748932
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745979753405441087, guid: 1b156f5f07184b443b756edb6298a0ac,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745979753405441087, guid: 1b156f5f07184b443b756edb6298a0ac,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745979753405441087, guid: 1b156f5f07184b443b756edb6298a0ac,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745979753405441087, guid: 1b156f5f07184b443b756edb6298a0ac,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745979753405441087, guid: 1b156f5f07184b443b756edb6298a0ac,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745979753405441087, guid: 1b156f5f07184b443b756edb6298a0ac,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745979753405441087, guid: 1b156f5f07184b443b756edb6298a0ac,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745979753405441087, guid: 1b156f5f07184b443b756edb6298a0ac,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745979753405441087, guid: 1b156f5f07184b443b756edb6298a0ac,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745979753405441087, guid: 1b156f5f07184b443b756edb6298a0ac,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2138304594245714567, guid: 1b156f5f07184b443b756edb6298a0ac,
+        type: 3}
+      propertyPath: m_Name
+      value: HealSlowSphere (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2438043467453036819, guid: 1b156f5f07184b443b756edb6298a0ac,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.18296301
+      objectReference: {fileID: 0}
+    - target: {fileID: 2438043467453036819, guid: 1b156f5f07184b443b756edb6298a0ac,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.18296297
+      objectReference: {fileID: 0}
+    - target: {fileID: 2438043467453036819, guid: 1b156f5f07184b443b756edb6298a0ac,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.18296297
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1b156f5f07184b443b756edb6298a0ac, type: 3}
+--- !u!4 &3718048490562009137 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1745979753405441087, guid: 1b156f5f07184b443b756edb6298a0ac,
+    type: 3}
+  m_PrefabInstance: {fileID: 3144601275381931022}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3892012910043162562
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -159,6 +263,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3569538538827808809}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 35fd30cade9960d4c8020ef5acd6e70a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3718048490562009137}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 35fd30cade9960d4c8020ef5acd6e70a,
         type: 3}

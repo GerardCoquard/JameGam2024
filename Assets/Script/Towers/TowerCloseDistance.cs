@@ -25,8 +25,7 @@ public class TowerCloseDistance : Tower
             if (distance <= range && timer >= 1 / fireRate)
             {
                 GameObject bullet = GameObject.Instantiate(bulletPrefab, instantiatePoint.position, Quaternion.Euler(-90,0,0));
-
-                enemy.GetComponent<Enemy>().DamageEnemy(this,baseDamage);
+                bullet.GetComponent<ShpereDamage>().SetVariables(baseDamage, this);
 
                 bullet.GetComponent<CapsuleCollider>().radius = range;
                 var shape = bullet.GetComponent<ParticleSystem>().shape;
