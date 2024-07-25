@@ -12,10 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c807f13131cd9c140921211d76a187b6, type: 3}
   m_Name: WaveInicial
   m_EditorClassIdentifier: 
-  gate1Enemies:
-  - {fileID: 11400000, guid: a8dcf3d9ffc599941b172c507465619e, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
+  gate1Enemies: []
   gate2Enemies: []
   gate3Enemies: []
   gate4Enemies: []

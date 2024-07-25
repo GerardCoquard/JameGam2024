@@ -9,11 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c807f13131cd9c140921211d76a187b6, type: 3}
-  m_Name: Wave 4
+  m_Script: {fileID: 11500000, guid: ac1c0a2efca19f54a8e94ed4a62a02ce, type: 3}
+  m_Name: NormalSmall
   m_EditorClassIdentifier: 
-  gate1Enemies: []
-  gate2Enemies: []
-  gate3Enemies: []
-  gate4Enemies: []
-  gate5Enemies: []
+  health: 10
+  armor: 0
+  magicArmor: 0
+  speed: 7
+  damage: 1
+  currency: 0
+  EnemyPrefab: {fileID: 2313376042682091804, guid: 257283217a4cb6445a8dc68b8363108b,
+    type: 3}

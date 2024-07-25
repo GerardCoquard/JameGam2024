@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac1c0a2efca19f54a8e94ed4a62a02ce, type: 3}
-  m_Name: Enemy3
+  m_Name: ArmorBig
   m_EditorClassIdentifier: 
-  damage: 4
-  health: 50
-  armor: 30
-  magicArmor: 20
+  health: 0
+  armor: 500
+  magicArmor: 0
   speed: 1
+  damage: 4
   currency: 0
-  EnemyPrefab: {fileID: 4603508513982724644, guid: 94162db2456697941ae8697316e416a7,
+  EnemyPrefab: {fileID: 4603508513982724644, guid: 08ee304ce0d704d4b8c72541e3e03210,
     type: 3}

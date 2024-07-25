@@ -29,7 +29,7 @@ MonoBehaviour:
   armorMultiplier: 0.1
   magicArmorMultiplier: 0.1
   fireRateMultiplier: 0.1
-  rangeMultiplier: 0.1
+  rangeMultiplier: 0.15
   spawnTimeBetweenEnemies: 0.5
   enemyStatsMultiplier: 1.2
   healthSegmentAmount: 10
