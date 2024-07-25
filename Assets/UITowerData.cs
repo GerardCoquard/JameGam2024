@@ -68,7 +68,7 @@ public class UITowerData : MonoBehaviour
     
     public void UpgradeHealth()
     {
-        int price = _upgradesManager.CalculatePrice(GameManager.gameData.upgradeBasePriceNormal, _tower.normalLevel);
+        int price = _upgradesManager.CalculatePrice(GameManager.gameData.upgradeBasePriceNormal, _upgradesManager.GetLevelsTotal(_tower));
         if (GameManager.HaveCurrency(price))
         {
             _tower.AddLevelNormal();
@@ -80,7 +80,7 @@ public class UITowerData : MonoBehaviour
     
     public void UpgradeArmor()
     {
-        int price = _upgradesManager.CalculatePrice(GameManager.gameData.upgradeBasePriceArmor, _tower.armorLevel);
+        int price = _upgradesManager.CalculatePrice(GameManager.gameData.upgradeBasePriceArmor, _upgradesManager.GetLevelsTotal(_tower));
         if (GameManager.HaveCurrency(price))
         {
             _tower.AddLevelArmor();
@@ -92,7 +92,7 @@ public class UITowerData : MonoBehaviour
     
     public void UpgradeMagic()
     {
-        int price = _upgradesManager.CalculatePrice(GameManager.gameData.upgradeBasePriceMagicArmor, _tower.magicArmorLevel);
+        int price = _upgradesManager.CalculatePrice(GameManager.gameData.upgradeBasePriceMagicArmor, _upgradesManager.GetLevelsTotal(_tower));
         if (GameManager.HaveCurrency(price))
         {
             _tower.AddLevelmagicArmor();
