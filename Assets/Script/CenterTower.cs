@@ -11,9 +11,11 @@ public class CenterTower : MonoBehaviour
     private int currentHealth;
     private bool gameOver;
     public static Action OnGameOver;
+    public AudioSource audioSource;
 
     private void Awake()
     {
+        audioSource.PlayOneShot(audioSource.clip);
         _amountDisplay.InitializeAll(_health,0,0, _health, (float)_health/_segments);
         currentHealth = _health;
     }

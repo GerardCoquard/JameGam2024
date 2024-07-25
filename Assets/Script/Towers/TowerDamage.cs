@@ -48,6 +48,7 @@ public class TowerDamage : Tower
     {
         yield return new WaitForSeconds(0.2f);
         GameObject bullet = GameObject.Instantiate(bulletPrefab, bulletInstantiatePoint.position, Quaternion.identity);
+        audioSourceAction.PlayOneShot(audioSourceAction.clip);
         particleSystem = bullet.GetComponent<ParticleSystem>();
         Vector3 startPos = bullet.transform.position;
         float time = 0;

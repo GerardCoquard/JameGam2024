@@ -23,6 +23,7 @@ public class TowerAOE : Tower
             if (distance <= range && timer >= 1/fireRate)
             {
                 GameObject bullet = GameObject.Instantiate(bulletPrefab, enemy.position, Quaternion.identity);
+                audioSourceAction.PlayOneShot(audioSourceAction.clip);
                 timer = 0;
                 animator.SetTrigger("aoe");
                 StartCoroutine(FollowEnemy(bullet.transform, enemy.transform));
@@ -43,12 +44,11 @@ public class TowerAOE : Tower
         MoveEnemie enemyMove = enemy.GetComponent<MoveEnemie>();
         while (time < 3)
         {
-            if(enemy.gameObject == null)
+            if(enemy != null)
             {
-                yield return null;
+                time += Time.deltaTime;
+                bullet.position = enemyMove.publicPos;
             }
-            time += Time.deltaTime;
-            bullet.position = enemyMove.publicPos;
             yield return new WaitForEndOfFrame();
         }
     }

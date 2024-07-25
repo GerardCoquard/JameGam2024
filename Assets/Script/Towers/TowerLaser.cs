@@ -29,6 +29,7 @@ public class TowerLaser : Tower
             {
                 GameObject bullet = GameObject.Instantiate(bulletPrefab, bulletInstantiatePoint.position, Quaternion.identity);
                 bullet.transform.GetChild(0).GetChild(0).GetComponent<ActivateAreaDamage>().SetVariables(baseDamage, this);
+                audioSourceAction.PlayOneShot(audioSourceAction.clip);
                 animator.SetBool("laser", true);
                 bullet.transform.parent = bulletInstantiatePoint;
                 bullet.transform.localScale = new Vector3(1, 1, 1);

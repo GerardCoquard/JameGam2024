@@ -10,6 +10,7 @@ public class MenuPrincipal : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] GameObject sphere;
     [SerializeField] AnimationCurve fadeCurve;
+    public AudioSource audioSource;
     bool canrotate = true;
     void Start()
     {
@@ -17,6 +18,7 @@ public class MenuPrincipal : MonoBehaviour
     }
     public void StartGame()
     {
+        audioSource.PlayOneShot(audioSource.clip);
         StartCoroutine(AnimateCamera());
     }
     public void Quit()

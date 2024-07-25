@@ -8,6 +8,7 @@ public class TowerCloseDistance : Tower
     [SerializeField] AnimationCurve spawnCurve;
     float timer;
 
+
     private void Awake()
     {      
         timer = 0;
@@ -34,6 +35,7 @@ public class TowerCloseDistance : Tower
     void InstantiateBullet()
     {
         GameObject bullet = GameObject.Instantiate(bulletPrefab, instantiatePoint.position, Quaternion.Euler(-90, 0, 0));
+        audioSourceAction.PlayOneShot(audioSourceAction.clip);
         bullet.GetComponent<ShpereDamage>().SetVariables(baseDamage, this);
         bullet.GetComponent<CapsuleCollider>().radius = range;
         var shape = bullet.GetComponent<ParticleSystem>().shape;

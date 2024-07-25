@@ -40,11 +40,14 @@ public class Tower : MonoBehaviour
     protected Transform enemy;
     Transform mage;
     public Animator animator;
+    public AudioSource audioSource;
+    public AudioSource audioSourceAction;
 
     [HideInInspector]
     bool isAlive = true;
     public virtual void StartTower()
     {
+        audioSource.PlayOneShot(audioSource.clip);
         baseFireRate = data.fireRate;
         baseRange = data.range;
         startEffect = data.startEffect;
