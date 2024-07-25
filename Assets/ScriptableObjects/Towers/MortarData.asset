@@ -21,7 +21,7 @@ MonoBehaviour:
   price: 500
   range: 15
   fireRate: 0.1
-  baseDamage: 50
+  baseDamage: 40
   normalBase: 1
   armorBase: 0.2
   magicArmorBase: 0.2
