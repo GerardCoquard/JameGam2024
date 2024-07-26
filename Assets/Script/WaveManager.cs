@@ -29,6 +29,7 @@ public class WaveManager : MonoBehaviour
     private int currentwaveIndex = 0;
     private int loops = 0;
     private bool spawning;
+    private bool gameStarted;
 
     private void Awake()
     {
@@ -39,16 +40,10 @@ public class WaveManager : MonoBehaviour
         OnWaveEnd = null;
     }
 
-    public void CheckIfWaveEnded()
+    private void Update()
     {
-        if (spawning) return;
-        StopAllCoroutines();
-        StartCoroutine(CheckEnemiesAlive());
-    }
-
-    IEnumerator CheckEnemiesAlive()
-    {
-        yield return new WaitForSeconds(0.5f);
+        if(spawning || _buttonNextRound.activeInHierarchy || !gameStarted) return;
+        
         if (FindObjectsOfType<Enemy>().Length <= 0)
         {
             OnWaveEnd?.Invoke();
@@ -56,6 +51,12 @@ public class WaveManager : MonoBehaviour
         }
     }
 
+    public void CheckIfWaveEnded()
+    {
+        gameStarted = true;
+    }
+
+    
     public void SpawnWave()
     {
         _buttonNextRound.SetActive(false);

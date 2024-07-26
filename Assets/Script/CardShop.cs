@@ -49,7 +49,7 @@ public class CardShop : MonoBehaviour
         if(!placing) return;
         InputManager.OnExit -= EndTowerPlacement;
         InputManager.OnGridClick -= CheckPlacement;
-        PlaceHolder.instance.Hide();//
+        PlaceHolder.instance.Hide();
         placing = false;
     }
 

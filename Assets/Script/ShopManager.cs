@@ -49,7 +49,6 @@ public class ShopManager : MonoBehaviour
 
     public void UnselectAllCards()
     {
-        //EventSystem.current.SetSelectedGameObject(null);
         foreach (CardShop card in _cardShops)
         {
             card.EndTowerPlacement();

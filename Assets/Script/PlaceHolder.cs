@@ -43,7 +43,12 @@ public class PlaceHolder : MonoBehaviour
     {
         if (active) return;
         active = true;
-        StartCoroutine(PlaceHolderFollowCursor());
+    }
+
+    private void Update()
+    {
+        if(active)
+            FollowCursor();
     }
 
     public void Hide()
@@ -52,14 +57,5 @@ public class PlaceHolder : MonoBehaviour
         active = false;
         _cube.SetActive(false);
         StopAllCoroutines();
-    }
-
-    IEnumerator PlaceHolderFollowCursor()
-    {
-        while (true)
-        {
-            FollowCursor();
-            yield return null;
-        }
     }
 }
