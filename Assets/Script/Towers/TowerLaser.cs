@@ -15,42 +15,28 @@ public class TowerLaser : Tower
     {      
         timer = 0;
     }
-    public override void StartTower()
-    {
-        base.StartTower();
-    }
-    public override void Action()
-    {
-        base.Action();
-        if(enemy != null)
-        {           
-            float distance = Vector3.Distance(enemy.position, bulletInstantiatePoint.position);
-            if (distance <= range && timer >= 1 / fireRate)
-            {
-                GameObject bullet = GameObject.Instantiate(bulletPrefab, bulletInstantiatePoint.position, Quaternion.identity);
-                bullet.transform.GetChild(0).GetChild(0).GetComponent<ActivateAreaDamage>().SetVariables(baseDamage, this);
-                audioSourceAction.PlayOneShot(audioSourceAction.clip);
-                animator.SetBool("laser", true);
-                bullet.transform.parent = bulletInstantiatePoint;
-                bullet.transform.localScale = new Vector3(1, 1, 1);
-                timer = 0;
-                StartCoroutine(MoveBullet(distance, enemy, bullet.transform));
-            }
-        }
-        
-        timer += Time.deltaTime;
-
-    }
+    // public override void Action()
+    // {
+    //     if(target != null)
+    //     {           
+    //         float distance = Vector3.Distance(target.position, bulletInstantiatePoint.position);
+    //         if (distance <= range && timer >= 1 / fireRate)
+    //         {
+    //             GameObject bullet = GameObject.Instantiate(bulletPrefab, bulletInstantiatePoint.position, Quaternion.identity);
+    //             bullet.transform.GetChild(0).GetChild(0).GetComponent<ActivateAreaDamage>().SetVariables(damage, this);
+    //             audioSourceAction.PlayOneShot(audioSourceAction.clip);
+    //             animator.SetBool("laser", true);
+    //             bullet.transform.parent = bulletInstantiatePoint;
+    //             bullet.transform.localScale = new Vector3(1, 1, 1);
+    //             timer = 0;
+    //             StartCoroutine(MoveBullet(distance, target, bullet.transform));
+    //         }
+    //     }
+    //     
+    //     timer += Time.deltaTime;
+    //
+    // }
     
-    public override void EndTower()
-    {
-        base.EndTower();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        StartTower();
-    }
     IEnumerator MoveBullet(float distance,Transform enemy, Transform bullet)
     {
 
@@ -70,12 +56,5 @@ public class TowerLaser : Tower
         bullet.GetComponent<Animator>().SetTrigger("despawn");
         yield return new WaitForSeconds(1);
         Destroy(bullet.gameObject);
-    }
-    
-
-    // Update is called once per frame
-    void Update()
-    {
-        Action();
     }
 }

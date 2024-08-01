@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cde1b6e4008151948a3a33770197d841, type: 3}
-  m_Name: ProjectileData
+  m_Name: Laser
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1549295371099454538, guid: e4c5f88369ae08140acec35c31dfc40d, type: 3}
-  towerName: 'Projectile Wand '
-  icon: {fileID: 21300000, guid: 7c467ff3339064a46ad116b772f77e87, type: 3}
+  prefab: {fileID: 2117019168515414256, guid: 52272db1a71cfd040b7d52f26e31513c, type: 3}
+  towerName: Laser Wand
+  icon: {fileID: 21300000, guid: a55839dbe0012724fa674504118f6aab, type: 3}
   startEffect: {fileID: 0}
-  bullet: {fileID: 4821471289876582213, guid: 442ae4a363e5bea4c8849efcd0428f3c, type: 3}
+  bullet: {fileID: 8576772554056303866, guid: 85b2b77b927fa6148b86bb28c005dfdf, type: 3}
   endEffect: {fileID: 0}
-  price: 50
-  range: 10
-  fireRate: 0.5
-  baseDamage: 5
+  price: 150
+  range: 6
+  fireRate: 0.3
+  baseDamage: 15
   normalBase: 1
   armorBase: 0.2
   magicArmorBase: 0.2

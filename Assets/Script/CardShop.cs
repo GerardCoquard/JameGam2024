@@ -63,8 +63,7 @@ public class CardShop : MonoBehaviour
                 UISpawner.instance.SpawnTextWithColor(GridManager.instance.WorldPosToGridPos(pos),"Can't place here!", Color.white);
                 return;
             }
-            GameManager.RemoveCurrency(_cardData.price);
-            GridManager.instance.Add(pos,_cardData.prefab,Tile.Wizard);
+            AddTower(pos);
         }
         else
         {
@@ -73,8 +72,15 @@ public class CardShop : MonoBehaviour
                 UISpawner.instance.SpawnTextWithColor(GridManager.instance.WorldPosToGridPos(pos),"Can't place here!", Color.white);
                 return;
             }
-            GameManager.RemoveCurrency(_cardData.price);
-            GridManager.instance.Add(pos,_cardData.prefab,Tile.Wizard);
+            AddTower(pos);
         }
     }
+
+    private void AddTower(Vector3 pos)
+    {
+        GameManager.RemoveCurrency(_cardData.price);
+        Tower tower = GridManager.instance.Add(pos,_cardData.prefab,Tile.Wizard).GetComponentInChildren<Tower>();
+        tower.StartTower(_cardData);
+    }
+    
 }

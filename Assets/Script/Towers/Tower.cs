@@ -3,107 +3,129 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System;
+using UnityEngine.UI;
 
 public class Tower : MonoBehaviour
 {
     [HideInInspector]
-    protected float baseFireRate;
-    protected float baseRange;
-    protected GameObject startEffect;
-    protected GameObject bulletPrefab;
-    protected GameObject endEffect;
-    public int rangeLevel = 0;
-    public int fireRateLevel = 0;
-    public float baseDamage;
-    protected float baseNormal;
-    protected float baseArmor;
-    protected float baseMagicArmor;
-    public int normalLevel = 0;
-    public int armorLevel = 0;
-    public int magicArmorLevel = 0;
-    protected float actionRate;
-
-    public bool hasChangedRange = false;
-    protected float anteriorRange;
-
-    //variables definitivas
-    public float fireRate;
-    public float range;
+    //Final
+    public float damage;
     public float normalPenetration;
     public float armorPenetration;
     public float magicArmorPenetration;
-
-    public TowerData data;
+    public float fireRate;
+    public float range;
+    //Base
+    protected float baseNormal;
+    protected float baseArmor;
+    protected float baseMagicArmor;
+    protected float baseFireRate;
+    protected float baseRange;
+    //Levels
+    public int normalLevel = 0;
+    public int armorLevel = 0;
+    public int magicArmorLevel = 0;
+    public int rangeLevel = 0;
+    public int fireRateLevel = 0;
+    //Data
+    public int basePrice;
+    public string towerName;
+    public Sprite icon;
+    protected GameObject bulletPrefab;
+    //BaseTowerVars
+    protected float fireRateTimer;
+    [SerializeField] protected Transform bulletInstantiatePoint;
+    protected TargetSelector targetSelector;
+    public float animationDelay;
+    
+    
+    public bool hasChangedRange = false;
+    protected float anteriorRange;
+    
     public Action OnStatChanged;
-
-    protected List<Transform> enemyList;
-    protected Transform enemy;
+    
+    protected Transform target;
     Transform mage;
     public Animator animator;
     public AudioSource audioSource;
     public AudioSource audioSourceAction;
-
-    [HideInInspector]
     bool isAlive = true;
-    public virtual void StartTower()
+    public virtual void StartTower(TowerData data)
     {
         audioSource.PlayOneShot(audioSource.clip);
         baseFireRate = data.fireRate;
         baseRange = data.range;
-        startEffect = data.startEffect;
         bulletPrefab = data.bullet;
-        endEffect = data.endEffect;
-        baseDamage = data.baseDamage;
+        damage = data.baseDamage;
         baseNormal = data.normalBase;
         baseArmor = data.armorBase;
         baseMagicArmor = data.magicArmorBase;
-
+        basePrice = data.price;
+        towerName = data.towerName;
+        icon = data.icon;
+        
         fireRate = baseFireRate - GameManager.gameData.fireRateMultiplier * fireRateLevel;
         range = baseRange + baseRange * GameManager.gameData.rangeMultiplier * rangeLevel;
         normalPenetration = baseNormal + GameManager.gameData.normalMultiplier * normalLevel;
         armorPenetration = baseArmor + GameManager.gameData.armorMultiplier * armorLevel;
         magicArmorPenetration = baseMagicArmor + GameManager.gameData.magicArmorMultiplier * magicArmorLevel;
-        enemyList = new List<Transform>();
+        targetSelector.Initialize();
 
         GetComponent<CapsuleCollider>().radius = range;
+        targetSelector = GetComponent<TargetSelector>();
         mage = transform.GetChild(0);
     }
-    private void Update()
+    protected virtual void Update()
     {
-
-    }
-    public virtual void Action()
-    {
-        for (int i = 0; i < enemyList.Count; i++)
+        if(fireRateTimer < fireRate)
+            fireRateTimer += Time.deltaTime;
+        
+        target = targetSelector.GetTarget();
+        
+        if (target != null)
         {
-            if (enemyList[i] == null)
+            MageLookTarget();
+            if (fireRateTimer >= 1/fireRate)
             {
-                enemyList.RemoveAt(i);
-                i--;
+                StartCoroutine(Fire());
+                AnimationTrigger();
+                fireRateTimer = 0;
             }
         }
-        if (enemyList.Count != 0)
-        {
-            enemy = enemyList[0];
-            Vector3 targetDirection = enemy.position - mage.position;
-            targetDirection.y = 0;
-            targetDirection.Normalize();
-            Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-            targetRotation = Quaternion.Euler(0, targetRotation.eulerAngles.y, 0);
-            mage.rotation = targetRotation;
-        }
     }
-    public virtual void EndTower()
-    {
 
+    protected virtual IEnumerator Fire()
+    {
+        yield return new WaitForSeconds(animationDelay);
+        Instantiate(bulletPrefab, bulletInstantiatePoint.position, Quaternion.identity);
     }
+
+    protected virtual void AnimationTrigger()
+    {
+        animator.SetTrigger(towerName);
+    }
+    
+
+    protected virtual void MageLookTarget()
+    {
+        Vector3 targetDirection = target.position - mage.position;
+        targetDirection.y = 0;
+        targetDirection.Normalize();
+        Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+        targetRotation = Quaternion.Euler(0, targetRotation.eulerAngles.y, 0);
+        mage.rotation = targetRotation;
+    }
+    
+    
+    
+    //Levels
     public void AddLevelFireRate()
     {
         fireRateLevel++;
         fireRate = baseFireRate + GameManager.gameData.fireRateMultiplier * fireRateLevel;
         OnStatChanged?.Invoke();
     }
-    public void AddLevelRange()
+    public virtual void AddLevelRange()
     {
         rangeLevel++;
         anteriorRange = range;
@@ -124,12 +146,13 @@ public class Tower : MonoBehaviour
         armorPenetration = baseArmor + GameManager.gameData.armorMultiplier * armorLevel;
         OnStatChanged?.Invoke();
     }
-    public void AddLevelmagicArmor()
+    public void AddLevelMagicArmor()
     {
         magicArmorLevel++;
         magicArmorPenetration = baseMagicArmor + GameManager.gameData.magicArmorMultiplier * magicArmorLevel;
         OnStatChanged?.Invoke();
     }
+    //Damage
     public float CalculateDamageNormal(float dmg)
     {
         return dmg * normalPenetration;
@@ -142,8 +165,6 @@ public class Tower : MonoBehaviour
     {
         return dmg * magicArmorPenetration;
     }
-
-
     public float ArmorToBase(float dmg)
     {
         return dmg / armorPenetration;
@@ -151,14 +172,5 @@ public class Tower : MonoBehaviour
     public float MagicArmorToBase(float dmg)
     {
         return dmg / magicArmorPenetration;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        enemyList.Add(other.transform.parent);
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        enemyList.Remove(other.transform.parent);
     }
 }

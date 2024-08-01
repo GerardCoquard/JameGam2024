@@ -23,10 +23,10 @@ public class TowerInfo : MonoBehaviour
 
     public void SetData(Tower _tower)
     {
-        _towerNameText.text = _tower.data.towerName;
-        _towerIcon.sprite = _tower.data.icon;
+        _towerNameText.text = _tower.towerName;
+        _towerIcon.sprite = _tower.icon;
         
-        _damageText.text = _tower.baseDamage.ToString();
+        _damageText.text = _tower.damage.ToString();
         _fireRateText.text = _tower.fireRate.ToString("F1");
         _rangeText.text = _tower.range.ToString("F1");
         _healthText.text = "x" + _tower.normalPenetration;
@@ -40,14 +40,14 @@ public class TowerInfo : MonoBehaviour
         LayoutRebuilder.ForceRebuildLayoutImmediate(_armorText.rectTransform);
         LayoutRebuilder.ForceRebuildLayoutImmediate(_magicText.rectTransform);
 
-        if (_tower.data.towerName == "Purifier")
+        if (_tower.towerName == "Purifier")
         {
             _sellPriceText.text = "Can't be sold";
             _sellButton.interactable = false;
         }
         else
         {
-            _sellPriceText.text = _tower.data.price + "<sprite=0>";
+            _sellPriceText.text = _tower.basePrice + "<sprite=0>";
             _sellButton.interactable = true;
         }
             

@@ -4,39 +4,10 @@ using UnityEngine;
 
 public class TowerAOE : Tower
 {
-    float timer;
-
-    private void Awake()
-    {      
-        timer = 0;
-    }
-    public override void StartTower()
-    {
-        base.StartTower();
-    }
-    public override void Action()
-    {
-        base.Action();
-        if(enemy != null)
-        {
-            float distance = Vector3.Distance(enemy.position, transform.position);
-            if (distance <= range && timer >= 1/fireRate)
-            {
-                GameObject bullet = GameObject.Instantiate(bulletPrefab, enemy.position, Quaternion.identity);
-                audioSourceAction.PlayOneShot(audioSourceAction.clip);
-                timer = 0;
-                animator.SetTrigger("aoe");
-                StartCoroutine(FollowEnemy(bullet.transform, enemy.transform));
-                StartCoroutine(SetDmgToAbilitie(bullet));
-                Destroy(bullet, 3.1f);
-            }
-        }
-        timer += Time.deltaTime;
-    }
     IEnumerator SetDmgToAbilitie(GameObject bullet)
     {
         yield return new WaitForSeconds(1.2f);
-        bullet.GetComponent<ActivateAreaDamage>().SetVariables(baseDamage, this);
+        bullet.GetComponent<ActivateAreaDamage>().SetVariables(damage, this);
     }
     IEnumerator FollowEnemy(Transform bullet,Transform enemy)
     {
@@ -51,22 +22,5 @@ public class TowerAOE : Tower
             }
             yield return new WaitForEndOfFrame();
         }
-    }
-    public override void EndTower()
-    {
-        base.EndTower();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        StartTower();
-    }
-    
-    
-
-    // Update is called once per frame
-    void Update()
-    {
-        Action();
     }
 }

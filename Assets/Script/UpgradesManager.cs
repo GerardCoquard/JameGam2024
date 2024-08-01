@@ -26,7 +26,7 @@ public class UpgradesManager : MonoBehaviour
         _fireRateUpgrade.SetData(tower.fireRateLevel,"+" + (int)(_gameData.fireRateMultiplier*100)+"%",CalculatePrice(_gameData.upgradeBasePriceFireRate,tower.fireRateLevel));
         _rangeUpgrade.SetData(tower.rangeLevel,"+" + (int)(_gameData.rangeMultiplier*100)+"%",CalculatePrice(_gameData.upgradeBasePriceRange,tower.rangeLevel));
 
-        if (tower.data.towerName == "Purifier")
+        if (tower.towerName == "Purifier")
         {
             _healthUpgrade.gameObject.SetActive(false);
             _armorUpgrade.gameObject.SetActive(false);

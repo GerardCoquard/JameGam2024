@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cde1b6e4008151948a3a33770197d841, type: 3}
-  m_Name: MortarData
+  m_Name: Sniper
   m_EditorClassIdentifier: 
   prefab: {fileID: 5896961504954512035, guid: dcbe1c343176bc146b9b5705fd563762, type: 3}
   towerName: Sniper Wand

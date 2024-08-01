@@ -10,9 +10,9 @@ public class HealTerrainTower : Tower
     private void Awake()
     {            
     }
-    public override void StartTower()
+    public override void StartTower(TowerData data)
     {
-        base.StartTower();
+        base.StartTower(data);
         StartCoroutine(SpawnSphere());
     }
     IEnumerator SpawnSphere()
@@ -43,30 +43,13 @@ public class HealTerrainTower : Tower
             yield return new WaitForEndOfFrame();
         }
     }
-    public override void Action()
-    {
-        if (hasChangedRange)
-        {
-            hasChangedRange = false;
-            StopAllCoroutines();
-            StartCoroutine(MakeSphereBigger());
-        } 
-    }
-    
-    public override void EndTower()
-    {
-        base.EndTower();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        StartTower();
-    }
-    
-
-    // Update is called once per frame
-    void Update()
-    {
-        Action();
-    }
+    // public override void Action()
+    // {
+    //     if (hasChangedRange)
+    //     {
+    //         hasChangedRange = false;
+    //         StopAllCoroutines();
+    //         StartCoroutine(MakeSphereBigger());
+    //     } 
+    // }
 }

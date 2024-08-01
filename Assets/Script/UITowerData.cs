@@ -61,7 +61,7 @@ public class UITowerData : MonoBehaviour
 
     public void SellTower()
     {
-        GameManager.AddCurrency(_tower.data.price);
+        GameManager.AddCurrency(_tower.basePrice);
         DeselectTower();
         Destroy(_tower.gameObject);
     }
@@ -95,7 +95,7 @@ public class UITowerData : MonoBehaviour
         int price = _upgradesManager.CalculatePrice(GameManager.gameData.upgradeBasePriceMagicArmor, _upgradesManager.GetLevelsTotal(_tower));
         if (GameManager.HaveCurrency(price))
         {
-            _tower.AddLevelmagicArmor();
+            _tower.AddLevelMagicArmor();
             GameManager.RemoveCurrency(price);
         }
         else

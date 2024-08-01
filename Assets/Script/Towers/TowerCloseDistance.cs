@@ -4,60 +4,17 @@ using UnityEngine;
 
 public class TowerCloseDistance : Tower
 {
-    [SerializeField] Transform instantiatePoint;
-    [SerializeField] AnimationCurve spawnCurve;
-    float timer;
-
-
-    private void Awake()
-    {      
-        timer = 0;
-    }
-    public override void StartTower()
-    {
-        base.StartTower();
-    }
-    public override void Action()
-    {
-        base.Action();
-        if(enemy != null)
-        {
-            float distance = Vector3.Distance(enemy.position, transform.position);
-            if (distance <= range && timer >= 1 / fireRate)
-            {            
-                animator.SetTrigger("close");
-                Invoke("InstantiateBullet", 0.6f);
-                timer = 0;
-            }
-        }
-        timer += Time.deltaTime;
-    }
     void InstantiateBullet()
     {
-        GameObject bullet = GameObject.Instantiate(bulletPrefab, instantiatePoint.position, Quaternion.Euler(-90, 0, 0));
+        GameObject bullet = GameObject.Instantiate(bulletPrefab, bulletInstantiatePoint.position, Quaternion.Euler(-90, 0, 0));
         audioSourceAction.PlayOneShot(audioSourceAction.clip);
-        bullet.GetComponent<ShpereDamage>().SetVariables(baseDamage, this);
+        bullet.GetComponent<ShpereDamage>().SetVariables(damage, this);
         bullet.GetComponent<CapsuleCollider>().radius = range;
         var shape = bullet.GetComponent<ParticleSystem>().shape;
         shape.radius = range;
         
-        bullet.transform.parent = instantiatePoint;
+        bullet.transform.parent = bulletInstantiatePoint;
         bullet.transform.localPosition = Vector3.zero;
         Destroy(bullet.gameObject, 2f);
-    }
-    public override void EndTower()
-    {
-        base.EndTower();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        StartTower();
-    }    
-
-    // Update is called once per frame
-    void Update()
-    {
-        Action();
     }
 }
