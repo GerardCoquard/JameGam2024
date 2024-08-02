@@ -12,7 +12,7 @@ public class TowerAOE : Tower
     IEnumerator FollowEnemy(Transform bullet,Transform enemy)
     {
         float time = 0;
-        MoveEnemie enemyMove = enemy.GetComponent<MoveEnemie>();
+        MoveEnemy enemyMove = enemy.GetComponent<MoveEnemy>();
         while (time < 3)
         {
             if(enemy != null)

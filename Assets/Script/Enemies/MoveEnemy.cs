@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveEnemie : MonoBehaviour
+public class MoveEnemy : MonoBehaviour
 {
     public PathInfo pathInfo;
     float moveDistance = 0;

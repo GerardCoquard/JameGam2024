@@ -131,31 +131,31 @@ public class WaveManager : MonoBehaviour
             {
                 GameObject enemy = Instantiate(gate1Enemies[currentRound].EnemyPrefab, gate1.splineContainer.Spline.ToArray()[0].Position, Quaternion.identity);
                 InitializeEnemy(enemy.GetComponent<Enemy>(),gate1Enemies[currentRound]);
-                enemy.GetComponent<MoveEnemie>().pathInfo = gate1;
+                enemy.GetComponent<MoveEnemy>().pathInfo = gate1;
             }
             if (gate2Enemies.Count > currentRound)
             {
                 GameObject enemy = Instantiate(gate2Enemies[currentRound].EnemyPrefab, gate2.splineContainer.Spline.ToArray()[0].Position, Quaternion.identity);
                 InitializeEnemy(enemy.GetComponent<Enemy>(),gate2Enemies[currentRound]);
-                enemy.GetComponent<MoveEnemie>().pathInfo = gate2;
+                enemy.GetComponent<MoveEnemy>().pathInfo = gate2;
             }
             if (gate3Enemies.Count > currentRound)
             {
                 GameObject enemy = Instantiate(gate3Enemies[currentRound].EnemyPrefab, gate3.splineContainer.Spline.ToArray()[0].Position, Quaternion.identity);
                 InitializeEnemy(enemy.GetComponent<Enemy>(),gate3Enemies[currentRound]);
-                enemy.GetComponent<MoveEnemie>().pathInfo = gate3;
+                enemy.GetComponent<MoveEnemy>().pathInfo = gate3;
             }
             if (gate4Enemies.Count > currentRound)
             {
                 GameObject enemy = Instantiate(gate4Enemies[currentRound].EnemyPrefab, gate4.splineContainer.Spline.ToArray()[0].Position, Quaternion.identity);
                 InitializeEnemy(enemy.GetComponent<Enemy>(),gate4Enemies[currentRound]);
-                enemy.GetComponent<MoveEnemie>().pathInfo = gate4;
+                enemy.GetComponent<MoveEnemy>().pathInfo = gate4;
             }
             if (gate5Enemies.Count > currentRound)
             {
                 GameObject enemy = Instantiate(gate5Enemies[currentRound].EnemyPrefab, gate5.splineContainer.Spline.ToArray()[0].Position, Quaternion.identity);
                 InitializeEnemy(enemy.GetComponent<Enemy>(),gate5Enemies[currentRound]);
-                enemy.GetComponent<MoveEnemie>().pathInfo = gate5;
+                enemy.GetComponent<MoveEnemy>().pathInfo = gate5;
             }
             
             currentRound++;

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    float maxHealth;
-    float health;
+    int maxHealth;
+    int health;
     int damage;
-    float armor;
-    float magicArmor;
+    int armor;
+    int magicArmor;
     bool isAlive;
-    float currentHealth;
+    int currentHealth;
     int currency;
     [HideInInspector]
     public float speed;
@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     public static event SetHealth OnSetHealth;
     public static event HealthChanged OnHealthChanged;
     [SerializeField] AmountDisplay uiDisplay;
+    private MoveEnemy _moveEnemy;
 
     // Start is called before the first frame update
 
@@ -30,16 +31,12 @@ public class Enemy : MonoBehaviour
         this.magicArmor = magic;
         this.currency = currency;
         damage = enemyData.damage;
-        maxHealth = health + armor + magicArmor;
+        maxHealth = this.health + this.armor + this.magicArmor;
         currentHealth = maxHealth;
-        GetComponent<MoveEnemie>().speed = enemyData.speed;
+        GetComponent<MoveEnemy>().speed = enemyData.speed;
         isAlive = true;
-
+        _moveEnemy = GetComponent<MoveEnemy>();
         uiDisplay.InitializeAll(health,armor,magicArmor, maxHealth, GameManager.gameData.healthSegmentAmount);
-    }
-    void Start()
-    {
-        
     }
     
     private void OnDestroy()
@@ -47,58 +44,89 @@ public class Enemy : MonoBehaviour
         OnSetHealth = null;
         OnHealthChanged = null;
     }
-    public void DamageEnemy(Tower tower,float dañoRestante)
+    public void DamageEnemyDeprecated(Tower tower,float damageReceived)
     {            
         if (!isAlive) return;
 
         float previousHealth = currentHealth;
         if (magicArmor != 0)
         {
-            int magicArmorDmg = Mathf.RoundToInt(tower.CalculateDamageMagicArmor(dañoRestante));            
+            int magicArmorDmg = Mathf.RoundToInt(tower.CalculateDamageMagicArmor(damageReceived));
             currentHealth = Mathf.Clamp(currentHealth - magicArmorDmg, 0, maxHealth);
             if(health + armor >= currentHealth)
             {
-                dañoRestante = (health + armor) - currentHealth;
+                damageReceived = (health + armor) - currentHealth;
                 magicArmor = 0;
                 currentHealth = health + armor;
-                UIUpdateIComprovar(previousHealth);
-                dañoRestante = Mathf.RoundToInt(tower.MagicArmorToBase(dañoRestante));
-                DamageEnemy(tower, dañoRestante);
+                //CheckAlive(previousHealth);
+                damageReceived = Mathf.RoundToInt(tower.MagicArmorToBase(damageReceived));
+                DamageEnemy(tower, damageReceived);
                 return;
             }
-            UIUpdateIComprovar(previousHealth);
+            //CheckAlive(previousHealth);
             return;
         }
         else if(armor != 0)
         {
-            int armorDmg = Mathf.RoundToInt(tower.CalculateDamageArmor(dañoRestante));
+            int armorDmg = Mathf.RoundToInt(tower.CalculateDamageArmor(damageReceived));
             currentHealth = Mathf.Clamp(currentHealth - armorDmg, 0, maxHealth);
             if (health >= currentHealth)
             {
-                dañoRestante = (health) - currentHealth;
+                damageReceived = (health) - currentHealth;
                 armor = 0;
                 currentHealth = health;
-                UIUpdateIComprovar(previousHealth);
-                dañoRestante = Mathf.RoundToInt(tower.ArmorToBase(dañoRestante));
-                DamageEnemy(tower, dañoRestante);
+                //CheckAlive(previousHealth);
+                damageReceived = Mathf.RoundToInt(tower.ArmorToBase(damageReceived));
+                DamageEnemy(tower, damageReceived);
                 return;
             }
-            UIUpdateIComprovar(previousHealth);
+            //CheckAlive(previousHealth);
             return;
         }
         else
         {
-            int normalDmg = Mathf.RoundToInt(tower.CalculateDamageNormal(dañoRestante));
+            int normalDmg = Mathf.RoundToInt(tower.CalculateDamageNormal(damageReceived));
             currentHealth = Mathf.Clamp(currentHealth - normalDmg, 0, maxHealth);
-            UIUpdateIComprovar(previousHealth);
+            //CheckAlive(previousHealth);
         }
         
     }
-    void UIUpdateIComprovar(float previousHealth)
-    {
-        //Update UI
+    public void DamageEnemy(Tower tower,float damageReceived)
+    {            
+        if (!isAlive) return;
+
+        float previousHealth = currentHealth;
+        int excess;
+
+        if (magicArmor > 0)
+        {
+            int magicArmorDmg = Mathf.RoundToInt(tower.CalculateDamageMagicArmor(damageReceived));
+            excess = magicArmorDmg - magicArmor;
+            magicArmor = Mathf.Clamp(magicArmor - magicArmorDmg, 0, magicArmor);
+            damageReceived = Mathf.Clamp(tower.MagicArmorToBase(excess),0,damageReceived);
+        }
+
+        if (armor > 0 && damageReceived > 0)
+        {
+            int armorDmg = Mathf.RoundToInt(tower.CalculateDamageArmor(damageReceived));
+            excess = armorDmg - armor;
+            armor = Mathf.Clamp(armor - armorDmg, 0, armor);
+            damageReceived = Mathf.Clamp(tower.ArmorToBase(excess),0,damageReceived);
+        }
+        
+        if (health > 0 && damageReceived > 0)
+        {
+            int healthDmg = Mathf.RoundToInt(tower.CalculateDamageNormal(damageReceived));
+            health = Mathf.Clamp(health - healthDmg, 0, health);
+        }
+
+        currentHealth = health + armor + magicArmor;
         uiDisplay.SetFillsFollow(currentHealth, previousHealth);
-        //Comprobación de posible final de partida
+        CheckAlive();
+    }
+    
+    void CheckAlive()
+    {
         isAlive = currentHealth > 0;
         if (!isAlive)
         {
@@ -122,5 +150,25 @@ public class Enemy : MonoBehaviour
     {
         WaveManager.instance.CheckIfWaveEnded();
         Destroy(gameObject);
+    }
+
+    public float GetPathDistance()
+    {
+        return _moveEnemy.distanceToEnd;
+    }
+
+    public float GetHealth()
+    {
+        return health;
+    }
+    
+    public float GetArmor()
+    {
+        return armor;
+    }
+    
+    public float GetMagic()
+    {
+        return magicArmor;
     }
 }
