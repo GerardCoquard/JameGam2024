@@ -13,20 +13,24 @@ public class MoveEnemie : MonoBehaviour
     [SerializeField] AnimationCurve tiltCurve;
     [SerializeField] float durationtilt;
     public Vector3 publicPos;
+    public float distanceToEnd = 0;
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         moveDistance += speed * Time.deltaTime;
-        SplineRoadSample.SampleSpline(0, moveDistance / pathInfo.distance, out Vector3 pos, out Vector3 up,out Vector3 forward, pathInfo.splineContainer);
+        distanceToEnd = moveDistance / pathInfo.distance;
+        Debug.Log(distanceToEnd);
+        SplineRoadSample.SampleSpline(0, distanceToEnd, out Vector3 pos, out Vector3 up,out Vector3 forward, pathInfo.splineContainer);
         float time = (Time.time % durationJump) / durationJump;
         publicPos = pos;
         transform.position = new Vector3(pos.x, pos.y + jumpCurve.Evaluate(time),pos.z);
-        transform.forward = forward;
+        transform.forward = forward;      
     }
+    
 }
