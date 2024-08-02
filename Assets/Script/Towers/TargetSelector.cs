@@ -6,7 +6,7 @@ using UnityEngine;
 public class TargetSelector : MonoBehaviour
 {
     protected List<Enemy> enemyList;
-    public TargetBehaviour behaviour;
+    public TargetBehaviour behaviour = TargetBehaviour.First;
 
     public void Initialize()
     {
@@ -23,18 +23,23 @@ public class TargetSelector : MonoBehaviour
         switch (behaviour)
         {
             case TargetBehaviour.First:
+                return GetFirstEnemy();
                 break;
             
             case TargetBehaviour.Last:
+                return GetLastEnemy();
                 break;
             
             case TargetBehaviour.Health:
+                return GetMostHealthEnemy();
                 break;
             
             case TargetBehaviour.Armor:
+                return GetMostArmorEnemy();
                 break;
             
             case TargetBehaviour.Magic:
+                return GetMostMagicEnemy();
                 break;
             
             default:
@@ -126,6 +131,44 @@ public class TargetSelector : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         enemyList.Remove(other.GetComponentInParent<Enemy>());
+    }
+
+    public void ChangeBehaviour()
+    {
+        if (behaviour == TargetBehaviour.Magic)
+            behaviour = TargetBehaviour.First;
+        else
+            behaviour++;
+    }
+
+    public string GetBehaviour()
+    {
+        switch (behaviour)
+        {
+            case TargetBehaviour.First:
+                return "First";
+                break;
+            
+            case TargetBehaviour.Last:
+                return "Last";
+                break;
+            
+            case TargetBehaviour.Health:
+                return "<sprite=1>";
+                break;
+            
+            case TargetBehaviour.Armor:
+                return "<sprite=2>";
+                break;
+            
+            case TargetBehaviour.Magic:
+                return "<sprite=3>";
+                break;
+            
+            default:
+                return null;
+                break;
+        }
     }
 }
 
