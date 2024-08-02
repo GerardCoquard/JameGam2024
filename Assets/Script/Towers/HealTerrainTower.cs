@@ -18,7 +18,6 @@ public class HealTerrainTower : Tower
     IEnumerator SpawnSphere()
     {
         yield return new WaitForSeconds(0.2f);
-        audioSourceAction.PlayOneShot(audioSourceAction.clip);
         sphere = GameObject.Instantiate(sphereHealPrefab, transform.position, Quaternion.identity);
         Vector3 endScale = new Vector3(range*2, range*2, range*2);
         float time = 0;

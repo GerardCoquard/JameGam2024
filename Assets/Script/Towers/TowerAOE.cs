@@ -7,7 +7,7 @@ public class TowerAOE : Tower
     IEnumerator SetDmgToAbilitie(GameObject bullet)
     {
         yield return new WaitForSeconds(1.2f);
-        bullet.GetComponent<ActivateAreaDamage>().SetVariables(damage, this);
+        //bullet.GetComponent<ActivateAreaDamage>().SetVariables(damage, this);
     }
     IEnumerator FollowEnemy(Transform bullet,Transform enemy)
     {

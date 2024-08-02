@@ -34,7 +34,7 @@ public class Tower : MonoBehaviour
     protected GameObject bulletPrefab;
     //BaseTowerVars
     protected float fireRateTimer;
-    [SerializeField] protected Transform bulletInstantiatePoint;
+    public Transform bulletInstantiatePoint;
     protected TargetSelector targetSelector;
     public float animationDelay;
     
@@ -48,7 +48,6 @@ public class Tower : MonoBehaviour
     Transform mage;
     public Animator animator;
     public AudioSource audioSource;
-    public AudioSource audioSourceAction;
     bool isAlive = true;
     public virtual void StartTower(TowerData data)
     {
@@ -69,15 +68,15 @@ public class Tower : MonoBehaviour
         normalPenetration = baseNormal + GameManager.gameData.normalMultiplier * normalLevel;
         armorPenetration = baseArmor + GameManager.gameData.armorMultiplier * armorLevel;
         magicArmorPenetration = baseMagicArmor + GameManager.gameData.magicArmorMultiplier * magicArmorLevel;
-        targetSelector.Initialize();
 
         GetComponent<CapsuleCollider>().radius = range;
         targetSelector = GetComponent<TargetSelector>();
+        targetSelector.Initialize();
         mage = transform.GetChild(0);
     }
     protected virtual void Update()
     {
-        if(fireRateTimer < fireRate)
+        if(fireRateTimer < 1/fireRate)
             fireRateTimer += Time.deltaTime;
         
         target = targetSelector.GetTarget();
@@ -97,7 +96,8 @@ public class Tower : MonoBehaviour
     protected virtual IEnumerator Fire()
     {
         yield return new WaitForSeconds(animationDelay);
-        Instantiate(bulletPrefab, bulletInstantiatePoint.position, Quaternion.identity);
+        GameObject bullet = Instantiate(bulletPrefab, bulletInstantiatePoint.position, Quaternion.identity);
+        bullet.GetComponent<Bullet>().Action(this, target);
     }
 
     protected virtual void AnimationTrigger()

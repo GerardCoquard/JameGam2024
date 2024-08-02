@@ -25,7 +25,6 @@ public class MoveEnemy : MonoBehaviour
     {
         moveDistance += speed * Time.deltaTime;
         distanceToEnd = moveDistance / pathInfo.distance;
-        Debug.Log(distanceToEnd);
         SplineRoadSample.SampleSpline(0, distanceToEnd, out Vector3 pos, out Vector3 up,out Vector3 forward, pathInfo.splineContainer);
         float time = (Time.time % durationJump) / durationJump;
         publicPos = pos;
