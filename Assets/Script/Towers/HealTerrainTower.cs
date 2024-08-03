@@ -7,6 +7,14 @@ public class HealTerrainTower : Tower
     [SerializeField] GameObject sphereHealPrefab;
     [SerializeField] AnimationCurve animationCurve;
     GameObject sphere;
+    private void OnEnable()
+    {
+        OnStatChanged += ChangeSphere;
+    }
+    private void OnDisable()
+    {
+        OnStatChanged -= ChangeSphere;
+    }
     private void Awake()
     {            
     }
@@ -15,6 +23,7 @@ public class HealTerrainTower : Tower
         base.StartTower(data);
         StartCoroutine(SpawnSphere());
     }
+    
     IEnumerator SpawnSphere()
     {
         yield return new WaitForSeconds(0.2f);
@@ -31,7 +40,7 @@ public class HealTerrainTower : Tower
     }
     IEnumerator MakeSphereBigger()
     {
-        Vector3 startScale = new Vector3(anteriorRange*2, anteriorRange*2, anteriorRange*2);
+        Vector3 startScale = new Vector3(sphere.transform.localScale.x, sphere.transform.localScale.x, sphere.transform.localScale.x);
         Vector3 endScale = new Vector3(range*2, range*2, range*2);
         float time = 0;
         while (time < 1.5f)
@@ -42,13 +51,9 @@ public class HealTerrainTower : Tower
             yield return new WaitForEndOfFrame();
         }
     }
-    // public override void Action()
-    // {
-    //     if (hasChangedRange)
-    //     {
-    //         hasChangedRange = false;
-    //         StopAllCoroutines();
-    //         StartCoroutine(MakeSphereBigger());
-    //     } 
-    // }
+    public void ChangeSphere()
+    {
+        StopAllCoroutines();
+        StartCoroutine(MakeSphereBigger());
+    }
 }

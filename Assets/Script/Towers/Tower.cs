@@ -36,11 +36,7 @@ public class Tower : MonoBehaviour
     protected float fireRateTimer;
     public Transform bulletInstantiatePoint;
     protected TargetSelector targetSelector;
-    public float animationDelay;
-    
-    
-    public bool hasChangedRange = false;
-    protected float anteriorRange;
+    public float animationDelay;  
     
     public Action OnStatChanged;
     
@@ -128,11 +124,9 @@ public class Tower : MonoBehaviour
     public virtual void AddLevelRange()
     {
         rangeLevel++;
-        anteriorRange = range;
         range = baseRange + baseRange * GameManager.gameData.rangeMultiplier * rangeLevel;
         GetComponent<CapsuleCollider>().radius = range;
         OnStatChanged?.Invoke();
-        hasChangedRange = true;
     }
     public void AddLevelNormal()
     {

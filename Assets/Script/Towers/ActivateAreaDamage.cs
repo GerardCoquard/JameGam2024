@@ -5,10 +5,11 @@ using UnityEngine;
 public class ActivateAreaDamage : Bullet
 {
     [SerializeField] LayerMask layerMask;
-    Vector3 initialScale;
     Transform laser;
     BoxCollider boxCollider;
     [SerializeField] AnimationCurve laserCurve;
+    [SerializeField] Transform bulletEnd;
+    public float timeAnim = 1.5f;
     private void Awake()
     {
 
@@ -17,22 +18,20 @@ public class ActivateAreaDamage : Bullet
     {
         laser = transform.GetChild(0).GetChild(0);
         boxCollider = laser.GetComponent<BoxCollider>();
-        initialScale = new Vector3(1, 1, tower.range);
         transform.localEulerAngles = new Vector3(-80, 180, 0);
         StartCoroutine(MoveBullet());
     }
     IEnumerator MoveBullet()
     {
         transform.localScale = new Vector3(1, 1, 1);
-        Debug.Log(tower.bulletInstantiatePoint);
         transform.parent = tower.bulletInstantiatePoint;
         Vector3 startRot = new Vector3(-80, 180, 0);
         Vector3 endRot = new Vector3(20, 180, 0);
         float time = 0;
-        while (time < 1.5f)
+        while (time < timeAnim)
         {
             time += Time.deltaTime;
-            float percentageDuration = time / 1.5f;
+            float percentageDuration = time / timeAnim;
             transform.localEulerAngles = Vector3.Lerp(startRot, endRot, laserCurve.Evaluate(percentageDuration));
             yield return new WaitForEndOfFrame();
         }
@@ -51,23 +50,21 @@ public class ActivateAreaDamage : Bullet
         RaycastHit hit;
         if (Physics.Raycast(laser.parent.position, -laser.parent.forward, out hit, 1000f, layerMask))
         {           
-            if (Vector3.Distance(transform.position, hit.point) > tower.range*2)
+            if (Vector3.Distance(transform.position, hit.point) > tower.range)
             {
-                laser.parent.localScale = initialScale;
+                laser.parent.localScale = new Vector3(1, 1, tower.range * 2);
+                bulletEnd.localPosition = new Vector3(0, 0, -tower.range*4);
             }
             else
             {
-                laser.parent.localScale = new Vector3(laser.parent.localScale.x, laser.parent.localScale.y, Vector3.Distance(laser.parent.position, hit.point));
+                laser.parent.localScale = new Vector3(laser.parent.localScale.x, laser.parent.localScale.y, Vector3.Distance(laser.parent.position, hit.point)*2);
+                bulletEnd.position = hit.point;
             }
         }
         else
         {
-            laser.parent.localScale = initialScale;
+            bulletEnd.localPosition = new Vector3(0, 0, -tower.range*4);
+            laser.parent.localScale = new Vector3(1, 1, tower.range * 2);
         }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("damage");
-        other.transform.parent.GetComponent<Enemy>().DamageEnemy(tower,tower.damage);
     }
 }
