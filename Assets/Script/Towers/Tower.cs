@@ -111,8 +111,11 @@ public class Tower : MonoBehaviour
         targetRotation = Quaternion.Euler(0, targetRotation.eulerAngles.y, 0);
         mage.rotation = targetRotation;
     }
-    
-    
+
+    public TargetSelector GetTargetSelector()
+    {
+        return targetSelector;
+    }
     
     //Levels
     public void AddLevelFireRate()

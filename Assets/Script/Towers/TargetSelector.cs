@@ -5,56 +5,51 @@ using UnityEngine;
 
 public class TargetSelector : MonoBehaviour
 {
-    protected List<Enemy> enemyList;
+    private List<Enemy> _enemyList;
     public TargetBehaviour behaviour = TargetBehaviour.First;
 
     public void Initialize()
     {
-        enemyList = new List<Enemy>();
+        _enemyList = new List<Enemy>();
+        behaviour = TargetBehaviour.First;
     }
     
     public Transform GetTarget()
     {
         CleanList();
         
-        if (enemyList.Count <= 0)
+        if (_enemyList.Count <= 0)
             return null;
 
         switch (behaviour)
         {
             case TargetBehaviour.First:
                 return GetFirstEnemy();
-                break;
             
             case TargetBehaviour.Last:
                 return GetLastEnemy();
-                break;
             
             case TargetBehaviour.Health:
                 return GetMostHealthEnemy();
-                break;
             
             case TargetBehaviour.Armor:
                 return GetMostArmorEnemy();
-                break;
             
             case TargetBehaviour.Magic:
                 return GetMostMagicEnemy();
-                break;
             
             default:
                 return null;
-                break;
         }
     }
 
     private void CleanList()
     {
-        for (int i = 0; i < enemyList.Count; i++)
+        for (int i = 0; i < _enemyList.Count; i++)
         {
-            if (enemyList[i] == null)
+            if (_enemyList[i] == null)
             {
-                enemyList.RemoveAt(i);
+                _enemyList.RemoveAt(i);
                 i--;
             }
         }
@@ -62,75 +57,75 @@ public class TargetSelector : MonoBehaviour
 
     private Transform GetFirstEnemy()
     {
-        return enemyList.OrderBy(x => x.GetPathDistance()).ToList()[0].transform;
+        return _enemyList.OrderByDescending(x => x.GetPathDistance()).ToList()[0].transform;
     }
     
     private Transform GetLastEnemy()
     {
-        return enemyList.OrderByDescending(x => x.GetPathDistance()).ToList()[0].transform;
+        return _enemyList.OrderBy(x => x.GetPathDistance()).ToList()[0].transform;
     }
     
     private Transform GetMostHealthEnemy()
     {
-        enemyList.OrderBy(x => x.GetHealth());
-        for (int i = 0; i < enemyList.Count; i++)
+        _enemyList.OrderBy(x => x.GetHealth());
+        for (int i = 0; i < _enemyList.Count; i++)
         {
-            if (enemyList[i].GetHealth() <= 0)
+            if (_enemyList[i].GetHealth() <= 0)
                 continue;
             
-            if (enemyList[i].GetArmor() <= 0 && enemyList[i].GetMagic() <= 0)
-                return enemyList[i].transform;
+            if (_enemyList[i].GetArmor() <= 0 && _enemyList[i].GetMagic() <= 0)
+                return _enemyList[i].transform;
         }
 
-        if (enemyList[0].GetHealth() > 0)
-            return enemyList[0].transform;
+        if (_enemyList[0].GetHealth() > 0)
+            return _enemyList[0].transform;
         else
             return GetFirstEnemy();
     }
     
     private Transform GetMostArmorEnemy()
     {
-        enemyList.OrderBy(x => x.GetArmor());
-        for (int i = 0; i < enemyList.Count; i++)
+        _enemyList.OrderBy(x => x.GetArmor());
+        for (int i = 0; i < _enemyList.Count; i++)
         {
-            if (enemyList[i].GetArmor() <= 0)
+            if (_enemyList[i].GetArmor() <= 0)
                 continue;
             
-            if (enemyList[i].GetMagic() <= 0)
-                return enemyList[i].transform;
+            if (_enemyList[i].GetMagic() <= 0)
+                return _enemyList[i].transform;
         }
 
-        if (enemyList[0].GetArmor() > 0)
-            return enemyList[0].transform;
+        if (_enemyList[0].GetArmor() > 0)
+            return _enemyList[0].transform;
         else
             return GetFirstEnemy();
     }
     
     private Transform GetMostMagicEnemy()
     {
-        enemyList.OrderBy(x => x.GetMagic());
-        for (int i = 0; i < enemyList.Count; i++)
+        _enemyList.OrderBy(x => x.GetMagic());
+        for (int i = 0; i < _enemyList.Count; i++)
         {
-            if (enemyList[i].GetMagic() <= 0)
+            if (_enemyList[i].GetMagic() <= 0)
                 continue;
             
-            return enemyList[i].transform;
+            return _enemyList[i].transform;
         }
 
-        if (enemyList[0].GetMagic() > 0)
-            return enemyList[0].transform;
+        if (_enemyList[0].GetMagic() > 0)
+            return _enemyList[0].transform;
         else
             return GetFirstEnemy();
     }
     
     private void OnTriggerEnter(Collider other)
     {
-        enemyList.Add(other.GetComponentInParent<Enemy>());
+        _enemyList.Add(other.GetComponentInParent<Enemy>());
     }
     
     private void OnTriggerExit(Collider other)
     {
-        enemyList.Remove(other.GetComponentInParent<Enemy>());
+        _enemyList.Remove(other.GetComponentInParent<Enemy>());
     }
 
     public void ChangeBehaviour()
@@ -147,27 +142,12 @@ public class TargetSelector : MonoBehaviour
         {
             case TargetBehaviour.First:
                 return "First";
-                break;
             
             case TargetBehaviour.Last:
                 return "Last";
-                break;
-            
-            case TargetBehaviour.Health:
-                return "<sprite=1>";
-                break;
-            
-            case TargetBehaviour.Armor:
-                return "<sprite=2>";
-                break;
-            
-            case TargetBehaviour.Magic:
-                return "<sprite=3>";
-                break;
             
             default:
-                return null;
-                break;
+                return "More ";
         }
     }
 }
