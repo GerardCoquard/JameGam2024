@@ -92,7 +92,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 35fd30cade9960d4c8020ef5acd6e70a,
         type: 3}
       propertyPath: m_Name
-      value: TowerMinas
+      value: TorreMinas
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 35fd30cade9960d4c8020ef5acd6e70a,
         type: 3}
@@ -326,6 +326,7 @@ MonoBehaviour:
   myLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  heightPath: 0.3
 --- !u!4 &2219117117980698352 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 35fd30cade9960d4c8020ef5acd6e70a,

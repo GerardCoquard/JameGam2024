@@ -16,7 +16,7 @@ MonoBehaviour:
   towerName: Mine Wand
   icon: {fileID: 21300000, guid: 599151244003700498802669d69a680a, type: 3}
   startEffect: {fileID: 0}
-  bullet: {fileID: 3730366943269315480, guid: cec01941e316f9542b27cd0feefaee7f, type: 3}
+  bullet: {fileID: 2084696545908053364, guid: 174fff30d9330524c90723e741571d2b, type: 3}
   endEffect: {fileID: 0}
   price: 300
   range: 4

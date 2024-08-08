@@ -2895,6 +2895,7 @@ MonoBehaviour:
   colorHealth: {r: 0.25490198, g: 0.78431374, b: 0.28235295, a: 1}
   colorArmor: {r: 1, g: 0.9490196, b: 0.3529412, a: 1}
   colorMagic: {r: 0.8392157, g: 0.5137255, b: 1, a: 1}
+  targetGameObject: {fileID: 573283503740154324}
 --- !u!1 &5080247572182497031
 GameObject:
   m_ObjectHideFlags: 0
@@ -6578,7 +6579,7 @@ PrefabInstance:
     - target: {fileID: 5129411456039986268, guid: 50cc67fe3e31bf24db9707334c83672a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 92.968994
       objectReference: {fileID: 0}
     - target: {fileID: 5129411456039986268, guid: 50cc67fe3e31bf24db9707334c83672a,
         type: 3}
@@ -7007,7 +7008,7 @@ PrefabInstance:
     - target: {fileID: 5129411456039986268, guid: 50cc67fe3e31bf24db9707334c83672a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 92.968994
       objectReference: {fileID: 0}
     - target: {fileID: 5129411456039986268, guid: 50cc67fe3e31bf24db9707334c83672a,
         type: 3}
@@ -7249,7 +7250,7 @@ PrefabInstance:
     - target: {fileID: 5129411456039986268, guid: 50cc67fe3e31bf24db9707334c83672a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 92.968994
       objectReference: {fileID: 0}
     - target: {fileID: 5129411456039986268, guid: 50cc67fe3e31bf24db9707334c83672a,
         type: 3}
@@ -7491,7 +7492,7 @@ PrefabInstance:
     - target: {fileID: 5129411456039986268, guid: 50cc67fe3e31bf24db9707334c83672a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 90.654
       objectReference: {fileID: 0}
     - target: {fileID: 5129411456039986268, guid: 50cc67fe3e31bf24db9707334c83672a,
         type: 3}
@@ -8319,7 +8320,7 @@ PrefabInstance:
     - target: {fileID: 5129411456039986268, guid: 50cc67fe3e31bf24db9707334c83672a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 90.654
       objectReference: {fileID: 0}
     - target: {fileID: 5129411456039986268, guid: 50cc67fe3e31bf24db9707334c83672a,
         type: 3}
@@ -8718,7 +8719,7 @@ PrefabInstance:
     - target: {fileID: 5129411456039986268, guid: 50cc67fe3e31bf24db9707334c83672a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 90.654
       objectReference: {fileID: 0}
     - target: {fileID: 5129411456039986268, guid: 50cc67fe3e31bf24db9707334c83672a,
         type: 3}

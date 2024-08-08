@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8532fbbccc7e98d49b8ba1a8e053913f, type: 2}
+  - {fileID: 2100000, guid: 8f4d09a6c55587e448a11550a880db0e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 481536730137246018}
   - component: {fileID: 8442154639780806402}
   - component: {fileID: 7767101227655075192}
-  - component: {fileID: 8131526846504953788}
+  - component: {fileID: 6717997467549243392}
   m_Layer: 0
   m_Name: Mina
   m_TagString: Untagged
@@ -170,7 +170,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7f1e4ead0f06f9a4e9aee770a130a7ae, type: 2}
+  - {fileID: -876546973899608171, guid: 4439f38d1105139469ce33f9412b72f3, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -234,7 +234,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8131526846504953788
+--- !u!114 &6717997467549243392
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2084696545908053364}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0df2e1678507f74c80c12ce6ba708a9, type: 3}
+  m_Script: {fileID: 11500000, guid: 5edcb3da80abcfb4a9145f37a83f51ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tower: {fileID: 0}
