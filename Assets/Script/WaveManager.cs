@@ -8,6 +8,7 @@ public class WaveManager : MonoBehaviour
 {
     public static WaveManager instance;
     public static Action OnWaveEnd;
+    public static Action OnWaveStart;
     
     public PathInfo gate1;
     public PathInfo gate2;
@@ -38,6 +39,7 @@ public class WaveManager : MonoBehaviour
     private void OnDestroy()
     {
         OnWaveEnd = null;
+        OnWaveStart = null;
     }
 
     private void Update()
@@ -70,6 +72,7 @@ public class WaveManager : MonoBehaviour
         
         StopAllCoroutines();
         StartCoroutine(Spawn());
+        OnWaveStart?.Invoke();
     }
 
     private void CalculateNextWaveIndex()

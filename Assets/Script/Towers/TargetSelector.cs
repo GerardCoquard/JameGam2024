@@ -67,53 +67,68 @@ public class TargetSelector : MonoBehaviour
     
     private Transform GetMostHealthEnemy()
     {
-        _enemyList.OrderBy(x => x.GetHealth());
+        int indx = 0;
+        bool enemyFound = false;
         for (int i = 0; i < _enemyList.Count; i++)
         {
             if (_enemyList[i].GetHealth() <= 0)
                 continue;
             
             if (_enemyList[i].GetArmor() <= 0 && _enemyList[i].GetMagic() <= 0)
-                return _enemyList[i].transform;
+                if (_enemyList[i].GetHealth() >= _enemyList[indx].GetHealth())
+                {
+                    enemyFound = true;
+                    indx = i;
+                }
         }
 
-        if (_enemyList[0].GetHealth() > 0)
-            return _enemyList[0].transform;
+        if (enemyFound)
+            return _enemyList[indx].transform;
         else
             return GetFirstEnemy();
     }
     
     private Transform GetMostArmorEnemy()
     {
-        _enemyList.OrderBy(x => x.GetArmor());
+        int indx = 0;
+        bool enemyFound = false;
         for (int i = 0; i < _enemyList.Count; i++)
         {
             if (_enemyList[i].GetArmor() <= 0)
                 continue;
             
             if (_enemyList[i].GetMagic() <= 0)
-                return _enemyList[i].transform;
+                if (_enemyList[i].GetArmor() >= _enemyList[indx].GetArmor())
+                {
+                    enemyFound = true;
+                    indx = i;
+                }
         }
 
-        if (_enemyList[0].GetArmor() > 0)
-            return _enemyList[0].transform;
+        if (enemyFound)
+            return _enemyList[indx].transform;
         else
             return GetFirstEnemy();
     }
     
     private Transform GetMostMagicEnemy()
     {
-        _enemyList.OrderBy(x => x.GetMagic());
+        int indx = 0;
+        bool enemyFound = false;
         for (int i = 0; i < _enemyList.Count; i++)
         {
             if (_enemyList[i].GetMagic() <= 0)
                 continue;
             
-            return _enemyList[i].transform;
+            if (_enemyList[i].GetMagic() >= _enemyList[indx].GetMagic())
+            {
+                enemyFound = true;
+                indx = i;
+            }
         }
 
-        if (_enemyList[0].GetMagic() > 0)
-            return _enemyList[0].transform;
+        if (enemyFound)
+            return _enemyList[indx].transform;
         else
             return GetFirstEnemy();
     }
