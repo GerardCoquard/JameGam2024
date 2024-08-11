@@ -46,9 +46,12 @@ public class AmountDisplay : MonoBehaviour
     public void InitializeAll(float _amount,float armorAmount, float magicArmorAmount, float _maxAmount, float _segmentValue)
     {
         StopAllCoroutines();
-        segmentValue = _segmentValue;
+        if (_maxAmount / _segmentValue > 50)
+            segmentValue = _maxAmount / 50;
+        else
+            segmentValue = _segmentValue;
         SetSegments(_maxAmount);
-        SetSegmentsColor(_amount, armorAmount, magicArmorAmount, _maxAmount, _segmentValue);
+        SetSegmentsColor(_amount, armorAmount, magicArmorAmount, _maxAmount, segmentValue);
         SetFills(fills,_amount + armorAmount + magicArmorAmount);  
         SetFills(fillsFollow,0);
     }
